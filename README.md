@@ -8,25 +8,25 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Hardware](Introduction.md#hardware)
    - [Software](Introduction.md#software)
      
-- [Quick Start](ConnectYourReSpeaker.md)
-   - [Setup Wi-Fi](ConnectYourReSpeaker.md#setup-wi-fi)
-   - [Mopidy music player](ConnectYourReSpeaker.md#mopidy-music-player)
-   - [File manager](ConnectYourReSpeaker.md#file-manager)
-   - [Web terminal](ConnectYourReSpeaker.md#web-terminal)
-   - [First impression with Voice Interaction - ReSpeaker, play music!](ConnectYourReSpeaker.md#first-impression-with-voice-interaction---respeaker-play-music)
-   - [Play with AirPlay & DLNA]
-   - [Dashboard]
-   - [Use SD Card to Extend Storage]()
+- [Quick Start](QuickStart.md)
+   - [Setup Wi-Fi](QuickStart.md#setup-wi-fi)
+   - [Mopidy music player](QuickStart.md#mopidy-music-player)
+   - [File manager](QuickStart.md#file-manager)
+   - [Web terminal](QuickStart.md#web-terminal)
+   - [First impression with Voice Interaction - ReSpeaker, play music!](QuickStart.md#first-impression-with-voice-interaction---respeaker-play-music)
+   - Play with AirPlay & DLNA
+   - Dashboard
+   - [Use SD Card to Extend Storage](QuickStart#use-sd-card-to-extend-storage)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
-   - [Try Houndify on ReSpeaker]
+   - Try Houndify on ReSpeaker
    
-- [Programming guide]()
-   - [How to write a simple voice interaction program]
-   - [Play Arduino with light, touch, sound and internet]
-   - [Data exchange between Arduino and OpenWrt]
-   - [Music player]
-   - [Fruit piano]
-   - [Weather Cloud]  
+- [Programming guide](ProgrammingGuide.md)
+   - [How to write a simple voice interaction program](ProgrammingGuide.md#how-to-write-a-simple-voice-interaction-program)
+   - [Play Arduino with light, touch, sound and internet](ProgrammingGuide.md#play-arduino-with-light-touch-sound-and-internet)
+   - [Data exchange between Arduino and OpenWrt](ProgrammingGuide.md#data-exchange-between-arduino-and-openwrt)
+   - [Music player](ProgrammingGuide.md#music-player)
+   - [Fruit piano](ProgrammingGuide.md#fruit-piano)
+   - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
    
 -  [API reference]()    
    - [ReSpeaker Arduino library API]
