@@ -8,13 +8,13 @@ ReSpeaker is set to Repeater Mode as default, and you have to connect it to an e
 When you first power on ReSpeaker, it will create a Wi-Fi network called 'ReSpeaker_XXXXXX'. Connect your computer to this network. 
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/wifi1.png?raw=true">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true">
 </div>
 
 Once you've obtained an IP address, open a web browser, and enter `192.168.100.1` in the address bar. After a few seconds, a web page will appear asking for ssid and password of an existing Wi-Fi network.
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/wifi2.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi2.png?raw=true" width="50%" height="50%">
 </div>
 
 Select the Wi-Fi you wish to connect to and enter the password. When you press the `OK` button, ReSpeaker will join the specified network and `www.seeedstudio.com` will appear.
@@ -31,13 +31,13 @@ After connecting your computer to ReSpeaker's Wi-Fi, enter `192.168.100.1:6680` 
 Then Mopidy web page will appear.
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/mopidywebserver.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidywebserver.png?raw=true" width="50%" height="50%">
 </div>
 
 Please click `moped` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/mopidymusic.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidymusic.png?raw=true" width="50%" height="50%">
 </div>
 
 ##File manager
@@ -45,11 +45,11 @@ Please click `moped` to enter the HTML frontend for the Mopidy music server. Now
 File manager is an extension of Mopidy music server. It allows you to browse/search/edit/upload your local file system. Enter `192.168.100.1:6680` in a web browser and click `filemanager` web client to get started.
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/filemanager.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/filemanager.png?raw=true" width="50%" height="50%">
 </div>
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/fileupload.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fileupload.png?raw=true" width="50%" height="50%">
 </div>
 
 
@@ -58,16 +58,25 @@ File manager is an extension of Mopidy music server. It allows you to browse/sea
 Web terminal is also an extension of Mopidy music server. We use [pyxterm](https://github.com/respeaker/pyxterm) to get the web terminal. Enter `192.168.100.1:6680` in a web browser and click `terminal` web client to login in ReSpeaker terminal. 
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/terminal.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/terminal.png?raw=true" width="50%" height="50%">
 </div>
 
 ##First impression with Voice Interaction - ReSpeaker, play music!
 
 With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file. 
 
-To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from [here](https://www.microsoft.com/cognitive-services/en-us/speech-api), and copy it to `BING_KEY = '' `, then save the following code in `bing.py` and run it `python bing.py`
+To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from [here](https://www.microsoft.com/cognitive-services/en-us/speech-api), and copy it to `BING_KEY = '' `, then save the following code in `playmusic.py` and run it `python playmusic.py `
+respeaker/get_started_with_respeaker/blob/master/img/
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/getbingapi.png?raw=true" width="50%" height="50%">
+</div>
 
 ```
+import logging
+import time
+import os
+from threading import Thread, Event
+from respeaker import Microphone
 from respeaker.bing_speech_api import BingSpeechAPI
                                    
 # use madplay to play mp3 file     
@@ -115,7 +124,7 @@ if __name__ == '__main__':
 Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Symphony\_No.5p.mp3" in the current path with **madplay**.
 
 <div class="text-center">
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/bingplaymusic.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/bingplaymusic.png?raw=true" width="50%" height="50%">
 </div>
 
 

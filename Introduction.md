@@ -123,7 +123,7 @@ width="50%" height="50%">
 
 ##OpenWrt
 
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/openwrtlogo.png?raw=true" 
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/openwrtlogo.png?raw=true" 
 width="50%" height="50%">
 
 ReSpeaker runs a distribution of Linux called [OpenWrt](https://openwrt.org/) on AI7688 Wi-Fi Module.
@@ -131,7 +131,7 @@ type something here
 
 ##Arduino
 
-<img src="https://github.com/jerryyip/respeakerwikitest/blob/master/img/arduinoide.png?raw=true" 
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/arduinoide.png?raw=true" 
 width="50%" height="50%">
 
 The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Software(IDE) 1.6.8+](https://www.arduino.cc/en/Main/Software). 
