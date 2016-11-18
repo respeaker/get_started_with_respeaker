@@ -72,9 +72,9 @@ if __name__ == '__main__':
 [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) is a library for controlling WS2812 RGB LEDs, touch sensors, SeeedStudio Grove modules on Arduino (ATmega32U4) and building communication bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688).
 
 ### Features
-+ supported capacitive touch sensing
-+ implemented WS2812 RGB LED driver
-+ built USB to Serial bridge and SPI bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688)
++ Supported capacitive touch sensing
++ Implemented WS2812 RGB LED driver
++ Built USB to Serial bridge and SPI bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688)
 
 ### Requirements
 + Arduino IDE 1.6.8+. Please use Arduino IDE 1.6.8+ which has some useful new features
@@ -82,6 +82,7 @@ if __name__ == '__main__':
 ### Installation
 1. Download [zip file](https://github.com/respeaker/respeaker_arduino_library/archive/master.zip) and extract it into Arduino's libraries directory.
 2. Rename `respeaker_arduino_library-master` to `respeaker`
+3. Select `Tools->Board->Arduino Leonardo` 
 
 ### Getting Started
 
@@ -156,38 +157,132 @@ if __name__ == '__main__':
 
 ##Data exchange between Arduino and OpenWrt
 
-There are 2 communication ways between Arduino and OpenWrt: UART and SPI bridge. **It means you can control MT7688 with touch buttons or awaken the LEDs when MT7688 detects something.**
+There are 2 data exchange ways between Arduino and OpenWrt: UART and SPI bridge. 
 
 ###SPI bridge
 
-With SPI bridge, MT7688 works as master and ATmega32U4 works as salve. Import spi.py in your python script on the MPU side and send data with SPI.write(). On Arduino side, you will get the data sent from MT7688 in the spi interrupt handler.
+With SPI bridge, OpenWrt works as master and Arduino works as salve. 
 
-void spi_event(uint8_t addr, uint8_t *data, uint8_t len){
-  //handle the data sent from MT7688
+On Arduino side, the SPI data will be received in this SPI interrupt handler.
+
+```
+void spi_event(uint8_t addr, uint8_t *data, uint8_t len)  {
+	//handle the data sent from MT7688
 }
+``` 
+* **uint8_t addr** - the address of SPI
+* **uint8_t \*data** - the received data, it is a character array
+* **uint8_t len** - the length of the received data
 
 
+In [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library), we have an
+[example](https://github.com/respeaker/respeaker_arduino_library/blob/master/examples/pixels_pattern/pixels_pattern.ino) of SPI bridge:
+
+```
+void spi_event(uint8_t addr, uint8_t *data, uint8_t len)
+{
+  if (0 == addr) {
+    if (0 == data[0]) {   // all off
+      color = 0x000000;
+      pixels_state = 0;
+    } else if (1 == data[0]) {  // specific color
+      color = Pixels::RGB(data[1], data[2], data[3]);
+      pixels_state = 0;
+    } else if (2 == data[0] || 7 == data[0]) {    // listening mode, all green
+      color = Pixels::RGB(0, 0x40, 0);
+      pixels_state = 0;
+    } else if (3 == data[0]) {    // waiting mode
+      pixels_state = 1;
+    }  else if (4 == data[0]) {   // speaking mode
+      pixels_state = 2;
+    } else if (5 == data[0]) {    // volume mode
+      pixels_state = 3;
+      volume = data[3];
+      volume_changed_time = 0;
+    }
+  } else if (0xA0 == addr) {       // spectrum data
+    pixels_state = -1;
+    for (int i = 0; i < PIXELS_NUM; i++) {
+      // Serial.print(data[i]);
+      // Serial.print(' ');
+      pixels->set_color(i, change_brightness(b2r(i * 255 / (PIXELS_NUM - 1)), data[i]));
+      // pixels->set_color(i, change_brightness(b2r(data[i]), data[i]));
+    }
+    pixels->update();
+    // Serial.print("\r\n");
+  }
+}
+```
+
+
+*Note: Please stop mopidy service on OpenWrt before using SPI bridge*
+
+```
+/etc/init.d/mopidy stop
+```
+
+On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it from "respeaker", and send data with  `write(self, data=None, address=None)` method. 
+
+```
+ def write(self, data=None, address=None):
+            if address is not None:
+                data = bytearray([0xA5, address & 0xFF, len(data) & 0xFF]) + data + bytearray([crc8(data)])
+                response = self._write(data)[3:-1]
+            else:
+                response = self._write(data)
+
+            return response
+```
+
+* **data** - the data sent to Arduino, it should be a bytearray
+* **address** - the address of SPI
+
+```
+from respeaker import spi
+//send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
+spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+```
 
 
 ###UART
 
-There are 2 serial ports available in ATmage32U4: "serial" and "serial1".The "serial" is sumilated by the USB port shared with MT7688 and the "serial1" (on TXD1 and RXD1) is connected to MT7688 (on UART_RXD2 and UART_TXD2). They have been set their baudrate to 57600 bps in respeaker.begin().
+There are 2 serial ports available in ATmage32U4: "serial" and "serial1". The "serial" is sumilated by the USB port shared with MT7688 and the "serial1" (on TXD1 and RXD1) is connected to MT7688 (on UART\_RXD2 and UART\_TXD2). They have been set their baudrate to 57600 bps in respeaker.begin().
 
+```
 void ReSpeaker::begin(int touch, int pixels, int spi)
 {
     Serial.begin(57600);
     Serial1.begin(57600);
     ......
 }
-And read or write something in UART like this:
+```
+[ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) provides 2 menthods to send Linux command to Openwrt shell directly.
 
-while (Serial.available() && Serial1.availableForWrite()) {
-Serial1.write((char)Serial.read());
-    }
-while (Serial1.available() && Serial.availableForWrite()) {
-Serial.write((char)Serial1.read());
-    }
-On the MPU side, libmraa provide API for UART in C/C++, Java, Python and JS.
+```
+void ReSpeaker::play(const char *name)
+{
+    Serial1.print("play ");
+    Serial1.print(name);
+    Serial1.print('\n');
+}
+```
+
+* Send a play-music command to OpenWrt shell
+
+* **const char \*name** - the absolute path or SD card path of your music file
+
+
+```
+void ReSpeaker::exec(const char *cmd)
+{
+    Serial1.print(cmd);
+    Serial1.print('\n');
+}
+```
+
+* Send a Linux shell command line to OpenWrt shell
+
+* **const char \*cmd** - Linux shell command line
 
 
 
@@ -199,12 +294,24 @@ On the MPU side, libmraa provide API for UART in C/C++, Java, Python and JS.
 
 ##Fruit piano
 
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano.png?raw=true" width="50%" height="50%">
+</div>
 
 Rather than the on board MT7688 Wi-FI module which runs the Linux based OpenWrt, ReSpeaker is also powered by the ATmega32u4 chip and it’s absolutely Arduino compatible, which means, we can use ReSpeaker as a powerful Arduino board and do many ‘Arduino’ things. It’s for learning, it’s for practicing, and it’s for fun.
 
 For example, you can program it with Arduino IDE to have a special DIY piano that is built on 8 cherry tomatoes connecting to the 8 touch sensors of ReSpeaker.
-	
-<embed src="https://www.youtube.com/watch?v=I-US_4S7yMo&feature=youtu.be" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano2.png?raw=true" width="50%" height="50%">
+</div>
+
+### Getting Started
+
+1. `git clone https://github.com/respeaker/piano.git` # On ReSpeaker, download the repository 
+2. Download [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) in your computer
+3. Upload [piano.ino](https://github.com/respeaker/piano/blob/master/arduino/piano.ino) to ReSpeaker's Arduino Leonardo (ATmega32U4)
+4. Run `python piano.py` on ReSpeaker's serial console
 
 
 ##Weather Cloud
