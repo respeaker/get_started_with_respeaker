@@ -295,7 +295,7 @@ void ReSpeaker::exec(const char *cmd)
 ##Fruit piano
 
 <div class="text-center">
-<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano.PNG?raw=true" width="50%" height="50%">
 </div>
 
 Rather than the on board MT7688 Wi-FI module which runs the Linux based OpenWrt, ReSpeaker is also powered by the ATmega32u4 chip and it’s absolutely Arduino compatible, which means, we can use ReSpeaker as a powerful Arduino board and do many ‘Arduino’ things. It’s for learning, it’s for practicing, and it’s for fun.
@@ -303,7 +303,7 @@ Rather than the on board MT7688 Wi-FI module which runs the Linux based OpenWrt,
 For example, you can program it with Arduino IDE to have a special DIY piano that is built on 8 cherry tomatoes connecting to the 8 touch sensors of ReSpeaker.
 
 <div class="text-center">
-<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano2.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano2.PNG?raw=true" width="50%" height="50%">
 </div>
 
 ### Getting Started
