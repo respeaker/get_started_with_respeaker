@@ -127,7 +127,7 @@ width="50%" height="50%">
 width="50%" height="50%">
 
 ReSpeaker runs a distribution of Linux called [OpenWrt](https://openwrt.org/) on AI7688 Wi-Fi Module.
-type something here
+
 
 ##Arduino
 

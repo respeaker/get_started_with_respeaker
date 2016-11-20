@@ -221,7 +221,7 @@ void spi_event(uint8_t addr, uint8_t *data, uint8_t len)
 /etc/init.d/mopidy stop
 ```
 
-On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it from "respeaker", and send data with  `write(self, data=None, address=None)` method. 
+On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it from "respeaker", and send data with  `spi.write(self, data=None, address=None)` method. 
 
 ```
  def write(self, data=None, address=None):
@@ -256,7 +256,7 @@ void ReSpeaker::begin(int touch, int pixels, int spi)
     ......
 }
 ```
-[ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) provides 2 menthods to send Linux command to Openwrt shell directly.
+[ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) provides 2 menthods to send Linux command to Openwrt Shell directly.
 
 ```
 void ReSpeaker::play(const char *name)
@@ -267,7 +267,7 @@ void ReSpeaker::play(const char *name)
 }
 ```
 
-* Send a play-music command to OpenWrt shell
+Send a play-music command to OpenWrt shell
 
 * **const char \*name** - the absolute path or SD card path of your music file
 
@@ -280,15 +280,9 @@ void ReSpeaker::exec(const char *cmd)
 }
 ```
 
-* Send a Linux shell command line to OpenWrt shell
+Send a Linux shell command line to OpenWrt Shell
 
 * **const char \*cmd** - Linux shell command line
-
-
-
-##Music player
-
-
 
 
 
@@ -308,7 +302,7 @@ For example, you can program it with Arduino IDE to have a special DIY piano tha
 
 ### Getting Started
 
-1. `git clone https://github.com/respeaker/piano.git` # On ReSpeaker, download the repository 
+1. `git clone https://github.com/respeaker/piano.git`  On ReSpeaker, download the repository 
 2. Download [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) in your computer
 3. Upload [piano.ino](https://github.com/respeaker/piano/blob/master/arduino/piano.ino) to ReSpeaker's Arduino Leonardo (ATmega32U4)
 4. Run `python piano.py` on ReSpeaker's serial console
@@ -324,7 +318,13 @@ Weather Cloud is an awesome project for ReSpeaker. This cool build turns a ReSpe
 
 In this project, Openwrt is in charge of getting realtime weather information from the Internet, making voice interaction and audio output, while Arduino is responsible for controlling the colorful RGB LEDs.
 
-The following code realize
+###Getting started
 
-http://www.instructables.com/id/How-to-DIY-an-in-House-Weather-telling-Cloud/
-
+1. `git clone https://github.com/jerryyip/WeatherCloud.git`  on ReSpeaker, download the repository 
+2. Download [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) in your computer
+3. Upload [pixels_pattern.ino](https://github.com/respeaker/respeaker_arduino_library/blob/master/examples/pixels_pattern/pixels_pattern.ino) in ReSpeaker Arduino  Library to ReSpeaker's Arduino 
+4. Get OpenWeatherMap appid from [here](http://openweathermap.org/appid) and copy it to `appID = ""` in `main.py`, don't forget to add your city in `city=""`
+5. Stop mopidy service on OpenWrt before using SPI bridge
+`/etc/init.d/mopidy stop`
+6. Run `python main.py` and say "ReSpeaker, what is the weather like?" to ReSpeaker.
+7. For more details about how to make a Weather Could, please click [here](http://www.instructables.com/id/How-to-DIY-an-in-House-Weather-telling-Cloud/).

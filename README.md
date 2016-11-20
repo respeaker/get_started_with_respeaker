@@ -1,6 +1,6 @@
 #Getting Started with ReSpeaker
 
-![](https://github.com/jerryyip/respeakerwikitest/blob/master/img/respeakerReadme.jpg?raw=true)
+![](https://github.com/respeaker/get_started_with_respeaker/blob/master/img/respeakerReadme.jpg?raw=true)
 
 ReSpeaker is an open modular voice interface to hack things around you. Let you interact with your home appliances, your plant, your office, your internet-equipped devices or any other things in your daily life, all by your voice.
 
@@ -24,7 +24,6 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [How to write a simple voice interaction program](ProgrammingGuide.md#how-to-write-a-simple-voice-interaction-program)
    - [Play Arduino with light, touch, sound and internet](ProgrammingGuide.md#play-arduino-with-light-touch-sound-and-internet)
    - [Data exchange between Arduino and OpenWrt](ProgrammingGuide.md#data-exchange-between-arduino-and-openwrt)
-   - [Music player](ProgrammingGuide.md#music-player)
    - [Fruit piano](ProgrammingGuide.md#fruit-piano)
    - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
    

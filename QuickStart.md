@@ -4,7 +4,6 @@
 
 ReSpeaker is set to Repeater Mode as default, and you have to connect it to an existing wireless network before enjoying the speech recognition with the Internet.
 
-
 When you first power on ReSpeaker, it will create a Wi-Fi network called 'ReSpeaker_XXXXXX'. Connect your computer to this network. 
 
 <div class="text-center">
@@ -17,11 +16,20 @@ Once you've obtained an IP address, open a web browser, and enter `192.168.100.1
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi2.png?raw=true" width="50%" height="50%">
 </div>
 
-Select the Wi-Fi you wish to connect to and enter the password. When you press the `OK` button, ReSpeaker will join the specified network and `www.seeedstudio.com` will appear.
+Select the Wi-Fi you wish to connect to and enter the password. When you press the `OK` button, ReSpeaker will join the specified network.
 
 Now your ReSpeaker is able to visit the Internet.
 
 Also, here are some ways to setup Wi-Fi with command line. [Click here!](https://github.com/respeaker/get_started_with_respeaker/wiki/WiFi)
+
+##Dashboard
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/dashboard.png?raw=true" width="50%" height="50%">
+</div>
+
+Visit `192.168.100.1` again, the Dashboard of ReSpeaker will appear. You are able to have a overview of ReSpeaker, set up network, wifi and system on Dashboard.
+
 
 ##Mopidy music player
 
@@ -34,7 +42,7 @@ Then Mopidy web page will appear.
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidywebserver.png?raw=true" width="50%" height="50%">
 </div>
 
-Please click `moped` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
+Please click `musicbox_webclient` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidymusic.png?raw=true" width="50%" height="50%">
@@ -52,10 +60,14 @@ File manager is an extension of Mopidy music server. It allows you to browse/sea
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fileupload.png?raw=true" width="50%" height="50%">
 </div>
 
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/editfile.png?raw=true" width="50%" height="50%">
+</div>
 
 ##Web terminal
 
-Web terminal is also an extension of Mopidy music server. We use [pyxterm](https://github.com/respeaker/pyxterm) to get the web terminal. Enter `192.168.100.1:6680` in a web browser and click `terminal` web client to login in ReSpeaker terminal. 
+Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `192.168.100.1:6680` in a web browser and click `terminal` web client to login in ReSpeaker terminal. 
+The default username and password are all "root".
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/terminal.png?raw=true" width="50%" height="50%">
@@ -66,7 +78,7 @@ Web terminal is also an extension of Mopidy music server. We use [pyxterm](https
 With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file. 
 
 To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from [here](https://www.microsoft.com/cognitive-services/en-us/speech-api), and copy it to `BING_KEY = '' `, then save the following code in `playmusic.py` and run it `python playmusic.py `
-respeaker/get_started_with_respeaker/blob/master/img/
+
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/getbingapi.png?raw=true" width="50%" height="50%">
 </div>
@@ -131,8 +143,8 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Sympho
 ##Play with DLNA
 not yet
 
-##Dashboard
-not yet
+
+
 
 
 ##Use SD Card to Extend Storage
