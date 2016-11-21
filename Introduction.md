@@ -34,6 +34,11 @@ width="50%" height="50%">
 - Dimensions: 70mm diameter  
 - Weight: 17g 
 
+###Resources
+
+- []()
+- []()
+
 
 
 ##ReSpeaker Mic array
