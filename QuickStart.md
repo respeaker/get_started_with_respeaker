@@ -39,7 +39,7 @@ After connecting your computer to ReSpeaker's Wi-Fi, enter `http://192.168.100.1
 Then Mopidy web page will appear.
 
 <div class="text-center">
-<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidywebserver.png?raw=true" width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/home.png?raw=true" width="50%" height="50%">
 </div>
 
 Please click `Music Player` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
