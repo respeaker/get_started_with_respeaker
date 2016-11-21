@@ -1,5 +1,6 @@
 #ReSpeaker Python API
 
+[ReSpeaker Python Library](https://github.com/respeaker/respeaker_python_library) is an open source python library to provide functions of voice interaction for ReSpeaker.
 
 ##BingSpeechAPI
 
