@@ -86,26 +86,3 @@ Provides methods to:
     
     - **Return:** WAV header
 
-
-##
-
-
-##SpectrumAnalyzer
-
-
-
-
-##FFT
-
-**class FFT:**
-
-Fast Fourier Transformation
-
-
-
-Provide methods to
-
-
-- **def __init__(self, size):**
-- **def dft(self, data, typecode='h'):**
-- 

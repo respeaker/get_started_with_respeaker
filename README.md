@@ -10,12 +10,12 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
      
 - [Quick Start](QuickStart.md)
    - [Setup Wi-Fi](QuickStart.md#setup-wi-fi)
+   - [Dashboard](QuickStart.md#dashboard)
    - [Mopidy music player](QuickStart.md#mopidy-music-player)
    - [File manager](QuickStart.md#file-manager)
    - [Web terminal](QuickStart.md#web-terminal)
    - [First impression with Voice Interaction - ReSpeaker, play music!](QuickStart.md#first-impression-with-voice-interaction---respeaker-play-music)
    - Play with AirPlay & DLNA
-   - Dashboard
    - [Use SD Card to Extend Storage](QuickStart.md#use-sd-card-to-extend-storage)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
    - Try Houndify on ReSpeaker
@@ -28,8 +28,8 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
    
 -  [API reference]()    
-   - [ReSpeaker Arduino library API]
-   - [ReSpeaker Python API] 
+   - [ReSpeaker Arduino Library](ReSpeakerArduinoLibrary.md#respeaker-arduino-library)
+   - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api) 
 
 
 
