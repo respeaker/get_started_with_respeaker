@@ -35,14 +35,14 @@ Visit `192.168.100.1` again, the Dashboard of ReSpeaker will appear. You are abl
 
 Mopidy is an extensible music server written in Python. `ReSpeaker` runs Mopidy server for playing music from local disk, Spotify, SoundCloud, Google Play Music and more.
 
-After connecting your computer to ReSpeaker's Wi-Fi, enter `192.168.100.1:6680` in a web browser.
+After connecting your computer to ReSpeaker's Wi-Fi, enter `http://192.168.100.1/home.html` in a web browser.
 Then Mopidy web page will appear.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidywebserver.png?raw=true" width="50%" height="50%">
 </div>
 
-Please click `musicbox_webclient` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
+Please click `Music Player` to enter the HTML frontend for the Mopidy music server. Now you are able to play music on ReSpeaker from local disk and radio streams!
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidymusic.png?raw=true" width="50%" height="50%">
@@ -50,7 +50,7 @@ Please click `musicbox_webclient` to enter the HTML frontend for the Mopidy musi
 
 ##File manager
 
-File manager is an extension of Mopidy music server. It allows you to browse/search/edit/upload your local file system. Enter `192.168.100.1:6680` in a web browser and click `filemanager` web client to get started.
+File manager is an extension of Mopidy music server. It allows you to browse/search/edit/upload your local file system. Enter `http://192.168.100.1/home.html` in a web browser and click `File Manager` to get started.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/filemanager.png?raw=true" width="50%" height="50%">
@@ -66,12 +66,22 @@ File manager is an extension of Mopidy music server. It allows you to browse/sea
 
 ##Web terminal
 
-Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `192.168.100.1:6680` in a web browser and click `terminal` web client to login in ReSpeaker terminal. 
+Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `http://192.168.100.1/home.html` in a web browser and click `Web Terminal` to login in ReSpeaker terminal. 
 The default username and password are all "root".
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/terminal.png?raw=true" width="50%" height="50%">
 </div>
+
+##System Update
+
+To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. Then ReSpeaker will check its version and the following web page will appear when there is an new firmware for ReSpeaker. Click "UPDATE" to continue and click "UPDATE NOW" after finish download. It will cost about 1 minute for ReSpeaker to install the firmware and reboot.
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/systemupdate.png?raw=true" width="50%" height="50%">
+</div>
+
+
 
 ##First impression with Voice Interaction - ReSpeaker, play music!
 
@@ -141,9 +151,6 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Sympho
 
 
 ##Play with DLNA
-not yet
-
-
 
 
 

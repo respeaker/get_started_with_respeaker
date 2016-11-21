@@ -168,20 +168,31 @@ player.play(hi)
 
 - **def \_\_init\_\_(self, pyaudio\_instance=None, quit_event=None):**
 
-def recognize(self, data):
+	Initialize Microphone.
 
-def detect(self, keyword=None):
+	- **Parameters:**
+		
+		*pyaudio_instance* - PyAudio instance, defaults to None 
+		
+		*quit_event* - , defaults to None
 
-def listen(self, duration=9, timeout=3):
 
-def record(self, file_name, seconds=1800):
+- **def recognize(self, data):**
 
-def quit(self):
+- **def detect(self, keyword=None):**
 
-def start(self):
+	**def wakeup(self, keyword=None):**
 
-def stop(self):
+- **def listen(self, duration=9, timeout=3):**
 
-def close(self):
+- **def record(self, file_name, seconds=1800):**
 
-def task(quit_event):
+- **def quit(self):**
+
+- **def start(self):**
+
+- **def stop(self):**
+
+- **def close(self):**
+
+- **def task(quit_event):**
