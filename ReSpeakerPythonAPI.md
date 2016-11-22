@@ -16,7 +16,7 @@ Provides methods to:
 	Initialize BingSpeechAPI.
 	
 	```
-//Example usage
+#Example usage
 BING_KEY = ''
 bing = BingSpeechAPI(key=BING_KEY)
 ```
@@ -38,7 +38,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 	- **Raise RequestError:** if recognition connection failed
 
 	```
-	//Example usage
+	#Example usage
 	
 	try:
 		text = bing.recognize(data)
@@ -65,7 +65,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 	- **Raise LocaleError:** if *language* not in [*self.locales*](https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/bing_speech_api.py)
 
 	```
-	//Example usage
+	#Example usage
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
 		player.play_raw(audio)
@@ -111,7 +111,10 @@ bing = BingSpeechAPI(key=BING_KEY)
 
 ##class Player
 
-Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave](https://docs.python.org/2/library/wave.html), provides python api to play wav file or raw audio file. 
+Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave](https://docs.python.org/2/library/wave.html), provides methods to:
+
+1. Initialize Player
+2. Play wav file and raw audio data file.
 
 - **def \_\_init\_\_(self, pa):**
 
@@ -122,7 +125,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 		*pa* - PyAudio instance
 	
 	```
-	//Example usage
+	#Example usage
 	mic = Microphone()
    player = Player(mic.pyaudio_instance)
 ```
@@ -138,10 +141,10 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 		*block* - whether wait for playing audio data in buffer, defaults to True
 	
 	```
-	//Example usage
+	#Example usage
 	script_dir = os.path.dirname(os.path.realpath(__file__))
-hi = os.path.join(script_dir, 'audio/hi.wav')
-player.play(hi)
+	hi = os.path.join(script_dir, 'audio/hi.wav')
+	player.play(hi)
 ```
 	
 
@@ -156,7 +159,7 @@ player.play(hi)
 		*block* - whether wait for playing audio data in buffer, defaults to True
 	
 	```
-	//Example usage	
+	#Example usage	
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
 		player.play_raw(audio)      
@@ -164,6 +167,12 @@ player.play(hi)
 
 
 ##class Microphone
+
+Provides methods to:
+
+1. Initialize Microphone
+2. 
+
 
 
 - **def \_\_init\_\_(self, pyaudio\_instance=None, quit_event=None):**
@@ -174,20 +183,81 @@ player.play(hi)
 		
 		*pyaudio_instance* - PyAudio instance, defaults to None 
 		
-		*quit_event* - , defaults to None
+		*quit_event* - if quit_event is set, defaults to None
 
+	```
+	#Example usage	
+	mic = Microphone()  
+```
 
 - **def recognize(self, data):**
+
+	Translate raw audio data into text with [PocketSphinx](https://github.com/cmusphinx/pocketsphinx).
+
+	- **Parameters:**
+		
+		*data* - raw audio data
+	
+	- **Return:** string
+
+	```
+	#Example usage	
+	data = mic.listen()
+	text = mic.recognize(data)
+	if text:
+		time.sleep(1)
+		print('Recognized %s' % text) 
+```
+
 
 - **def detect(self, keyword=None):**
 
 	**def wakeup(self, keyword=None):**
+	
+	`detect` and `wakeup` is used to wake up ReSpeaker when the keyword is detected.
+	
+	- **Parameters:**
+		
+		*keyword* - the keyword to wake up ReSpeaker 
+	
+	- **Return:** if the keyword is detected, return the keyword; if not, return None.
+	
+	```
+	#Example usage	
+	if mic.wakeup('respeaker'):
+		print('wake up')
+		data = mic.listen()
+		text = mic.recognize(data)
+		if text:
+			time.sleep(1)
+			print('Recognized %s' % text) 
+```
+
 
 - **def listen(self, duration=9, timeout=3):**
 
-- **def record(self, file_name, seconds=1800):**
+	Listen and record the speech.
 
-- **def quit(self):**
+	- **Parameters:**
+		
+		*duration* -  
+		
+		*timeout* - 
+	
+	- **Return:** raw audio data
+	
+	```
+	#Example usage	
+	if mic.wakeup('respeaker'):
+		print('wake up')
+		data = mic.listen()
+		text = mic.recognize(data)
+		if text:
+			time.sleep(1)
+			print('Recognized %s' % text) 
+	```
+
+- **def record(self, file_name, seconds=1800):**
 
 - **def start(self):**
 
@@ -196,3 +266,138 @@ player.play(hi)
 - **def close(self):**
 
 - **def task(quit_event):**
+
+	an example of a wakeup and recognize task
+
+	```
+	#Example usage	
+	q = Event()
+   	t = Thread(target=task, args=(q,))
+   	t.start()
+   	while True:
+   		try:
+    		time.sleep(1)
+		except KeyboardInterrupt:
+       	print('Quit')
+       	q.set()
+      		break
+   	t.join()
+	```
+
+
+##class SPI
+
+Provides methods to:
+
+1. Initialize SPI
+2. Send data to Arduino via SPI
+
+- **def \_\_init\_\_(self, sck=15, mosi=17, miso=16, cs=14):**
+
+	Initialize SPI. Note that class SPI has been instantiated in spi.py, so don't have to initialize it again.
+
+	```
+	#Example usage
+	from respeaker import spi
+	spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+```
+
+- **def write(self, data=None, address=None):**
+
+	Send data to Arduino. Click this [Data exchange between Arduino and OpenWrt](ProgrammingGuide.md#data-exchange-between-arduino-and-openwrt) for more introduction.
+	
+	- **Parameters:**
+		
+		*data* - the data sent to Arduino, it should be a bytearray
+		
+		*address* - the address of SPI
+
+	```
+	from respeaker import spi
+#send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
+spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+	```
+
+
+##class PixelRing
+
+Depends on `class SPI`, provides methods to:
+
+1. Initialize PixelRing
+2. Set pixel leds to `off``listen``wait` modes
+3. Set specific color to pixel leds 
+
+- **def \_\_init__(self):**
+
+	Initialize PixelRing. Note that class PixelRing has been instantiated in pixel_ring.py, so you don't need to initialize it again.
+
+	```
+	#Example usage
+	from respeaker import pixel_ring
+	
+	pixel_ring.listen()
+	time.sleep(3)
+	pixel_ring.wait()
+	time.sleep(3)
+	for level in range(2, 8):
+		pixel_ring.speak(level, 0)
+		time.sleep(1)
+	pixel_ring.set_volume(4)
+	time.sleep(3)
+```
+
+- **def off(self):**
+
+	Set pixel leds all off.
+	
+	```
+	#Example usage
+	pixel_ring.off()
+```
+
+- **def listen(self, direction=None):**
+
+	Set pixel leds to `listen` mode, which makes leds all green.
+	
+	- **Parameters:**
+		
+		*direction* - when direction is None, send `self.write(0, [7, 0, 0, 0])` and while direction is not None, send `self.write(0, [2, 0, direction & 0xFF, (direction >> 8) & 0xFF])`
+		
+	```
+	#Example usage
+	pixel_ring.listen()
+```
+
+- **def wait(self):**
+
+	Set pixel leds to `wait` mode, which makes three leds green and running in circle.
+	
+	```
+	#Example usage
+	pixel_ring.wait()
+```
+
+
+- **def set\_color(self, rgb=None, r=0, g=0, b=0):**
+
+	Set specific color to all pixel leds.
+		
+	- **Parameters:**
+		
+		*rgb* - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow
+				
+		*r* - color codes of red, from 0 to 255 or 0x00 to 0xff
+		
+		*g* - color codes of green, from 0 to 255 or 0x00 to 0xff
+		
+		*b* - color codes of blue, from 0 to 255 or 0x00 to 0xff
+		
+	```
+	#Example usage
+	pixel_ring.set_color(rgb=0x505000)
+	time.sleep(3)
+	pixel_ring.set_color(r=150, g=100, b=20)
+```
+
+
+

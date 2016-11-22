@@ -4,7 +4,7 @@
 
 ReSpeaker is set to Repeater Mode as default, and you have to connect it to an existing wireless network before enjoying the speech recognition with the Internet.
 
-When you first power on ReSpeaker, it will create a Wi-Fi network called 'ReSpeaker_XXXXXX'. Connect your computer to this network. 
+When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpeakerXXXXXX". Here "XXXXXX" is the last 6 of your ReSpeaker MAC address, which is marked on the board. Connect your computer to this network. 
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true">
@@ -75,12 +75,17 @@ The default username and password are all "root".
 
 ##System Update
 
-To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. Then ReSpeaker will check its version and the following web page will appear when there is an new firmware for ReSpeaker. Click "UPDATE" to continue and click "UPDATE NOW" after finish download. It will cost about 1 minute for ReSpeaker to install the firmware and reboot.
+To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. Then ReSpeaker will check its version and the following web page will appear when there is an new firmware for ReSpeaker. Click "UPDATE" to continue and click "UPDATE NOW" after finish download. It will cost about 5 minutes for ReSpeaker to install the firmware and reboot, please **don't turn off** ReSpeaker when updating.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/systemupdate.png?raw=true" width="50%" height="50%">
 </div>
 
+
+## Serial Console
+- Baudrate: 57600
+- [Driver for windows xp/7/8](https://github.com/respeaker/get_started_with_respeaker/raw/master/serial.inf)
+- Terminal app - on windows, [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) is recommended. On linux/mac, use `screen /dev/xxx 57600`
 
 
 ##First impression with Voice Interaction - ReSpeaker, play music!
@@ -217,3 +222,14 @@ During the boot process, external storage space is mounted as the root file syst
 
 6. Reboot ReSpeaker and check again. If SD card is mounted automatically, you are done. More informations about **extroot**, please click [here](https://wiki.openwrt.org/doc/howto/extroot).
 
+##Install software on ReSpeaker
+
+After extending storage with a SD card, there are enough storage to install software on ReSpeaker.
+
+1. Install git
+
+	```
+	opkg update
+	opkg install git git-http
+	```
+	

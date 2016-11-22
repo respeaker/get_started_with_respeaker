@@ -18,6 +18,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [First impression with Voice Interaction - ReSpeaker, play music!](QuickStart.md#first-impression-with-voice-interaction---respeaker-play-music)
    - [Play with AirPlay & DLNA]()
    - [Use SD Card to Extend Storage](QuickStart.md#use-sd-card-to-extend-storage)
+   - [Install software on ReSpeaker](QuickStart.md#install-software-on-respeaker)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
    - [Try Houndify on ReSpeaker]()
    
