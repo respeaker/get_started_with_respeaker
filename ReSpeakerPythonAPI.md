@@ -171,9 +171,9 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 Provides methods to:
 
 1. Initialize Microphone
-2. 
-
-
+2. Translate raw audio data into text
+3. Wake up ReSpeaker with keyword
+4. Listen and record the speech
 
 - **def \_\_init\_\_(self, pyaudio\_instance=None, quit_event=None):**
 
