@@ -115,8 +115,7 @@ The default username and password are all "root".
 ##Serial console
 
 - Baudrate: 57600
-- [Driver for windows xp/7/8](https://github.com/respeaker/get_started_with_respeaker/raw/master/serial.inf)
-- Terminal app - on windows, [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) is recommended. On linux/mac, use `screen /dev/xxx 57600`
+- Terminal app - on Windows, [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) is recommended. On Linux/Mac, use `screen /dev/xxx 57600`
 
 
 ##First impression with Voice Interaction - ReSpeaker, play music!
