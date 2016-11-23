@@ -60,7 +60,7 @@ width="50%" height="50%">
 - Beamforming
 - Noise Suppression
 - De-reverberation
-- Acoustic Echo Cancellation
+
 
 ###Technology Specs
 
@@ -104,7 +104,7 @@ width="50%" height="50%">
 ##ReSpeaker Grove Extension Board
 
 ###Description
-The Grove extension board can be stacked (connected) right onto the top of ReSpeaker Mic Array. It brings even more possibilities as you can connect various Grove sensors and actuators to extend ReSpeaker’s capabilities. The board provides up to 10 Grove ports for interfacing with a range of plug-n-play Grove sensors and actuators.
+The Grove extension board can be stacked (connected) right onto the top of ReSpeaker. It brings even more possibilities as you can connect various Grove sensors and actuators to extend ReSpeaker’s capabilities. The board provides up to 10 Grove ports for interfacing with a range of plug-n-play Grove sensors and actuators.
 
 <img src="https://statics3.seeedstudio.com/seeed/img/2016-09/JUrDDjfUKYhMjGZRszWnZ9U8.jpg" 
 width="50%" height="50%">

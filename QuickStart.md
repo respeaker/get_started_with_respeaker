@@ -22,6 +22,7 @@ Now your ReSpeaker is able to visit the Internet.
 
 Also, here are some ways to setup Wi-Fi with command line. [Click here!](https://github.com/respeaker/get_started_with_respeaker/wiki/WiFi)
 
+
 ##Dashboard
 
 <div class="text-center">
@@ -29,6 +30,42 @@ Also, here are some ways to setup Wi-Fi with command line. [Click here!](https:/
 </div>
 
 Visit `192.168.100.1` again, the Dashboard of ReSpeaker will appear. You are able to have a overview of ReSpeaker, set up network, wifi and system on Dashboard.
+
+
+##System Update
+
+To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. 
+
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/home.png?raw=true" width="50%" height="50%">
+</div>
+
+
+Then ReSpeaker will check its version and the following web page will appear when there is an new firmware for ReSpeaker. Click "UPDATE" to continue and click "UPDATE NOW" after finish download. It will cost about 5 minutes for ReSpeaker to install the firmware and reboot, please **don't turn off** ReSpeaker when updating.
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/systemupdate.png?raw=true" width="50%" height="50%">
+</div>
+
+
+Note: If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker. 
+
+
+Connect to the [serial console](QuickStart.md#serial-console) of ReSpeaker, type the following command lines to update the firmware:
+
+
+```
+mount /dev/mmcblk0p1 /mnt
+cd /mnt
+sysupgrade -n ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin
+```
+
+It will cost about 3 minutes for ReSpeaker to install the firmware and reboot, please **don't turn off** ReSpeaker when updating.
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/systemupdate2.png?raw=true" width="50%" height="50%">
+</div>
 
 
 ##Mopidy music player
@@ -73,16 +110,10 @@ The default username and password are all "root".
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/terminal.png?raw=true" width="50%" height="50%">
 </div>
 
-##System Update
-
-To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. Then ReSpeaker will check its version and the following web page will appear when there is an new firmware for ReSpeaker. Click "UPDATE" to continue and click "UPDATE NOW" after finish download. It will cost about 5 minutes for ReSpeaker to install the firmware and reboot, please **don't turn off** ReSpeaker when updating.
-
-<div class="text-center">
-<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/systemupdate.png?raw=true" width="50%" height="50%">
-</div>
 
 
-## Serial Console
+##Serial console
+
 - Baudrate: 57600
 - [Driver for windows xp/7/8](https://github.com/respeaker/get_started_with_respeaker/raw/master/serial.inf)
 - Terminal app - on windows, [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) is recommended. On linux/mac, use `screen /dev/xxx 57600`
