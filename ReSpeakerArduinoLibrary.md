@@ -23,7 +23,7 @@
 
 		*spi* - 1-enable spi bridge, 0-disable
 
-	```
+	```C++
 	//Example usage
 	void setup() {
 	  respeaker.begin();
@@ -38,7 +38,7 @@
 
 		*\*name* - music file without path
 
-	```
+	```C++
 	//Example usage
     respeaker.play("hi.wav");
 ```
@@ -51,7 +51,7 @@
  
 		*\*cmd* - command to be executed
 		
-	```
+	```C++
 	//Example usage
     respeaker.exec("python example.py");
 ```
@@ -66,7 +66,7 @@
 	
 	- **Return:** measurement value
 
-	```
+	```C++
 	//Example usage
 	uint8_t mytouchsensor1 = 1;
 	if (respeaker.read_touch(mytouchsensor1) >= 100) {
@@ -80,7 +80,7 @@
 	
 	- **Return:** all the touch buttons' status in bit. 
     
-    ```
+    ```C++
     //Example usage
     uint16_t buttonstatus = 0;
     buttonstatus = respeaker.detect_touch();
@@ -93,7 +93,7 @@
     
 	Attach an interrupt handler which will be called when a touch event happens
 	
-	```
+	```C++
 	//Example usage
 	respeaker.attach_touch_handler(touch_event);  // add touch event handler
 	```
@@ -102,7 +102,7 @@
         
 	Attach an interrupt handler which will be called when a spi packet is received
 	
-	```
+	```C++
 	//Example usage
 	respeaker.attach_spi_handler(spi_event);
 	```
@@ -111,7 +111,7 @@
 
 	Attach an interrupt handler which will be called when a single byte is received from spi
 	
-	```
+	```C++
 	//Example usage
 	respeaker.attach_spi_raw_handler(spi_event);
 	```
@@ -122,7 +122,7 @@
 	
 	- **Return:** Pixels reference 
 
-	```
+	```C++
 	//Example usage
 	Pixels *pixels;
 	pixels = &respeaker.pixels();
@@ -136,7 +136,7 @@
 
 		*rgb* - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow
 		
-	```
+	```C++
 	//Example usage
 	pixels->set_color(Pixels::RGB(0xff, 0, 0x7f));
 	pixels->update();
@@ -153,7 +153,7 @@
 		
 		*rgb* - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow
 		
-	```
+	```C++
 	//Example usage
 	for (int i = 0; i < PIXELS_NUM; i++) {
 		pixels->set_color(i, Pixels::RGB(0, 0, i * 255 / (PIXELS_NUM - 1)));
@@ -175,7 +175,7 @@
 		
 		*b* - color codes of blue, from 0 to 255 or 0x00 to 0xff
 				
-	```
+	```C++
 	//Example usage
 	for (int i = 0; i < PIXELS_NUM; i++) {
 		pixels->set_color(i, 0, 0, i * 255 / (PIXELS_NUM - 1));
@@ -191,7 +191,7 @@
 
 	Leave all the pixels off
 	
-	```
+	```C++
 	//Example usage
 	pixels->clear();
 	```
@@ -206,7 +206,7 @@
 		
 		*time* - 	delay time 
 	
-	```
+	```C++
 	//Example usage
 	pixels->blink(0xff00ff, 500);
 	```
@@ -223,7 +223,7 @@
 		
 		*index* - the index of pixel
 	
-	```
+	```C++
 	//Example usage
 	for (int i = 0; i < PIXELS_NUM; i++) {
 		pixels->blink(0xff00ff, 500, i);

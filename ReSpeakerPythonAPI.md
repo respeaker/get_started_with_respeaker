@@ -15,7 +15,7 @@ Provides methods to:
 	
 	Initialize BingSpeechAPI.
 	
-	```
+	```python
 #Example usage
 BING_KEY = ''
 bing = BingSpeechAPI(key=BING_KEY)
@@ -37,7 +37,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 		
 	- **Raise RequestError:** if recognition connection failed
 
-	```
+	```python
 	#Example usage
 	
 	try:
@@ -64,7 +64,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 	
 	- **Raise LocaleError:** if *language* not in [*self.locales*](https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/bing_speech_api.py)
 
-	```
+	```python
 	#Example usage
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
@@ -124,7 +124,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 		
 		*pa* - PyAudio instance
 	
-	```
+	```python
 	#Example usage
 	mic = Microphone()
    player = Player(mic.pyaudio_instance)
@@ -140,7 +140,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 		
 		*block* - whether wait for playing audio data in buffer, defaults to True
 	
-	```
+	```python
 	#Example usage
 	script_dir = os.path.dirname(os.path.realpath(__file__))
 	hi = os.path.join(script_dir, 'audio/hi.wav')
@@ -158,7 +158,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 		
 		*block* - whether wait for playing audio data in buffer, defaults to True
 	
-	```
+	```python
 	#Example usage	
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
@@ -185,7 +185,7 @@ Provides methods to:
 		
 		*quit_event* - if quit_event is set, defaults to None
 
-	```
+	```python
 	#Example usage	
 	mic = Microphone()  
 ```
@@ -200,7 +200,7 @@ Provides methods to:
 	
 	- **Return:** string
 
-	```
+	```python
 	#Example usage	
 	data = mic.listen()
 	text = mic.recognize(data)
@@ -222,7 +222,7 @@ Provides methods to:
 	
 	- **Return:** if the keyword is detected, return the keyword; if not, return None.
 	
-	```
+	```python
 	#Example usage	
 	if mic.wakeup('respeaker'):
 		print('wake up')
@@ -246,7 +246,7 @@ Provides methods to:
 	
 	- **Return:** raw audio data
 	
-	```
+	```python
 	#Example usage	
 	if mic.wakeup('respeaker'):
 		print('wake up')
@@ -269,7 +269,7 @@ Provides methods to:
 
 	an example of a wakeup and recognize task
 
-	```
+	```python
 	#Example usage	
 	q = Event()
    	t = Thread(target=task, args=(q,))
@@ -296,7 +296,7 @@ Provides methods to:
 
 	Initialize SPI. Note that class SPI has been instantiated in spi.py, so don't have to initialize it again.
 
-	```
+	```python
 	#Example usage
 	from respeaker import spi
 	spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
@@ -312,7 +312,7 @@ Provides methods to:
 		
 		*address* - the address of SPI
 
-	```
+	```python
 	from respeaker import spi
 #send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
 spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
@@ -331,7 +331,7 @@ Depends on `class SPI`, provides methods to:
 
 	Initialize PixelRing. Note that class PixelRing has been instantiated in pixel_ring.py, so you don't need to initialize it again.
 
-	```
+	```python
 	#Example usage
 	from respeaker import pixel_ring
 	
@@ -350,7 +350,7 @@ Depends on `class SPI`, provides methods to:
 
 	Set pixel leds all off.
 	
-	```
+	```python
 	#Example usage
 	pixel_ring.off()
 ```
@@ -363,7 +363,7 @@ Depends on `class SPI`, provides methods to:
 		
 		*direction* - when direction is None, send `self.write(0, [7, 0, 0, 0])` and while direction is not None, send `self.write(0, [2, 0, direction & 0xFF, (direction >> 8) & 0xFF])`
 		
-	```
+	```python
 	#Example usage
 	pixel_ring.listen()
 ```
@@ -372,7 +372,7 @@ Depends on `class SPI`, provides methods to:
 
 	Set pixel leds to `wait` mode, which makes three leds green and running in circle.
 	
-	```
+	```python
 	#Example usage
 	pixel_ring.wait()
 ```
@@ -392,7 +392,7 @@ Depends on `class SPI`, provides methods to:
 		
 		*b* - color codes of blue, from 0 to 255 or 0x00 to 0xff
 		
-	```
+	```python
 	#Example usage
 	pixel_ring.set_color(rgb=0x505000)
 	time.sleep(3)
