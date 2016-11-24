@@ -4,7 +4,7 @@
 
 ReSpeaker is set to Repeater Mode as default, and you have to connect it to an existing wireless network before enjoying the speech recognition with the Internet.
 
-When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpeakerXXXXXX". Here "XXXXXX" is the last 6 of your ReSpeaker MAC address, which is marked on the board. Connect your computer to this network. 
+When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpeaker_XXXXXX". Here "XXXXXX" is the last 6 of your ReSpeaker MAC address, which is marked on the board. Connect your computer to this network. 
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true">
@@ -128,7 +128,7 @@ To use Bing Speech API, first you have to get a key of Microsoft Cognitive Servi
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/getbingapi.png?raw=true" width="50%" height="50%">
 </div>
 
-```
+```python
 import logging
 import time
 import os
@@ -229,7 +229,7 @@ During the boot process, external storage space is mounted as the root file syst
 	sed -i s/option$'\t'enabled$'\t'\'0\'/option$'\t'enabled$'\t'\'1\'/ /etc/config/fstab;
 	sed -i s#/mnt/mmcblk0p1#/overlay# /etc/config/fstab;
 	cat /etc/config/fstab;
-   ```
+   	```
    
 5. Check if it is mountable to overlay.
 
