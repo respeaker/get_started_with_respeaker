@@ -135,9 +135,10 @@ width="50%" height="50%">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/openwrtlogo.png?raw=true" 
 width="50%" height="50%">
 
-ReSpeaker runs a distribution of Linux called [OpenWrt](https://github.com/respeaker/openwrt) on AI7688 Wi-Fi Module.
+ReSpeaker runs a open-source distribution of embedded Linux called [OpenWrt](https://github.com/respeaker/openwrt) on AI7688 Wi-Fi Module. 
 
 
+When Voice Interaction, onbroad pixel leds and touch sensors, kinds of [Grove sensors and actuators](http://wiki.seeed.cc/Grove/) and powerful network capabilities all focus on a Linux system which has small volume, low power consumption and enough computing capacity, ReSpeaker may become a perfect carrier of your IoT or artificial intelligence applications. That is why we create ReSpeaker.
 
 
 ##Arduino
@@ -145,4 +146,8 @@ ReSpeaker runs a distribution of Linux called [OpenWrt](https://github.com/respe
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/arduinoide.png?raw=true" 
 width="50%" height="50%">
 
-The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Software(IDE) 1.6.8+](https://www.arduino.cc/en/Main/Software). 
+The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Software(IDE) 1.6.8+](https://www.arduino.cc/en/Main/Software) and our [ReSpeaker Arduino Library](https://github.com/respeaker/get_started_with_respeaker/blob/master/ReSpeakerArduinoLibrary.md#respeaker-arduino-library). 
+
+
+Arduino is an open-source electronics platform based on easy-to-use hardware and software. With Arduino on ReSpeaker, developers are able to make creative applications in their familiar area.
+
