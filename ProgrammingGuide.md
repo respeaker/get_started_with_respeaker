@@ -17,7 +17,7 @@ To use Bing Speech API, first you have to get a key of Microsoft Cognitive Servi
 
 The following code is an example of how to use Bing Speech API and Microphone on ReSpeaker. After waking up ReSpeaker by saying "ReSpeaker" to the board, the code will start to record your voice, translate it to text and display it.
 
-```
+```python
 import logging
 import time
 from threading import Thread, Event
@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
 1. Light - chasing colors
 
-  ```
+  ```C
   #include "respeaker.h"
 
   uint8_t offset = 0;
@@ -106,7 +106,7 @@ if __name__ == '__main__':
   
 2. Touch & Sound - touch to play
 
-  ```
+  ```C
   #include "respeaker.h"
 
   // wav or mp3 files on SD card
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
 3. [Connect to IFTTT maker channel](https://ifttt.com/maker)
 
-  ```
+  ```C
   #include "respeaker.h"
 
   #define IFTTT_MAKER_CHANNEL_KEY ""              // add the key of your ifttt maker channel
@@ -165,7 +165,7 @@ With SPI bridge, OpenWrt works as master and Arduino works as salve.
 
 On Arduino side, the SPI data will be received in this SPI interrupt handler.
 
-```
+```C
 void spi_event(uint8_t addr, uint8_t *data, uint8_t len)  {
 	//handle the data sent from MT7688
 }
@@ -178,7 +178,7 @@ void spi_event(uint8_t addr, uint8_t *data, uint8_t len)  {
 In [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library), we have an
 [example](https://github.com/respeaker/respeaker_arduino_library/blob/master/examples/pixels_pattern/pixels_pattern.ino) of SPI bridge:
 
-```
+```C
 void spi_event(uint8_t addr, uint8_t *data, uint8_t len)
 {
   if (0 == addr) {
@@ -223,7 +223,7 @@ void spi_event(uint8_t addr, uint8_t *data, uint8_t len)
 
 On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it from "respeaker", and send data with  `spi.write(self, data=None, address=None)` method. 
 
-```
+```python
  def write(self, data=None, address=None):
             if address is not None:
                 data = bytearray([0xA5, address & 0xFF, len(data) & 0xFF]) + data + bytearray([crc8(data)])
@@ -237,7 +237,7 @@ On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it 
 * **data** - the data sent to Arduino, it should be a bytearray
 * **address** - the address of SPI
 
-```
+```python
 from respeaker import spi
 //send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
 spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
@@ -248,7 +248,7 @@ spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
 
 There are 2 serial ports available in ATmage32U4: "serial" and "serial1". The "serial" is sumilated by the USB port shared with MT7688 and the "serial1" (on TXD1 and RXD1) is connected to MT7688 (on UART\_RXD2 and UART\_TXD2). They have been set their baudrate to 57600 bps in respeaker.begin().
 
-```
+```C++
 void ReSpeaker::begin(int touch, int pixels, int spi)
 {
     Serial.begin(57600);
@@ -258,7 +258,7 @@ void ReSpeaker::begin(int touch, int pixels, int spi)
 ```
 [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) provides 2 menthods to send Linux command to Openwrt Shell directly.
 
-```
+```C++
 void ReSpeaker::play(const char *name)
 {
     Serial1.print("play ");
@@ -272,7 +272,7 @@ Send a play-music command to OpenWrt shell
 * **const char \*name** - the absolute path or SD card path of your music file
 
 
-```
+```C++
 void ReSpeaker::exec(const char *cmd)
 {
     Serial1.print(cmd);
