@@ -17,7 +17,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Web terminal](QuickStart.md#web-terminal)   
    - [Serial console](QuickStart.md#serial-console)
    - [First impression with Voice Interaction - ReSpeaker, play music!](QuickStart.md#first-impression-with-voice-interaction---respeaker-play-music)
-   - [Play with AirPlay & DLNA]()
+   - [Play with AirPlay & DLNA](QuickStart.md#play-with-dlnaairplay)
    - [Use SD Card to Extend Storage](QuickStart.md#use-sd-card-to-extend-storage)
    - [Install software on ReSpeaker](QuickStart.md#install-software-on-respeaker)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
