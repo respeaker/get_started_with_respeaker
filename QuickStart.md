@@ -187,6 +187,22 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Sympho
 
 ##Play with DLNA/AirPlay
 
+- With Airplay/DLNA, you can stream music to respeaker. 
+- To use Airplay/DLNA, you need to connect respeaker and your smart phone to the same Wi-Fi network.
+
+
+###Use Airplay
+
+1. Connect to the same Wi-Fi network on your iOS device and ReSpeaker.
+2. On your iOS device, swipe up from the bottom of your screen to open Control Center.
+3. In Control Center, swipe horizontally to find the Now Playing screen.
+4. Select ReSpeaker as the following picture:
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/airplay.png?raw=true" width="50%" height="50%">
+</div>
+
+5. Connect your headphone/speaker to respeaker, then you can enjoy the music now. 
 
 
 ##Use SD Card to Extend Storage
