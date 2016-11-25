@@ -185,7 +185,7 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Sympho
 </div>
 
 
-##Play with DLNA
+##Play with DLNA/AirPlay
 
 
 
@@ -198,56 +198,82 @@ During the boot process, external storage space is mounted as the root file syst
 1. Make sure your SD card is plugged into ReSpeaker and `/dev/mmcblk0p1` can be detected.
 
 	```
-	root@mylinkit:/# df -h
+	root@ReSpeaker:/# df -h
 	Filesystem                Size      Used Available Use% Mounted on
-	rootfs                    4.1M    432.0K      3.6M  10% /
-	/dev/root                26.8M     26.8M         0 100% /rom
-	tmpfs                    61.7M    272.0K     61.5M   0% /tmp
-	/dev/mtdblock6            4.1M    432.0K      3.6M  10% /overlay
-	overlayfs:/overlay        4.1M    432.0K      3.6M  10% /
+	rootfs                    1.8M    832.0K    960.0K  46% /
+	/dev/root                29.0M     29.0M         0 100% /rom
+	tmpfs                    61.7M    276.0K     61.5M   0% /tmp
+	/dev/mtdblock6            1.8M    832.0K    960.0K  46% /overlay
+	overlayfs:/overlay        1.8M    832.0K    960.0K  46% /
 	tmpfs                   512.0K         0    512.0K   0% /dev
-	/dev/mmcblk0p1            3.2G      2.8G    246.0M  92% /tmp/run/mountd/mmcblk0p1
+	/dev/mmcblk0p1            7.4G      2.5M      7.4G   0% /tmp/run/mountd/mmcblk0p1
 	```
 
-2. Write an new emtry ext4 file system to your SD card.（Warning: When doing this, all the data on your SD card will be cleared） 
+2. Format your SD card into two partitions, one is FAT32, the other is EXT4. EXT4 file system will be as an extroot while FAT32 will be as a normal storage device, which is able to transfer files between ReSpeaker and your PC.
 
 	```
 	umount /dev/mmcblk0p1
-	mkfs.ext4 /dev/mmcblk0p1
+	fdisk /dev/mmcblk0
+	# ------------------ fdisk ------------------------
+	>Command (m for help):o
+	>Created a new DOS disklabel
+	>Command (m for help):n
+	>Partition type
+	p   primary (0 primary, 0 extended, 4 free)
+	e   extended (container for logical partitions)
+	>Select (default p):p
+	>Partition number (1-4, default 1):1
+	>First sector (2048-15523839, default 2048):
+	>Last sector, +sectors or +size{K,M,G,T,P} (2048-15523839, default 15523839): +2G
+	>Command (m for help):n
+	>Partition type
+	p   primary (1 primary, 0 extended, 3 free)
+	e   extended (container for logical partitions)
+	>Select (default p):p
+	>Partition number (1-4, default 2):2
+	>First sector (4196352-15523839, default 4196352):
+	>Last sector, +sectors or +size{K,M,G,T,P} (4196352-15523839, default 15523839): 
+	>Command (m for help):w
+	# ------------------ end ------------------------
+	
+	mkfs.fat /dev/mmcblk0p1
+	mkfs.ext4 /dev/mmcblk0p2
+	
+	# reload mtk_sd kernel module
+	rmmod mtk_sd
+	insmod mtk_sd
 	```
 
 3. Prepare your external storage root overlay.
 	
 	```
-	mount /dev/mmcblk0p1 /mnt ; tar -C /overlay -cvf - . | tar -C /mnt -xf - ; umount /mnt
+	mount /dev/mmcblk0p2 /mnt ; tar -C /overlay -cvf - . | tar -C /mnt -xf - ; umount /mnt
 	```
 
-4. Create fstab with the following command. This command will create a fstab template enabling all partitions and setting '/mnt/mmcblk0p1' partition as '/overlay' partition.
+4. Create fstab with the following command. This command will create a fstab template enabling all partitions and setting '/mnt/mmcblk0p2' partition as '/overlay' partition.
 	
 	```
 	block detect > /etc/config/fstab;
 	sed -i s/option$'\t'enabled$'\t'\'0\'/option$'\t'enabled$'\t'\'1\'/ /etc/config/fstab;
-	sed -i s#/mnt/mmcblk0p1#/overlay# /etc/config/fstab;
+	sed -i s#/mnt/mmcblk0p2#/overlay# /etc/config/fstab;
 	cat /etc/config/fstab;
    	```
    
 5. Check if it is mountable to overlay.
 
 	```
-	root@mylinkit:/# mount /dev/mmcblk0p1 /overlay/
-	[ 1771.940000] [EXFAT] trying to mount...
-	[ 1771.950000] EXT4-fs (mmcblk0p1): couldn't mount as ext3 due to feature incompatibilities
-	[ 1771.970000] EXT4-fs (mmcblk0p1): couldn't mount as ext2 due to feature incompatibilities
-	[ 1771.990000] EXT4-fs (mmcblk0p1): mounted filesystem with ordered data mode. Opts: (null)
-	root@mylinkit:/# df
-	Filesystem           1K-blocks      Used Available Use% Mounted on
-	rootfs                    4160       432      3728  10% /
-	/dev/root                27392     27392         0 100% /rom
-	tmpfs                    63224       276     62948   0% /tmp
-	/dev/mtdblock6         3360336      6564   3163360   0% /overlay
-	overlayfs:/overlay        4160       432      3728  10% /
-	tmpfs                      512         0       512   0% /dev
-	/dev/mmcblk0p1         3360336      6564   3163360   0% /overlay 
+	root@mylinkit:/# mount /dev/mmcblk0p2 /overlay/
+	root@ReSpeaker:/# df -h
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                    1.8M    832.0K    960.0K  46% /
+/dev/root                29.0M     29.0M         0 100% /rom
+tmpfs                    61.7M    276.0K     61.5M   0% /tmp
+/dev/mtdblock6            5.2G     11.8M      4.9G   0% /overlay
+overlayfs:/overlay        1.8M    832.0K    960.0K  46% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /tmp/run/mountd/mmcblk0p2
+/dev/mmcblk0p1            2.0G      4.0K      2.0G   0% /tmp/run/mountd/mmcblk0p1
+/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /overlay 
 	```
 
 6. Reboot ReSpeaker and check again. If SD card is mounted automatically, you are done. More informations about **extroot**, please click [here](https://wiki.openwrt.org/doc/howto/extroot).
