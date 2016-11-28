@@ -34,6 +34,12 @@ width="50%" height="50%">
 - Dimensions: 70mm diameter  
 - Weight: 17g 
 
+###Pin-out Diagram
+
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/corepinmap.png?raw=true" 
+width="50%" height="50%">
+
+
 ###Resources
 
 - [Respeaker Core v1.0 SCH](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_SCH.sch)
