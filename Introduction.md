@@ -36,8 +36,7 @@ width="50%" height="50%">
 
 ###Pin-out Diagram
 
-<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/corepinmap.png?raw=true" 
-width="50%" height="50%">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/corepinmap.png?raw=true" >
 
 
 ###Resources
