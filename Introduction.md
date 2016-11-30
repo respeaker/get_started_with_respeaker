@@ -38,6 +38,24 @@ width="50%" height="50%">
 
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/corepinmap.png?raw=true" >
 
+- GPIO0/I2S_ADC: Drive external encoder/decoder, ADC signal
+
+- GPIO1/I2S_DAC: Drive external encoder/decoder, DAC signal
+
+- GPIO2/I2S_LRCLK: Drive external encoder/decoder, Left/right channel sample clock 
+
+- GPIO3/I2S_BCLK: Drive external encoder/decoder, Bit clock
+
+- MCLK_OUT: Master clock for external device
+
+- HP\_SEL: Headphone channel select. If use ReSpeaker Mic Array to output audio, set HP_SEL high
+
+- HP\_L: Analog audio left channel from ReSpeaker Mic Array
+
+- HP_R: Analog audio right channel from ReSpeaker Mic Array
+
+- AGND: Analog ground for audio
+
 
 ###Resources
 
