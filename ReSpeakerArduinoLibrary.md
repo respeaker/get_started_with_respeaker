@@ -36,7 +36,7 @@
     
     - **Parameters:**
 
-		*\*name* - music file without path
+		*name* - music file without path
 
 	```C++
 	//Example usage
@@ -49,7 +49,7 @@
 
 	 - **Parameters:**
  
-		*\*cmd* - command to be executed
+		*cmd* - command to be executed
 		
 	```C++
 	//Example usage

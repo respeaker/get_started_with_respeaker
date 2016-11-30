@@ -214,7 +214,7 @@ Provides methods to:
 
 	**def wakeup(self, keyword=None):**
 	
-	`detect` and `wakeup` is used to wake up ReSpeaker when the keyword is detected.
+	`detect` and `wakeup` are used to wake up ReSpeaker when the keyword is detected.
 	
 	- **Parameters:**
 		
@@ -240,9 +240,9 @@ Provides methods to:
 
 	- **Parameters:**
 		
-		*duration* -  
+		*duration* - listen the speech for the given number of seconds, defaults to 9 seconds
 		
-		*timeout* - 
+		*timeout* - stop listening when don't detect any speeches for the given number of seconds, defaults to 3 seconds
 	
 	- **Return:** raw audio data
 	
@@ -259,15 +259,30 @@ Provides methods to:
 
 - **def record(self, file_name, seconds=1800):**
 
+	Record the speech and save the audio file.
+
+	- **Parameters:**
+		
+		*file_name* - file name of the saved audio file
+			
+		*seconds* - recording seconds, defaults to 1800 seconds 
+		
+
 - **def start(self):**
 
+	Start processing the audio stream.
+	
 - **def stop(self):**
+
+	Pause playing/recording.
 
 - **def close(self):**
 
+	Terminate the stream.
+
 - **def task(quit_event):**
 
-	an example of a wakeup and recognize task
+	An example of a wakeup and recognize task.
 
 	```python
 	#Example usage	
