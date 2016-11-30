@@ -64,8 +64,7 @@ width="50%" height="50%">
 - [ReSpeaker Core v1.0 Schematic(pdf)](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_Schematic(pdf).pdf)
 - [ReSpeaker Core v1.0 PCB bottom(pdf)](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_PCB_bottom.pdf)
 - [ReSpeaker Core v1.0 PCB top(pdf)](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_PCB_top.pdf)
-- [ReSpeaker Pro Case 3D(bottom)](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/respeaker_btm.stp)
-- [ReSpeaker Pro Case 3D(cap)](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/respeader_cap.stp)
+- [ReSpeaker Pro Case 3D](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/respeaker_pro_case_3d.zip)
 
 
 
