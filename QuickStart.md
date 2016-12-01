@@ -10,7 +10,9 @@ When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpea
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true" width="50%" height="50%">
 </div>
 
-**If "ReSpeakerXXXXXX" does not appear, but "LinkIt_Smart_7688_XXXXXX" is found. Please click [here](QuickStart.md#update-for-old-version)**
+
+
+**If "ReSpeakerXXXXXX" does not appear, but "LinkIt_Smart_7688_XXXXXX" is found. Please click [here](QuickStart.md#update-for-old-version).**
 
 Once you've obtained an IP address, open a web browser, and enter `192.168.100.1` in the address bar. After a few seconds, a web page will appear asking for ssid and password of an existing Wi-Fi network.
 
