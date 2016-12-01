@@ -10,6 +10,8 @@ When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpea
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true" width="50%" height="50%">
 </div>
 
+**If "ReSpeakerXXXXXX" does not appear, but "LinkIt_Smart_7688_XXXXXX" is found. Please click [here](QuickStart.md#update-for-old-version)**
+
 Once you've obtained an IP address, open a web browser, and enter `192.168.100.1` in the address bar. After a few seconds, a web page will appear asking for ssid and password of an existing Wi-Fi network.
 
 <div class="text-center">
@@ -49,7 +51,9 @@ Then ReSpeaker will check its version and the following web page will appear whe
 </div>
 
 
-Note: If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker. 
+###Update for old version
+
+**Note:** If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker. 
 
 
 Connect to the [serial console](QuickStart.md#serial-console) of ReSpeaker, type the following command lines to update the firmware:
@@ -58,7 +62,7 @@ Connect to the [serial console](QuickStart.md#serial-console) of ReSpeaker, type
 ```
 mount /dev/mmcblk0p1 /mnt
 cd /mnt
-sysupgrade -n ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin
+sysupgrade -n -F ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin
 ```
 
 It will cost about 3 minutes for ReSpeaker to install the firmware and reboot, please **don't turn off** ReSpeaker when updating.
