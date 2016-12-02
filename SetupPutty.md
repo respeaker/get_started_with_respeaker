@@ -9,7 +9,7 @@ To access serial console on Windows, [putty](http://www.chiark.greenend.org.uk/~
     <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/putty1.png?raw=true" width="50%" height="50%">
     </div>
 
-2. Select `Serial` under `Connection type`. In the Serial line field, enter the COM port for your ReSpeaker. In the Speed field, type 57600.
+2. Select `Serial` under `Connection type`. In the `Serial line` field, enter the COM port for your ReSpeaker. In the `Speed field`, type 57600.
 
     <div class="text-center">
     <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/putty2.png?raw=true" width="50%" height="50%">
