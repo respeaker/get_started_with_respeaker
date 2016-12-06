@@ -68,7 +68,7 @@ width="50%" height="50%">
 
 
 
-##ReSpeaker Mic array
+##ReSpeaker Mic Array
 
 ###Description
 The ReSpeaker Mic Array can be stacked (connected) right onto the top of ReSpeaker Core to significantly improve the voice interaction experience. It is developed based on the XVSM-2000 Smart Microphone from XMOS. The board integrates 7 PDM microphones to help enhance ReSpeaker's acoustic DSP performance to a much higher level.
