@@ -7,6 +7,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
 - [Introduction](Introduction.md)
    - [Hardware](Introduction.md#hardware)
    - [Software](Introduction.md#software)
+   - [ReSpeaker Pro Case Assembly Instructions](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/ReSpeaker_Pro_Case_Assembly_Instructions.pdf)
      
 - [Quick Start](QuickStart.md)
    - [Setup Wi-Fi](QuickStart.md#setup-wi-fi)
