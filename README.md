@@ -23,6 +23,8 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Install software on ReSpeaker](QuickStart.md#install-software-on-respeaker)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
    - [Try Houndify on ReSpeaker]()
+   - [ReSpeaker Microphone Array HID tool](https://github.com/Fuhua-Chen/ReSpeaker-Microphone-Array-HID-tool)
+   - [ReSpeaker Microphone Array Driver](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Driver)
    
 - [Programming guide](ProgrammingGuide.md)
    - [How to write a simple voice interaction program](ProgrammingGuide.md#how-to-write-a-simple-voice-interaction-program)
