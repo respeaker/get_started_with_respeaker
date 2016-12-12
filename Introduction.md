@@ -110,9 +110,9 @@ width="50%" height="50%">
   - 800kHz line data transmission.
 - Audio output: 
   - On board 3.5mm Aux output.
-  - Cirrus DAC CS43L32.
+  - WOLFSON WM8960.
   - 24 or 16bit 16kHz stereo output.
-  - 88 mW Power Into Stereo 16 Ω @ 2.5 V.
+  - 40 mW output Power into 16 Ω @ 3.3 V.
 - Clock Sync：
   - On board PLL.
   - Programmable sample clock for DAC,MIC.
