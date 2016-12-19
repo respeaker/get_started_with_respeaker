@@ -230,7 +230,7 @@ More often than not, a limited amount of storage is available on embedded device
 By employing **extroot**, expansion of the storage capacity of your root file system is accomplished by using an added storage device. 
 During the boot process, external storage space is mounted as the root file system, or in an overlay configuration over the original file system. 
 
-1. Make sure your SD card is plugged into ReSpeaker and `/dev/mmcblk0p1` can be detected by `df-h` or `ls /dev`.
+1. Make sure your SD card is plugged into ReSpeaker and `/dev/mmcblk0p1` can be detected by `df -h` or `ls /dev`.
 
 	```
 	root@ReSpeaker:/# df -h
