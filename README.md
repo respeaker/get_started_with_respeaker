@@ -22,7 +22,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Use SD Card to Extend Storage](QuickStart.md#use-sd-card-to-extend-storage)
    - [Install software on ReSpeaker](QuickStart.md#install-software-on-respeaker)
    - [Get Alexa on ReSpeaker](https://github.com/respeaker/Alexa)
-   - [Try Houndify on ReSpeaker]()
+   - [Try Mycroft on ReSpeaker](https://github.com/respeaker/mycroft-core#mycroft-on-respeaker)
    - [ReSpeaker Microphone Array HID tool](https://github.com/Fuhua-Chen/ReSpeaker-Microphone-Array-HID-tool)
    - [ReSpeaker Microphone Array Driver](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Driver)
    
