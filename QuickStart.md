@@ -163,7 +163,7 @@ def task(quit_event):
                     print('Recognized %s' % text)
                     if 'play music' in text:
                         print('I will play music!')
-                        os.system('madplay Beethoven_Symphony_No.5p.mp3')
+                        os.system('madplay Tchaikovsky_Concerto_No.1p.mp3')
             except Exception as e:               
                 print(e.message)                 
                                                                          
@@ -184,7 +184,7 @@ def main():
 if __name__ == '__main__':       
     main()                  
 ```
-Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Beethoven\_Symphony\_No.5p.mp3" in the current path with **madplay**.
+Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Tchaikovsky\_Concerto\_No.1p.mp3" in the current path with **madplay**.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/bingplaymusic.png?raw=true" width="50%" height="50%">
