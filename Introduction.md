@@ -124,6 +124,11 @@ width="50%" height="50%">
 - Weight: 
   - 15.25g
 
+###Resources
+
+- [ReSpeaker Microphone Array SCH&PCB](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_SCH_PCB)
+
+
 ##ReSpeaker Grove Extension Board
 
 ###Description
