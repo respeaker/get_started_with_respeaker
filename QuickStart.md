@@ -4,7 +4,7 @@
 
 ReSpeaker is set to Repeater Mode as default, and you have to connect it to an existing wireless network before enjoying the speech recognition with the Internet.
 
-When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpeakerXXXXXX". Here "XXXXXX" is the last 6 of your ReSpeaker MAC address, which is marked on the board. Connect your computer to this network. 
+When you first power on ReSpeaker, it will create a Wi-Fi network called "ReSpeakerXXXXXX". Here "XXXXXX" is the last 6 of your ReSpeaker MAC address, which is marked on the board. Connect your computer to this network.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/wifi1.png?raw=true" width="50%" height="50%">
@@ -38,7 +38,7 @@ Visit `192.168.100.1` again, the Dashboard of ReSpeaker will appear. You are abl
 
 ##System Update
 
-To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`. 
+To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`.
 
 
 <div class="text-center">
@@ -55,7 +55,7 @@ Then ReSpeaker will check its version and the following web page will appear whe
 
 ###Update for old version
 
-**Note:** If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker. 
+**Note:** If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker.
 
 
 Connect to the [serial console](QuickStart.md#serial-console) of ReSpeaker, type the following command lines to update the firmware:
@@ -109,7 +109,7 @@ File manager is an extension of Mopidy music server. It allows you to browse/sea
 
 ##Web terminal
 
-Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `http://192.168.100.1/home.html` in a web browser and click `Web Terminal` to login in ReSpeaker terminal. 
+Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `http://192.168.100.1/home.html` in a web browser and click `Web Terminal` to login in ReSpeaker terminal.
 The default username and password are all "root".
 
 <div class="text-center">
@@ -126,9 +126,16 @@ The default username and password are all "root".
 
 ##First impression with Voice Interaction - ReSpeaker, play music!
 
-With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file. 
+With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file.
 
-To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from [here](https://www.microsoft.com/cognitive-services/en-us/speech-api), and copy it to `BING_KEY = '' `, then save the following code in `playmusic.py` and run it `python playmusic.py `
+To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from [here](https://www.microsoft.com/cognitive-services/en-us/speech-api), and copy it to `BING_KEY = '' `, then save the following code in `playmusic.py` and run it
+
+```
+//stop mopidy and alexa to avoid USB device occupation
+/etc/init.d/mopidy stop
+/etc/init.d/alexa stop
+python playmusic.py
+```
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/getbingapi.png?raw=true" width="50%" height="50%">
@@ -141,18 +148,18 @@ import os
 from threading import Thread, Event
 from respeaker import Microphone
 from respeaker.bing_speech_api import BingSpeechAPI
-                                   
+
 # use madplay to play mp3 file     
 os.system('madplay')               
-                                                   
+
 # get a key from https://www.microsoft.com/cognitive-services/en-us/speech-api
 BING_KEY = ''      
-                              
-                              
+
+
 def task(quit_event):                                                         
     mic = Microphone(quit_event=quit_event)                                   
     bing = BingSpeechAPI(key=BING_KEY)                                        
-                                             
+
     while not quit_event.is_set():
         if mic.wakeup('respeaker'):        
             print('Wake up')               
@@ -166,7 +173,7 @@ def task(quit_event):
                         os.system('madplay Tchaikovsky_Concerto_No.1p.mp3')
             except Exception as e:               
                 print(e.message)                 
-                                                                         
+
 def main():                                                              
     logging.basicConfig(level=logging.DEBUG)                                                           
     quit_event = Event()        
@@ -180,11 +187,11 @@ def main():
             quit_event.set()
             break        
     thread.join()                
-                                 
+
 if __name__ == '__main__':       
     main()                  
 ```
-Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Tchaikovsky\_Concerto\_No.1p.mp3" in the current path with **madplay**.
+After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up the program, and say "play music" to let it play music. Then ReSpeaker will play "Tchaikovsky\_Concerto\_No.1p.mp3" in the current path with **madplay** tool.
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/bingplaymusic.png?raw=true" width="50%" height="50%">
@@ -193,7 +200,7 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Tchaikovsky\_Conc
 
 ##Play with AirPlay&DLNA
 
-- With Airplay&DLNA, you can stream music to ReSpeaker. 
+- With Airplay&DLNA, you can stream music to ReSpeaker.
 
 
 ###Use Airplay
@@ -206,8 +213,8 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Tchaikovsky\_Conc
 	<div class="text-center">
 	<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/airplay.png?raw=true" width="50%" height="50%">
 	</div>
-	
-5. Connect your headphone/speaker to respeaker, then you can enjoy the music now. 
+
+5. Connect your headphone/speaker to respeaker, then you can enjoy the music now.
 
 
 ###Use DLNA
@@ -220,15 +227,15 @@ Try to say "ReSpeaker, play music!". Then ReSpeaker will play "Tchaikovsky\_Conc
 	<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/dlna.png?raw=true" width="50%" height="50%">
 	</div>
 
-4. Connect your headphone/speaker to respeaker, then you can enjoy the music now. 
- 
+4. Connect your headphone/speaker to respeaker, then you can enjoy the music now.
+
 
 
 ##Use SD Card to Extend Storage
 More often than not, a limited amount of storage is available on embedded devices(ReSpeaker has only 5M on-board flash storage left for users). More storage for applications and data can expand ReSpeaker's potential, so use SD card to extend storage as an **extroot** is a good choice.
 
-By employing **extroot**, expansion of the storage capacity of your root file system is accomplished by using an added storage device. 
-During the boot process, external storage space is mounted as the root file system, or in an overlay configuration over the original file system. 
+By employing **extroot**, expansion of the storage capacity of your root file system is accomplished by using an added storage device.
+During the boot process, external storage space is mounted as the root file system, or in an overlay configuration over the original file system.
 
 1. Make sure your SD card is plugged into ReSpeaker and `/dev/mmcblk0p1` can be detected by `df -h` or `ls /dev`.
 
@@ -267,37 +274,37 @@ During the boot process, external storage space is mounted as the root file syst
 	>Select (default p):p
 	>Partition number (1-4, default 2):2
 	>First sector (4196352-15523839, default 4196352):
-	>Last sector, +sectors or +size{K,M,G,T,P} (4196352-15523839, default 15523839): 
+	>Last sector, +sectors or +size{K,M,G,T,P} (4196352-15523839, default 15523839):
 	>Command (m for help):w
 	>The partition table has been altered.
 	>Calling i[  292.010000]  mmcblk0: p1 p2
 	>octl() to re-read partition table.
 	>Syncing disks.
 	# ------------------ end ------------------------
-	
+
 	mkfs.fat /dev/mmcblk0p1
 	mkfs.ext4 /dev/mmcblk0p2
-	
+
 	# reload mtk_sd kernel module
 	rmmod mtk_sd
 	insmod mtk_sd
 	```
 
 3. Prepare your external storage root overlay.
-	
+
 	```
 	mount /dev/mmcblk0p2 /mnt ; tar -C /overlay -cvf - . | tar -C /mnt -xf - ; umount /mnt
 	```
 
 4. Create fstab with the following command. This command will create a fstab template enabling all partitions and setting '/mnt/mmcblk0p2' partition as '/overlay' partition.
-	
+
 	```
 	block detect > /etc/config/fstab;
 	sed -i s/option$'\t'enabled$'\t'\'0\'/option$'\t'enabled$'\t'\'1\'/ /etc/config/fstab;
 	sed -i s#/mnt/mmcblk0p2#/overlay# /etc/config/fstab;
 	cat /etc/config/fstab;
    	```
-   
+
 5. Check if it is mountable to overlay.
 
 	```
@@ -312,12 +319,12 @@ overlayfs:/overlay        1.8M    832.0K    960.0K  46% /
 tmpfs                   512.0K         0    512.0K   0% /dev
 /dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /tmp/run/mountd/mmcblk0p2
 /dev/mmcblk0p1            2.0G      4.0K      2.0G   0% /tmp/run/mountd/mmcblk0p1
-/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /overlay 
+/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /overlay
 	```
 
 6. Reboot ReSpeaker and check again. If SD card is mounted automatically, you are done. More informations about **extroot**, please click [here](https://wiki.openwrt.org/doc/howto/extroot).
 
-##Install software on ReSpeaker
+## Install software on ReSpeaker
 
 After extending storage with a SD card, there are enough storage to install software on ReSpeaker.
 
@@ -327,4 +334,7 @@ After extending storage with a SD card, there are enough storage to install soft
 	opkg update
 	opkg install git git-http
 	```
-	
+
+
+## Factory Reset
+Open the serial console or a ssh session and run `firstboot`. [More detail](https://github.com/respeaker/get_started_with_respeaker/wiki/factory-reset).

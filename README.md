@@ -8,7 +8,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Hardware](Introduction.md#hardware)
    - [Software](Introduction.md#software)
    - [ReSpeaker Pro Case Assembly Instructions](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/ReSpeaker_Pro_Case_Assembly_Instructions.pdf)
-     
+
 - [Quick Start](QuickStart.md)
    - [Setup Wi-Fi](QuickStart.md#setup-wi-fi)
    - [Dashboard](QuickStart.md#dashboard)
@@ -26,18 +26,16 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [ReSpeaker Microphone Array HID tool](https://github.com/Fuhua-Chen/ReSpeaker-Microphone-Array-HID-tool)
    - [ReSpeaker Microphone Array Driver](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Driver)
    - [ReSpeaker Microphone Array Firmware](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Firmware)
-   
+   - [Factory Reset](QuickStart.md#factory-reset)
+   - [FAQ](https://github.com/respeaker/get_started_with_respeaker/wiki/FAQ)
+
 - [Programming guide](ProgrammingGuide.md)
    - [How to write a simple voice interaction program](ProgrammingGuide.md#how-to-write-a-simple-voice-interaction-program)
    - [Play Arduino with light, touch, sound and internet](ProgrammingGuide.md#play-arduino-with-light-touch-sound-and-internet)
    - [Data exchange between Arduino and OpenWrt](ProgrammingGuide.md#data-exchange-between-arduino-and-openwrt)
    - [Fruit piano](ProgrammingGuide.md#fruit-piano)
    - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
-   
+
 -  [API reference]()    
    - [ReSpeaker Arduino Library](ReSpeakerArduinoLibrary.md#respeaker-arduino-library)
-   - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api) 
-
-
-
-
+   - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api)
