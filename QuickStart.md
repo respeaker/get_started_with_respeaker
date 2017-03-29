@@ -1,6 +1,6 @@
-#Quick Start
+# Quick Start
 
-##Setup Wi-Fi
+## Setup Wi-Fi
 
 ReSpeaker is set to Repeater Mode as default, and you have to connect it to an existing wireless network before enjoying the speech recognition with the Internet.
 
@@ -27,7 +27,7 @@ Now your ReSpeaker is able to visit the Internet.
 Also, here are some ways to setup Wi-Fi with command line. [Click here!](https://github.com/respeaker/get_started_with_respeaker/wiki/WiFi)
 
 
-##Dashboard
+## Dashboard
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/dashboard.png?raw=true" width="50%" height="50%">
@@ -53,7 +53,7 @@ Then ReSpeaker will check its version and the following web page will appear whe
 </div>
 
 
-###Update for old version
+### Update for old version
 
 **Note:** If you can not update your ReSpeaker via Web or can not visit `http://192.168.100.1/home.html`, please click [here](https://s3-us-west-2.amazonaws.com/respeaker.io/firmware/ramips-openwrt-latest-LinkIt7688-squashfs-sysupgrade.bin) to download the lastest firmware on your computer, copy it to a SD card and plug the SD card into ReSpeaker.
 
@@ -74,7 +74,7 @@ It will cost about 3 minutes for ReSpeaker to install the firmware and reboot, p
 </div>
 
 
-##Mopidy music player
+## Mopidy music player
 
 Mopidy is an extensible music server written in Python. `ReSpeaker` runs Mopidy server for playing music from local disk, Spotify, SoundCloud, Google Play Music and more.
 
@@ -91,7 +91,7 @@ Please click `Music Player` to enter the HTML frontend for the Mopidy music serv
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/mopidymusic.png?raw=true" width="50%" height="50%">
 </div>
 
-##File manager
+## File manager
 
 File manager is an extension of Mopidy music server. It allows you to browse/search/edit/upload your local file system. Enter `http://192.168.100.1/home.html` in a web browser and click `File Manager` to get started.
 
@@ -107,7 +107,7 @@ File manager is an extension of Mopidy music server. It allows you to browse/sea
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/editfile.png?raw=true" width="50%" height="50%">
 </div>
 
-##Web terminal
+## Web terminal
 
 Web terminal [Pyxterm](https://github.com/respeaker/pyxterm), a pure python websocket terminal server,  is also an extension of Mopidy music server to get the web terminal. Enter `http://192.168.100.1/home.html` in a web browser and click `Web Terminal` to login in ReSpeaker terminal.
 The default username and password are all "root".
@@ -118,13 +118,13 @@ The default username and password are all "root".
 
 
 
-##Serial console
+## Serial console
 
 - Baudrate: 57600
 - Terminal app - on Windows, [putty](https://github.com/respeaker/get_started_with_respeaker/blob/master/SetupPutty.md) is recommended. On Linux/Mac, use `screen /dev/xxx 57600`
 
 
-##First impression with Voice Interaction - ReSpeaker, play music!
+## First impression with Voice Interaction - ReSpeaker, play music!
 
 With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file.
 
@@ -198,12 +198,12 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 </div>
 
 
-##Play with AirPlay&DLNA
+## Play with AirPlay&DLNA
 
 - With Airplay&DLNA, you can stream music to ReSpeaker.
 
 
-###Use Airplay
+### Use Airplay
 
 1. Connect to the same Wi-Fi network on your iOS device and ReSpeaker.
 2. On your iOS device, swipe up from the bottom of your screen to open Control Center.
@@ -217,7 +217,7 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 5. Connect your headphone/speaker to respeaker, then you can enjoy the music now.
 
 
-###Use DLNA
+### Use DLNA
 
 1. Connect your smart phone to **ReSpeaker's Wi-Fi**.
 2. On your smart phone, open a DLNA software, such as: *AllConnect*.
@@ -231,7 +231,7 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 
 
 
-##Use SD Card to Extend Storage
+## Use SD Card to Extend Storage
 More often than not, a limited amount of storage is available on embedded devices(ReSpeaker has only 5M on-board flash storage left for users). More storage for applications and data can expand ReSpeaker's potential, so use SD card to extend storage as an **extroot** is a good choice.
 
 By employing **extroot**, expansion of the storage capacity of your root file system is accomplished by using an added storage device.
