@@ -51,30 +51,32 @@ Install speech\_recognition library following the [guide](https://github.com/res
 
 1. `keywords.txt` contains keywords and their threshold. For example, `keywords.txt` from [here](https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/pocketsphinx-data/keywords.txt) is
 
-	```
+```
 respeaker /1e-30/
 alexa /1e-30/
 play music /1e-40/
 ```
 
-	`respeaekr` is a keyword, `1e-30` is its threshold. To improve sensitive, we can decrease the threshold, for example, `1e-50`. We should know  decreasing the threshold will increase False Acceptance Rate.
+`respeaekr` is a keyword, `1e-30` is its threshold. To improve sensitive, we can decrease the threshold, for example, `1e-50`. We should know  decreasing the threshold will increase False Acceptance Rate.
 
-	If you want to add new keyword, you should firstly add the keyword to  [`dictionary.txt`](https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/pocketsphinx-data/dictionary.txt).  The `dictionary.txt` is like:
+If you want to add new keyword, you should firstly add the keyword to  [`dictionary.txt`](https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/pocketsphinx-data/dictionary.txt).  The `dictionary.txt` is like:
 
-	```
+```
 respeaker	R IY S P IY K ER
 alexa	AH L EH K S AH
 play	P L EY
 music	M Y UW Z IH K
 ```
 
-	The first part is a name (respeaker, alexa or music), the second part is its phonemes. You can find words in a large dictionary at https://github.com/respeaker/pocketsphinx-data/blob/master/dictionary.txt
+The first part is a name (respeaker, alexa or music), the second part is its phonemes. You can find words in a large dictionary at https://github.com/respeaker/pocketsphinx-data/blob/master/dictionary.txt
 
 2. then change the code:
 	
-	```if mic.wakeup('respeaker'):```
+```
+if mic.wakeup('respeaker'):
+```
 	
-	more details [issues#50](https://github.com/respeaker/get_started_with_respeaker/issues/50), [issues#68](https://github.com/respeaker/get_started_with_respeaker/issues/68)
+more details [issues#50](https://github.com/respeaker/get_started_with_respeaker/issues/50), [issues#68](https://github.com/respeaker/get_started_with_respeaker/issues/68)
 
 
 
