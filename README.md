@@ -1,4 +1,4 @@
-#Getting Started with ReSpeaker
+# Getting Started with ReSpeaker
 
 ![](https://github.com/respeaker/get_started_with_respeaker/blob/master/img/respeakerReadme.jpg?raw=true)
 
