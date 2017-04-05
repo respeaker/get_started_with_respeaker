@@ -1,11 +1,11 @@
-#Programming Guide
+# Programming Guide
 
 This programming guide is a series of tutorials designed to get you started with ReSpeaker. Starting from the basics, it describes how to make voice interaction, create audio output and program Arduino on ReSpeaker.
 
 ReSpeaker runs the [OpenWrt](https://openwrt.org/) system on MT7688, and provided with on broad [ReSpeaker Python API](https://github.com/respeaker/respeaker_python_library), which makes it friendly and quickly for developers to build IoT applications. On Arduino side, ReSpeaker also provide easy-to-use [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library).
 
 
-##How to write a simple voice interaction program
+## How to write a simple voice interaction program
 
 With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file. 
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 </div>
 
 
-##Play Arduino with light, touch, sound and Internet
+## Play Arduino with light, touch, sound and Internet
 
 [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) is a library for controlling WS2812 RGB LEDs, touch sensors, SeeedStudio Grove modules on Arduino (ATmega32U4) and building communication bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688).
 
@@ -155,11 +155,11 @@ if __name__ == '__main__':
 
 
 
-##Data exchange between Arduino and OpenWrt
+## Data exchange between Arduino and OpenWrt
 
 There are 2 data exchange ways between Arduino and OpenWrt: UART and SPI bridge. 
 
-###SPI bridge
+### SPI bridge
 
 With SPI bridge, OpenWrt works as master and Arduino works as salve. 
 
@@ -286,7 +286,7 @@ Send a Linux shell command line to OpenWrt Shell
 
 
 
-##Fruit piano
+## Fruit piano
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano.PNG?raw=true" width="50%" height="50%">
@@ -308,7 +308,7 @@ For example, you can program it with Arduino IDE to have a special DIY piano tha
 4. Run `python piano.py` on ReSpeaker's serial console
 
 
-##Weather Cloud
+## Weather Cloud
 
 <div class="text-center">
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/weathercloud.jpg?raw=true" width="50%" height="50%">
@@ -318,7 +318,7 @@ Weather Cloud is an awesome project for ReSpeaker. This cool build turns a ReSpe
 
 In this project, Openwrt is in charge of getting realtime weather information from the Internet, making voice interaction and audio output, while Arduino is responsible for controlling the colorful RGB LEDs.
 
-###Getting started
+### Getting started
 
 1. `git clone https://github.com/jerryyip/WeatherCloud.git`  on ReSpeaker, download the repository 
 2. Download [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) in your computer

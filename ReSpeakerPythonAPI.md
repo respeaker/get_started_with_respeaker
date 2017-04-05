@@ -1,8 +1,8 @@
-#ReSpeaker Python API
+# ReSpeaker Python API
 
 [ReSpeaker Python Library](https://github.com/respeaker/respeaker_python_library) is an open source python library to provide functions of voice interaction for ReSpeaker.
 
-##class BingSpeechAPI
+## class BingSpeechAPI
 
 Provides methods to:
 
@@ -109,7 +109,7 @@ bing = BingSpeechAPI(key=BING_KEY)
     - **Return:** WAV header
 
 
-##class Player
+## class Player
 
 Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave](https://docs.python.org/2/library/wave.html), provides methods to:
 
@@ -166,7 +166,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 ```
 
 
-##class Microphone
+## class Microphone
 
 Provides methods to:
 
@@ -300,7 +300,7 @@ Provides methods to:
 	```
 
 
-##class SPI
+## class SPI
 
 Provides methods to:
 
@@ -334,7 +334,7 @@ spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
 	```
 
 
-##class PixelRing
+## class PixelRing
 
 Depends on `class SPI`, provides methods to:
 

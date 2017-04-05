@@ -1,5 +1,5 @@
 
-##Setup Putty
+## Setup Putty
 
 To access serial console on Windows, [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) is recommended. 
 

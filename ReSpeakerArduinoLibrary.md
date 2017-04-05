@@ -1,4 +1,4 @@
-#ReSpeaker Arduino Library
+# ReSpeaker Arduino Library
 
 
 [ReSpeaker Arudino Library](https://github.com/respeaker/respeaker_arduino_library) provides the following features: 
@@ -8,7 +8,7 @@
 - Built USB to Serial bridge and SPI bridge between - Arduino (ATmega32U4) and linux based OpenWrt (MT7688)
 
 
-##class ReSpeaker
+## class ReSpeaker
 
 
 - **void begin(int touch=1, int pixels=1, int spi=1);**

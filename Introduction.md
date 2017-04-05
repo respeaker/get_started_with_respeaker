@@ -1,14 +1,14 @@
-#Hardware
+# Hardware
 
-##ReSpeaker Core
+## ReSpeaker Core
 <img src="https://statics3.seeedstudio.com/seeed/img/2016-09/EYmleODafL5rcUKhEV5FRzgO.jpg" 
 width="50%" height="50%">
 
-###Key Features
+### Key Features
 
 ![](https://www.seeedstudio.com/upload/image/20161011/1476169138612844.jpg)
 
-###Technology Specs
+### Technology Specs
 
 ![](https://www.seeedstudio.com/upload/image/20161010/1476090344476240.jpg)
 
@@ -34,7 +34,7 @@ width="50%" height="50%">
 - Dimensions: 70mm diameter  
 - Weight: 17g 
 
-###Pin-out Diagram
+### Pin-out Diagram
 
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/corepinmap.png?raw=true" >
 
@@ -57,7 +57,7 @@ width="50%" height="50%">
 - AGND: Analog ground for audio
 
 
-###Resources
+### Resources
 
 - [ReSpeaker Core v1.0 SCH](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_SCH.sch)
 - [ReSpeaker Core v1.0 BRD](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/RespeakerCorev1.0_BRD.brd)
@@ -68,15 +68,15 @@ width="50%" height="50%">
 
 
 
-##ReSpeaker Mic Array
+## ReSpeaker Mic Array
 
-###Description
+### Description
 The ReSpeaker Mic Array can be stacked (connected) right onto the top of ReSpeaker Core to significantly improve the voice interaction experience. It is developed based on the XVSM-2000 Smart Microphone from XMOS. The board integrates 7 PDM microphones to help enhance ReSpeaker's acoustic DSP performance to a much higher level.
 
 <img src="https://statics3.seeedstudio.com/seeed/img/2016-09/Eb4RjfA2jaWSQn6h1nEN4JNe.jpg" 
 width="50%" height="50%">
 
-###Key Features
+### Key Features
 
 - Far-field Voice Capture
 - Acoustic Source Localization
@@ -85,7 +85,7 @@ width="50%" height="50%">
 - De-reverberation
 
 
-###Technology Specs
+### Technology Specs
 
 ![](https://www.seeedstudio.com/upload/image/20161010/1476085761315357.jpg)
 
@@ -124,26 +124,26 @@ width="50%" height="50%">
 - Weight: 
   - 15.25g
 
-###Resources
+### Resources
 
 - [ReSpeaker Microphone Array SCH&PCB](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_SCH_PCB)
 
 
-##ReSpeaker Grove Extension Board
+## ReSpeaker Grove Extension Board
 
-###Description
+### Description
 The Grove extension board can be stacked (connected) right onto the top of ReSpeaker. It brings even more possibilities as you can connect various Grove sensors and actuators to extend ReSpeaker’s capabilities. The board provides up to 10 Grove ports for interfacing with a range of plug-n-play Grove sensors and actuators.
 
 <img src="https://statics3.seeedstudio.com/seeed/img/2016-09/JUrDDjfUKYhMjGZRszWnZ9U8.jpg" 
 width="50%" height="50%">
 
-###Key Features
+### Key Features
 
 - Up to 10 Grove Ports
 
 - Stackable with ReSpeaker Core and ReSpeaker Mic Array
 
-###Technology Specs
+### Technology Specs
 
 ![](https://www.seeedstudio.com/upload/image/20161010/1476086262368352.jpg)
 
@@ -156,9 +156,9 @@ width="50%" height="50%">
 - Weight: 15.25g
 
 
-#Software
+# Software
 
-##OpenWrt
+## OpenWrt
 
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/openwrtlogo.png?raw=true" 
 width="50%" height="50%">
@@ -169,7 +169,7 @@ ReSpeaker runs a open-source distribution of embedded Linux called [OpenWrt](htt
 When Voice Interaction, onbroad pixel leds and touch sensors, kinds of [Grove sensors and actuators](http://wiki.seeed.cc/Grove/) and powerful network capabilities all focus on a Linux system which has small volume, low power consumption and enough computing capacity, ReSpeaker may become a perfect carrier of your IoT or artificial intelligence applications. That is why we create ReSpeaker.
 
 
-##Arduino
+## Arduino
 
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/arduinoide.png?raw=true" 
 width="50%" height="50%">
