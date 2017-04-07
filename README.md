@@ -36,7 +36,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Fruit piano](ProgrammingGuide.md#fruit-piano)
    - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
 
--  [API reference]()    
+-  [API reference](ReSpeakerPythonAPI.md#respeaker-python-api)    
    - [ReSpeaker Arduino Library](ReSpeakerArduinoLibrary.md#respeaker-arduino-library)
    - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api)
 
