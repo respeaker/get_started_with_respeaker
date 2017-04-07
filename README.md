@@ -39,3 +39,6 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
 -  [API reference]()    
    - [ReSpeaker Arduino Library](ReSpeakerArduinoLibrary.md#respeaker-arduino-library)
    - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api)
+
+
+Follow us on [Facebook](https://facebook.com/seeedstudiosz) [Youtube](https://www.youtube.com/channel/UC5mX-JaRWXc8cBc1gm5kKhg) [Twitter](https://twitter.com/seeedstudio).
