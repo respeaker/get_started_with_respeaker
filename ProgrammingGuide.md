@@ -328,3 +328,8 @@ In this project, Openwrt is in charge of getting realtime weather information fr
 `/etc/init.d/mopidy stop`
 6. Run `python main.py` and say "ReSpeaker, what is the weather like?" to ReSpeaker.
 7. For more details about how to make a Weather Could, please click [here](http://www.instructables.com/id/How-to-DIY-an-in-House-Weather-telling-Cloud/).
+
+
+---
+
+Follow us on [Facebook](https://facebook.com/seeedstudiosz) [Youtube](https://www.youtube.com/channel/UC5mX-JaRWXc8cBc1gm5kKhg) [Twitter](https://twitter.com/seeedstudio).
