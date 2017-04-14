@@ -1,4 +1,4 @@
-#Getting Started with ReSpeaker
+# Getting Started with ReSpeaker
 
 ![](https://github.com/respeaker/get_started_with_respeaker/blob/master/img/respeakerReadme.jpg?raw=true)
 
@@ -36,6 +36,9 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [Fruit piano](ProgrammingGuide.md#fruit-piano)
    - [Weather Cloud](ProgrammingGuide.md#weather-cloud)  
 
--  [API reference]()    
+-  [API reference](ReSpeakerPythonAPI.md#respeaker-python-api)    
    - [ReSpeaker Arduino Library](ReSpeakerArduinoLibrary.md#respeaker-arduino-library)
    - [ReSpeaker Python API](ReSpeakerPythonAPI.md#respeaker-python-api)
+
+
+Follow us on [Facebook](https://facebook.com/seeedstudiosz) [Youtube](https://www.youtube.com/channel/UC5mX-JaRWXc8cBc1gm5kKhg) [Twitter](https://twitter.com/seeedstudio).

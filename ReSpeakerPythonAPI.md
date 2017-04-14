@@ -16,10 +16,10 @@ Provides methods to:
 	Initialize BingSpeechAPI.
 	
 	```python
-#Example usage
-BING_KEY = ''
-bing = BingSpeechAPI(key=BING_KEY)
-```
+	#Example usage
+	BING_KEY = ''
+	bing = BingSpeechAPI(key=BING_KEY)
+	```
 	
 - **def recognize(self, audio\_data, language="en-US", show_all=False):**
 	
@@ -46,7 +46,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 			print('Recognized %s' % text)
 	except Exception as e:
 		print(e.message)
-```
+	```
 
 - **def synthesize(self, text, language="en-US", gender="Female"):**
 
@@ -69,7 +69,7 @@ bing = BingSpeechAPI(key=BING_KEY)
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
 		player.play_raw(audio)
-```	
+	```	
 
 - **def authenticate(self):**
 
@@ -127,8 +127,8 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 	```python
 	#Example usage
 	mic = Microphone()
-   player = Player(mic.pyaudio_instance)
-```
+   	player = Player(mic.pyaudio_instance)
+	```
 
 - **def play(self, wav\_file, block=True):**
 
@@ -145,7 +145,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 	script_dir = os.path.dirname(os.path.realpath(__file__))
 	hi = os.path.join(script_dir, 'audio/hi.wav')
 	player.play(hi)
-```
+	```
 	
 
 - **def play\_raw(self, raw\_data, rate=16000, channels=1, width=2, block=True):**
@@ -163,7 +163,7 @@ Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave]
 	if spoken_text:
 		audio = bing.synthesize(spoken_text)
 		player.play_raw(audio)      
-```
+	```
 
 
 ## class Microphone
@@ -188,7 +188,7 @@ Provides methods to:
 	```python
 	#Example usage	
 	mic = Microphone()  
-```
+	```
 
 - **def recognize(self, data):**
 
@@ -207,7 +207,7 @@ Provides methods to:
 	if text:
 		time.sleep(1)
 		print('Recognized %s' % text) 
-```
+	```
 
 
 - **def detect(self, keyword=None):**
@@ -231,7 +231,7 @@ Provides methods to:
 		if text:
 			time.sleep(1)
 			print('Recognized %s' % text) 
-```
+	```
 
 
 - **def listen(self, duration=9, timeout=3):**
@@ -315,7 +315,7 @@ Provides methods to:
 	#Example usage
 	from respeaker import spi
 	spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
-```
+	```
 
 - **def write(self, data=None, address=None):**
 
@@ -329,8 +329,8 @@ Provides methods to:
 
 	```python
 	from respeaker import spi
-#send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
-spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+	#send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
+	spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
 	```
 
 
@@ -359,7 +359,7 @@ Depends on `class SPI`, provides methods to:
 		time.sleep(1)
 	pixel_ring.set_volume(4)
 	time.sleep(3)
-```
+	```
 
 - **def off(self):**
 
@@ -368,7 +368,7 @@ Depends on `class SPI`, provides methods to:
 	```python
 	#Example usage
 	pixel_ring.off()
-```
+	```
 
 - **def listen(self, direction=None):**
 
@@ -381,7 +381,7 @@ Depends on `class SPI`, provides methods to:
 	```python
 	#Example usage
 	pixel_ring.listen()
-```
+	```
 
 - **def wait(self):**
 
@@ -390,7 +390,7 @@ Depends on `class SPI`, provides methods to:
 	```python
 	#Example usage
 	pixel_ring.wait()
-```
+	```
 
 
 - **def set\_color(self, rgb=None, r=0, g=0, b=0):**
@@ -412,7 +412,7 @@ Depends on `class SPI`, provides methods to:
 	pixel_ring.set_color(rgb=0x505000)
 	time.sleep(3)
 	pixel_ring.set_color(r=150, g=100, b=20)
-```
+	```
 
 
 

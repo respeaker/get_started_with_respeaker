@@ -179,3 +179,7 @@ The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Softwar
 
 Arduino is an open-source electronics platform based on easy-to-use hardware and software. With Arduino on ReSpeaker, developers are able to make creative applications in their familiar area.
 
+
+---
+
+Follow us on [Facebook](https://facebook.com/seeedstudiosz) [Youtube](https://www.youtube.com/channel/UC5mX-JaRWXc8cBc1gm5kKhg) [Twitter](https://twitter.com/seeedstudio).

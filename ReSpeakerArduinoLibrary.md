@@ -16,20 +16,20 @@
     Setup touch buttons, full color pixels and spi bridge
     
     - **Parameters:**
-
-    	*touch* - 1-enable touch buttons, 0-disable
-    	
-    	*pixeld* - 1-enable pixels, 0-disable
-
+    
+		*touch* - 1-enable touch buttons, 0-disable
+	
+		*pixeld* - 1-enable pixels, 0-disable
+	
 		*spi* - 1-enable spi bridge, 0-disable
 
 	```C++
 	//Example usage
 	void setup() {
-	  respeaker.begin();
-	  }
-```
-    
+	respeaker.begin();
+	}
+	```
+
 - **void play(const char \*name);**
     
     Play music file on sd card, support wav & mp3
@@ -40,8 +40,8 @@
 
 	```C++
 	//Example usage
-    respeaker.play("hi.wav");
-```
+	respeaker.play("hi.wav");
+	```
 
 - **void exec(const char \*cmd);**
     
@@ -53,8 +53,8 @@
 		
 	```C++
 	//Example usage
-    respeaker.exec("python example.py");
-```
+	respeaker.exec("python example.py");
+	```
 
 - **uint16\_t read\_touch(uint8\_t id);**
 
@@ -72,7 +72,7 @@
 	if (respeaker.read_touch(mytouchsensor1) >= 100) {
 		//do something here
 	  }
-```
+	```
     
 - **uint16\_t detect\_touch();**
 
@@ -80,14 +80,14 @@
 	
 	- **Return:** all the touch buttons' status in bit. 
     
-    ```C++
-    //Example usage
-    uint16_t buttonstatus = 0;
-    buttonstatus = respeaker.detect_touch();
-    if (buttonstatus == 0xf0) {
-    	//do something here
-    }
-    ```
+	```C++
+	//Example usage
+	uint16_t buttonstatus = 0;
+	buttonstatus = respeaker.detect_touch();
+	if (buttonstatus == 0xf0) {
+	//do something here
+	}
+	```
 
 - **void attach\_touch\_handler(void (\*handler)(uint8\_t id, uint8\_t event));**
     
