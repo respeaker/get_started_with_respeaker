@@ -1,7 +1,8 @@
 # ReSpeaker Core V2 Wiki
-<!-- ReSpeaker Core V2通用型开发板文档 -->
+
 This is the Wiki of ReSpeaker Core V2.
 
+![](/img/ReSpeaker_Core_V2.png)
 <!-- todo: 这里会有一段话介绍ReSpeaker Core V2以及一些图片，以及wiki整体结构，以及文档的使用方法 -->
 
 The best way to use the Wiki is:
@@ -12,33 +13,27 @@ The best way to use the Wiki is:
 Now let's get started!
 
 ## Getting started with ReSpeaker Core V2
-- [Getting Started](/docs/getting_started.md)
-- [Image Installation](/docs/getting_started.md#image-installation)
-- [Serial Console](/docs/getting_started.md#serial-console)
-- [Network Setting Up](/docs/getting_started.md#network-setting-up)
-- [SSH & VNC](/docs/getting_started.md#ssh--vnc)
-- [ALSA Setting](/docs/getting_started.md#alsa-setting)
-- [PulseAudio Setting](/docs/getting_started.md#pulseaudio-setting)
-- [Virtual Environment](/docs/getting_started.md#virtual-environment)
-- [Voice Engine Setting](/docs/getting_started.md#voice-engine-setting)
-- [Voice Capture and Playback](/docs/getting_started.md#voice-capture-and-playback)
-- [Flash eMMC](/docs/getting_started.md#flash-emmc)
-- [Hardware Introduction]()(to do)
-- [Software Introduction]()(to do)
+- [Getting Started](/docs/ReSpeaker_Core_V2/getting_started.md)
+- [Image Installation](/docs/ReSpeaker_Core_V2/getting_started.md#image-installation)
+- [Serial Console](/docs/ReSpeaker_Core_V2/getting_started.md#serial-console)
+- [Network Setting Up](/docs/ReSpeaker_Core_V2/getting_started.md#network-setting-up)
+- [SSH & VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc)
+- [ALSA Setting](/docs/ReSpeaker_Core_V2/getting_started.md#alsa-setting)
+- [PulseAudio Setting](/docs/ReSpeaker_Core_V2/getting_started.md#pulseaudio-setting)
+- [Virtual Environment](/docs/ReSpeaker_Core_V2/getting_started.md#virtual-environment)
+- [Voice Engine Setting](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting)
+- [Voice Capture and Playback](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback)
+- [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
+- Hardware Introduction
+- Software Introduction
 
 
 ## Programming Guide
-- [AVS(Amazon Voice Service) Guide](/docs/avs_guide.md)
+- [AVS(Amazon Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
 
 
 ## Library
-- [Google Assistant Library]()(to do)
-- [AVS(Amazon Voice Serice) Library]()(to do)
-- [Pixels Ring Library]()(to do)
-- [Voice Algorithm Library]()(to do)
-
-## Licence
-
-
-
-## Support
+- Google Assistant Library
+- AVS(Amazon Voice Serice) Library
+- Pixels Ring Library
+- Voice Algorithm Library

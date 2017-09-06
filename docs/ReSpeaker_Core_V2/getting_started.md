@@ -5,66 +5,67 @@ This guide will show you how to get started with ReSpeaker Core V2.
 
 ### Prerequisites
 
-- 首先你得有一块ReSpeaker Core V2
-- Wi-Fi网络
-- 4GB以上SD card一张、读卡器一个
+- ReSpeaker Core V2
+- Wi-Fi network
+- 4GB(or more) SD card and SD card reader
 - PC or Mac
 - [USB To Uart Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html)
-- 5V 1A Micro USB 供电
+- 5V 1A Micro USB for powering
 
 <!-- ### Open Box -->
 
 ### Image Installation
 
-和树莓派类似，ReSpeaker Core V2出厂时并没有烧录操作系统，因此用户拿到板子后的第一件事就是要为ReSpeaker Core V2制作一张image SD card, 使得ReSpeaker Core V2能够通过SD卡顺利启动。下面是制作image SD card的步骤：
+Similar to Raspberry, ReSpeaker Core V2 needs you to install our image to an SD card to get it up and running. Steps for installing our image:
 
-1. 在[百度云盘](192.168.4.48)或[respeaker.io]()下载最新的系统镜像压缩文件`respeaker-v2-stretch-xxxxxxxx.7z`
 
-2. 下载完成后，解压 `.7z` 文件，以得到烧录至SD卡中的`.img`镜像文件。下面的压缩工具支持解压`.7z`文件：
+1. Download our latest image zip file `respeaker-v2-stretch-xxxxxxxx.7z` at [百度云盘](192.168.4.48) or [respeaker.io]()
+
+2. Unzip the `.7z` file to get a `.img` file. You can unzip `.7z` file with the following tools for different platforms:
     - Windows: [7-Zip](http://www.7-zip.org/)
     - Linux: [7za](http://www.thegeekstuff.com/2010/04/7z-7zip-7za-file-compression)
     - Mac: [The
-     Unarchiver](https://itunes.apple.com/us/app/the-unarchiver/id425424353?mt=12)
+     Unarchiver](https://theunarchiver.com/)
 
-3. 你需要用一个image writing tool将镜像文件烧录至SD card，推荐使用全平台通杀的[Etcher](https://etcher.io/)
+3. Burn the `.img` file to SD card with [Etcher](https://etcher.io/) or other image writing tools.
 
-4. 待镜像文件烧录完成，即可将SD card插入ReSpeaker Core V2，然后从`PWR_IN` micro usb接口给板子上电，注意**不要热插拔SD card**
+4. After burning SD card, put the SD card in ReSpeaker Core V2. Power the board at `PWR_IN` micro usb port，note that **Try not to hot swap SD card**.
 
-5. 上电后，USER1和USER2 LED会亮起，USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD (microSD) card accesses
+5. When powering, USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD (microSD) card accesses
 
 ![](/img/hardware.jpg)
 
 
 ### Serial Console
 
-ReSpeaker Core V2 启动起来后，可以通过板上串口(Uart)访问系统的控制台，下面是操作步骤:
+You can connect to the Serial Console with Uart port on board:
 
-1. 使用USB To TTL Adapter 连接板上串口和您的电脑，注意TX RX的电压为3.3V
+1. Connect Uart port and your PC/Max with an USB To TTL Adapter. Note that the voltage of RX/TX are 3.3V.
 
-2. 使用串口调试工具打开串口，波特率115200
-    - Windows: 使用[PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)工具，选择Serial协议，填写正确的COM口，波特率115200，8Bits，Parity None，Stop Bits 1，Flow Control None
+2. Use the following Serial debugging tools with 115200 baud:
+    - Windows: usb [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
 
-3. 登陆后默认用户是root，建议使用`su respeaker`命令切换至respeaker用户
+3. The default user is `root`, you can switch to `respeaker` user with `su respeaker` command.
 
 ### Network Setting Up
 
 #### 1. Wi-Fi Setting Up
 
-配置无线网络使用的是 **Network Manager** 工具，在命令行输入：
+Configure network with **Network Manager** tool:
 ```
-root@v2:/home/respeaker# nmtui              # 如果是respeaker用户，需要sudo权限
+root@v2:/home/respeaker# nmtui              # respeaker user needs sudo
 ```
-即可进入如下配置页面，选择`Activate a connection`，敲回车
+Then you could see a config page like this, select `Activate a connection` and press `Enter`.
 
 ![](/img/nmtui1-1.png)
 
-选择一个Wi-Fi，敲回车——输入密码——敲回车，在串口中看到`succeeded`后说明已成功连接Wi-Fi，随后敲两下ESC，离开配置页面
+Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password and `Enter` again. When you see `succeeded`, it means that the board has connected to Wi-Fi already. Tap `Esc` twice to leave the config page.
 
 ![](/img/nmtui1-2.png)
 
-建议使用`ifconfig`检查网络连接，并获取设备IP地址，用于建立SSH或VNC连接。由下可知本设备Wi-Fi网络的IP地址为: `192.168.7.108`
+Check network connection with `ifconfig` command, you can get IP address of your device, to establish SSH or VNC. From the following log, I can know that my ReSpeaker V2 IP address is `192.168.7.108`.
 ```
 root@v2:/home/respeaker# ifconfig
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
@@ -86,7 +87,7 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-除了UI配置页面，Network Manager也有命令行工具，可用于连接隐藏Wi-Fi，使用方法如下：
+Except UI configuration page, Network Manager also has a command line tool. You can use this for connecting a hidden Wi-Fi:
 ```
 nmcli c add type wifi con-name mywifi ifname wlan0 ssid your_wifi_ssid
 nmcli con modify mywifi wifi-sec.key-mgmt wpa-psk
@@ -95,14 +96,14 @@ nmcli con up mywifi
 ```
 
 #### 2. Ethernet Setting Up
-暂时无法使用有线网络
+Temporarily unavailable.
 
 ### SSH & VNC
 #### 1. SSH
 
-在ReSpeaker Core V2中，SSH服务是自动开启的. for Windows Users, third-party SSH clients are available. For Linux/Mac Users, SSH is built in.
+SSH server starts automatically in ReSpeaker V2. For Windows Users, third-party SSH clients are available. For Linux/Mac Users, SSH client is built in.
 
-- Windows: 使用[PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)工具，选择SSH协议，填写正确的IP地址，点击`open`即可。SSH的登陆账号为respeaker，密码也是respeaker。
+- Windows: Use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `SSH` protocol, fill in correct IP address and click `open`. Login as `respeaker` user and password is `respeaker` too.
 
 
 - Linux/Mac:
@@ -116,40 +117,39 @@ ssh respeaker@192.168.***.***
 #### 2. VNC
 ![](/img/vnc-2.png)
 
-在ReSpeaker Core V2中，VNC服务是自动开启的，用户能够通过[VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)软件或[VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)，远程登陆开发板的桌面。
+VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
 
-这需要你的PC/Mac与ReSpeaker Core V2连接在同一个局域网，然后打开VNC Viewer，在上方地址栏输入`192.168.xxx.xxx:5901`，其中`xxx`指的是你的开发板的IP地址，`5901`是开发板VNC服务的默认端口号。If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
+To use VNC, you should connect your PC/Mac and ReSpeaker V2 to the same Local-Area-Network. Then open VNC Viewer, type `192.168.xxx.xxx:5901` at the address bar. `192.168.xxx.xxx` is IP address of the board and `5901` is the default port of VNC service. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
 
 ![](/img/vnc-1.png)
 
-如果打开后的VNC窗口只有一片灰白，没有显示任何图标，请在灰白处单击鼠标右键，选择开启terminal，然后在terminal中输入`lxpanel`
-<!-- If there is nothing showed in the VNC desktop, please restart vncserver service with `systemctl status v2vncserver.service` command and reconnect to it. -->
+If there is nothing showed in the VNC desktop, please right-click on the gray area, then select `terminal`, type `lxpanel` in the terminal.
 
 *Note that if you find there is not very smooth when using VNC, please switch to a uncrowed LAN network.*
 
 ### ALSA Setting
 
-使用respeaker用户下载Github仓库:
+Download Github repository with `respeaker` user:
 ```
-su respeaker && cd     # 如果已经是respeaker用户，跳过这一步
-git clone https://github.com/respeaker/respeaker_v2_eval.git       # 如果已经下载过此仓库，跳过这一步
+su respeaker && cd     # skip this steps if you are already using respeaker user
+git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
 cd ~/respeaker_v2_eval
 sudo cp asound.conf /etc/
 ```
 
 ### PulseAudio Setting
 
-#### 方式1
+<!-- #### 方式1 -->
 ```
-su respeaker && cd     # 如果已经是respeaker用户，跳过这一步
-git clone https://github.com/respeaker/respeaker_v2_eval.git       # 如果已经下载过此仓库，跳过这一步
+su respeaker && cd     # skip this steps if you are already using respeaker user
+git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
 cd ~/respeaker_v2_eval
-sudo cp pulse/default.pa /etc/pulse/            # 配置pulseaudio
+sudo cp pulse/default.pa /etc/pulse/            # config pulseaudio
 cp pulse/client.conf ~/.config/pulse/
-pulseaudio -k && pulseaudio -D                  # 重启pulseaudio，不要使用root运行
+pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
 ```
 
-#### 方式2
+<!-- #### 方式2
 修复一个PulseAudio配置问题，修改`/etc/pulse/default.pa`，禁用`module-udev-detect`和`module-detect`，静态加载`alsa sink`和`source`，修改之后用respeaker用户重启pulseaudio，运行`pulseaudio -k || pulseaudio -D`
 ```
 ### Load audio drivers statically                                                                                                       
@@ -169,20 +169,20 @@ load-module module-alsa-source device=hw:0,0
 ### Use the static hardware detection module (for systems that lack udev support)    
 #load-module module-detect    
 #.endif
-```
+``` -->
 
 ### Virtual Environment
 
 ```
-pip install virtualenv                                     # 安装virtualenv
-python -m virtualenv --system-site-packages ~/env          # 创建python虚拟环境
-source ~/env/bin/activate                                  # 激活python虚拟环境
-deactivate                                                 # 退出python虚拟环境
+pip install virtualenv                                     # install virtualenv
+python -m virtualenv --system-site-packages ~/env          # create python virtual environment
+source ~/env/bin/activate                                  # activate python venv
+deactivate                                                 # deactivate python venv
 ```
 
 ### Voice Engine Setting
 
-在虚拟环境中安装、配置ReSpeaker音频引擎
+Install and configure ReSpeaker Voice Engine in virtual environment:
 ```
 source ~/env/bin/activate                                  # 激活python虚拟环境
 cd ~/respeaker_v2_eval
@@ -195,18 +195,18 @@ pip install avs
 pip install voice-engine
 ```
 
-安装完成后, 您可以尝试在ReSpeaker Core V2上搭建[AVS(Amazon Voice Service)](/docs/avs_guide.md).
+After installation, free feel to build your own [AVS(Amazon Voice Service)](/docs/ReSpeaker_Core_V2/avs_guide.md) on ReSpeaker Core V2.
 
 ### Voice Capture and Playback
 
 ```
-// 两通道录音&播音
+// record & playback 2channels
 arecord -Dhw:0,0 -f S16_LE -r 16000 -c 2 hello.wav
 aplay -Dhw:0,2 -r 16000 -c 2 hello.wav
 arecord -v -f cd hello.wav
 aplay hello.wav
-// 八通道录音
-// 为什么有八通道？板上有6个麦克风提供了6个通道，然后每个ac108各合成了一个通道
+// record 8channels
+// there are 6 microphones on board, and ac108 compose the 2 remaining channels.
 arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
 ```
 
@@ -217,35 +217,37 @@ There is another way to boot ReSpeaker Core V2, without SD card. You could  dire
 
 #### For Windows User
 
-1. 从Github下载
+1. Download from Github:
 ```
 git clone https://github.com/respeaker/rkbin.git
 ```
 
-2. 从[百度云盘](192.168.4.48)或[respeaker.io]()下载5个文件：`boot.img` `linaro-rootfs.img`  `u-boot/uboot.img` `AndroidTool_Release_v2.31.zip` `DriverAssitant_v4.4.zip`
+2. Download from [百度云盘](192.168.4.48) or [respeaker.io](): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img` `AndroidTool_Release_v2.31.zip` `DriverAssitant_v4.4.zip`
 
-3. 解压 `DriverAssitant_v4.4.zip` 并双击安装`DriverInstall`
+3. Compress `DriverAssitant_v4.4.zip` and install `DriverInstall`
 
-4. 解压 `AndroidTool_Release_v2.31.zip`，双击打开 `AndroidTool`，按照下图配置好指定的文件路径和烧录地址：
+4. Compress `AndroidTool_Release_v2.31.zip` and run `AndroidTool`. Configure address, name and file path as the following picture:
 ![](/img/emmc-1.png)
 
-5. 点击执行开始烧录，等待10分钟左右，烧录完成，断电重启ReSpeaker Core V2
+5. Press the `UPDATE` button on ReSpeaker Core V2 and connect its `OTG` port to your PC.
+
+6. Click `执行` to flash emmc, it takes about 10min. When it finish, reboot ReSpeaker Core V2 and that is ok.
 ![](/img/emmc-2.png)
 
 
 #### For Linux User
 
-1. 从Github下载
+1. Download from Github:
 ```
 git clone https://github.com/respeaker/rkbin.git
 cd rkbin
 ```
 
-2. 从[百度云盘](192.168.4.48)或[respeaker.io]()下载3个文件：`boot.img` `linaro-rootfs.img`  `u-boot/uboot.img`
+2. Download from [百度云盘](192.168.4.48) or [respeaker.io](): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img`
 
-3. 按住ReSpeaker Core V2上的UPDATE按钮，使用Micro USB线连接板子的OTG口和PC/Mac的USB口，直到电源灯亮起，松开UPDATE按钮
+3. Press the `UPDATE` button on ReSpeaker Core V2 and connect its `OTG` port to your PC.
 
-4. 执行烧录命令
+4. run flash-emmc commands:
 ```
 sudo ./tools/upgrade_tool ul rk32/rk322x_loader_v1.04.232.bin
 sudo ./tools/upgrade_tool di -p rk32/rk3229_parameter
@@ -258,4 +260,4 @@ sudo ./tools/upgrade_tool rd
 
 
 #### For Mac User
-装Windows或Linux虚拟机，然后按照上述步骤执行
+You need to use a Windows or Linux virtual machine to achieve this.

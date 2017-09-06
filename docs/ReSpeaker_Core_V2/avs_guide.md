@@ -4,22 +4,23 @@ This guide will shows you how to build AVS on ReSpeaker Core V2.
 <!-- todo:缺张图片 -->
 
 
-### 获取Alexa授权
+### Get Alexa Authorization
 
-完成[ Voice Engine Setting ](/docs/getting_started.md#voice-engine-setting)后，在terminal或串口中运行:
+After[ Voice Engine Setting ](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting), run authorization command in terminal with `respeaker` user:
 ```
 source ~/env/bin/activate
 alexa-auth
 ```
-然后在[ VNC ](/docs/getting_started.md#ssh--vnc)中用浏览器访问`127.0.0.1:3000`，在网页中登陆您的Amazon账号
+Then visit `127.0.0.1:3000` at[ VNC ](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc) web browser. Sign in to ReSpeaker AVS with your Amazon account:
 
 ![](/img/aus-1.png)
 
-授权成功
+Succeed:
 
 ![](/img/aus-2.png)
 
 ### Kill pulseaudio
+Have to kill pulseaudio to use AVS:
 ```
 echo "autospawn = no" > ~/.config/pulse/client.conf
 reboot -f
@@ -30,6 +31,7 @@ reboot -f
 source ~/env/bin/activate
 alexa-tap
 ```
+Press `enter` and talk to ReSpeaker V2, it will answer you.
 
 ### Alexa && snowboy
 ```
@@ -37,11 +39,11 @@ cd ~/respeaker_v2_eval/alexa
 pip install numpy
 python ns_kws_doa_alexa.py
 ```
-加灯效
+Alexa works with pixel light:
 ```
 pip install spidev
 sudo su
-cp /home/respeaker/.avs.json /root/.avs.json    # 拷贝respeaker用户的alexa配置文件给root用户
-source /home/respeaker/env/bin/activate         # 激活之前配置好的python虚拟环境
+cp /home/respeaker/.avs.json /root/.avs.json    # copy respeaker user alexa authorization to root user
+source /home/respeaker/env/bin/activate         # activate python venv
 python ns_kws_doa_alexa_with_light.py
 ```
