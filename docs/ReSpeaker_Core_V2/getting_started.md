@@ -19,7 +19,7 @@ This guide will show you how to get started with ReSpeaker Core V2.
 Similar to Raspberry, ReSpeaker Core V2 needs you to install our image to an SD card to get it up and running. Steps for installing our image:
 
 
-1. Download our latest image zip file `respeaker-v2-stretch-xxxxxxxx.7z` at [百度云盘](192.168.4.48) or [respeaker.io]()
+1. Download our latest image zip file `respeaker-v2-stretch-xxxxxxxx.7z` at [百度云盘](192.168.4.48) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ)
 
 2. Unzip the `.7z` file to get a `.img` file. You can unzip `.7z` file with the following tools for different platforms:
     - Windows: [7-Zip](http://www.7-zip.org/)
@@ -222,7 +222,7 @@ There is another way to boot ReSpeaker Core V2, without SD card. You could  dire
 git clone https://github.com/respeaker/rkbin.git
 ```
 
-2. Download from [百度云盘](192.168.4.48) or [respeaker.io](): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img` `AndroidTool_Release_v2.31.zip` `DriverAssitant_v4.4.zip`
+2. Download from [百度云盘](192.168.4.48) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img` `AndroidTool_Release_v2.31.zip` `DriverAssitant_v4.4.zip`
 
 3. Compress `DriverAssitant_v4.4.zip` and install `DriverInstall`
 
@@ -243,7 +243,7 @@ git clone https://github.com/respeaker/rkbin.git
 cd rkbin
 ```
 
-2. Download from [百度云盘](192.168.4.48) or [respeaker.io](): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img`
+2. Download from [百度云盘](192.168.4.48) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img`
 
 3. Press the `UPDATE` button on ReSpeaker Core V2 and connect its `OTG` port to your PC.
 
