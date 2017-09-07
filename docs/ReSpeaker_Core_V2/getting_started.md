@@ -184,11 +184,10 @@ deactivate                                                 # deactivate python v
 
 Install and configure ReSpeaker Voice Engine in virtual environment:
 ```
-source ~/env/bin/activate                                  # 激活python虚拟环境
+source ~/env/bin/activate                                  # activate python venv
 cd ~/respeaker_v2_eval
-sudo cp etc/apt/apt.conf.d/02proxy /etc/apt/apt.conf.d/    # 如果不在SEEED局域网，跳过这一步，这是设置apt缓存代理，加速apt下载
 sudo apt update
-sudo apt install libatlas-base-dev                         # 安装snowboy依赖包atlas
+sudo apt install libatlas-base-dev                         
 pip install ./webrtc*.whl
 pip install ./snowboy*.whl
 pip install avs
