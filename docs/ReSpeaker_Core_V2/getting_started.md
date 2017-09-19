@@ -65,26 +65,27 @@ Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password a
 
 ![](/img/nmtui1-2.png)
 
-Check network connection with `ifconfig` command, you can get IP address of your device, to establish SSH or VNC. From the following log, I can know that my ReSpeaker V2 IP address is `192.168.7.108`.
+Check network connection with `ip address` command, you can get IP address of your device, to establish SSH or VNC. From the following log, I can know that my ReSpeaker V2 IP address is `192.168.7.108`.
 ```
-root@v2:/home/respeaker# ifconfig
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 1  (Local Loopback)
-        RX packets 86  bytes 6428 (6.2 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 86  bytes 6428 (6.2 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+root@v2:/home/respeaker# ip address
 
-wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.7.108  netmask 255.255.254.0  broadcast 192.168.7.255
-        inet6 fe80::1918:34ca:77fa:3909  prefixlen 64  scopeid 0x20<link>
-        ether e0:76:d0:37:5b:cd  txqueuelen 1000  (Ethernet)
-        RX packets 4091  bytes 640163 (625.1 KiB)
-        RX errors 0  dropped 6  overruns 0  frame 0
-        TX packets 243  bytes 22926 (22.3 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1
+    link/sit 0.0.0.0 brd 0.0.0.0
+3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether e0:76:d0:37:38:6d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.7.108/24 brd 192.168.7.255 scope global dynamic wlan0
+       valid_lft 604332sec preferred_lft 604332sec
+    inet6 2601:647:4680:ebf0:ec0a:5965:e710:f329/64 scope global noprefixroute dynamic 
+       valid_lft 345598sec preferred_lft 345598sec
+    inet6 fe80::64de:cac8:65ef:aac8/64 scope link 
+       valid_lft forever preferred_lft forever
+
 ```
 
 Except UI configuration page, Network Manager also has a command line tool. You can use this for connecting a hidden Wi-Fi:
