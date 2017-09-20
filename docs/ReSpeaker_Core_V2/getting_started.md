@@ -214,7 +214,7 @@ arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
 
 There is another way to boot ReSpeaker Core V2, without SD card. You could  directly flash image files to eMMC with your PC or Mac:
 
-#### For Windows User
+#### For Windows Users
 
 1. Download from Github:
 ```
@@ -223,9 +223,9 @@ git clone https://github.com/respeaker/rkbin.git
 
 2. Download from [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ): `boot.img` `linaro-rootfs.img`  `u-boot/uboot.img` `AndroidTool_Release_v2.31.zip` `DriverAssitant_v4.4.zip`
 
-3. Compress `DriverAssitant_v4.4.zip` and install `DriverInstall`
+3. Unzip `DriverAssitant_v4.4.zip` and install `DriverInstall`
 
-4. Compress `AndroidTool_Release_v2.31.zip` and run `AndroidTool`. Configure address, name and file path as the following picture:
+4. Unzip `AndroidTool_Release_v2.31.zip` and run `AndroidTool`. Configure address, name and file path as the following picture:
 ![](/img/emmc-1.png)
 
 5. Press the `UPDATE` button on ReSpeaker Core V2 and connect its `OTG` port to your PC.
