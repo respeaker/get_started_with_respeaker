@@ -6,39 +6,39 @@ This guide will show you how to get started with ReSpeaker Core V2.
 ### Prerequisites
 
 - ReSpeaker Core V2
-- Wi-Fi network
-- 4GB(or more) SD card and SD card reader
+- Wi-Fi Network
+- 4GB (or more) SD card and SD card reader
 - PC or Mac
 - [USB To Uart Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html)
-- 5V 1A Micro USB for powering
+- 5V 1A Micro USB adapter for power
 
 <!-- ### Open Box -->
 
 ### Image Installation
 
-Similar to Raspberry, ReSpeaker Core V2 needs you to install our image to an SD card to get it up and running. Steps for installing our image:
+Similar to Raspberry Pi, you must install the ReSpeaker Core V2 image from an SD card to get up and running. Steps for installing the image:
 
 
-1. Download our latest image zip file `respeaker-v2-stretch-xxxxxxxx.7z` at [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ)
+1. Download the image zip file `respeaker-v2-stretch-xxxxxxxx.7z` from [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ)
 
-2. Unzip the `.7z` file to get a `.img` file. You can unzip `.7z` file with the following tools for different platforms:
+2. Unzip the `.7z` file to get an `.img` file. You can unzip `.7z` file with the following tools:
     - Windows: [7-Zip](http://www.7-zip.org/)
     - Linux: [7za](http://www.thegeekstuff.com/2010/04/7z-7zip-7za-file-compression)
     - Mac: [The
      Unarchiver](https://theunarchiver.com/)
 
-3. Burn the `.img` file to SD card with [Etcher](https://etcher.io/) or other image writing tools.
+3. Burn the `.img` file to your SD card with [Etcher](https://etcher.io/) or other image writing tools.
 
-4. After burning SD card, put the SD card in ReSpeaker Core V2. Power the board at `PWR_IN` micro usb port，note that **Try not to hot swap SD card**.
+4. After writing the image to the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using `PWR_IN` micro usb port and DO NOT remove the SD card after powering on.
 
-5. When powering, USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD (microSD) card accesses
+5. While the ReSpeaker is powering on, the USER1 and USER2 LEDs will light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to flash during SD card access.
 
 ![](/img/hardware.jpg)
 
 
 ### Serial Console
 
-You can connect to the Serial Console with Uart port on board:
+Now that your ReSpeaker can boot (it runs Debian Linux), you will next establish a connection from your computer to your ReSpeaker using your USB to TTL adapter which will be connected to the ReSpeaker's Uart port (Uart port located just to the left of the ReSpeaker speaker plug). 
 
 1. Connect Uart port and your PC/Max with an USB To TTL Adapter. Note that the voltage of RX/TX are 3.3V.
 
@@ -57,7 +57,7 @@ You should get back something like:
 /dev/cu.usbmodem14XX where XX will vary depending on which USB port you used (on Mac)
 /dev/ttyACMX where X will vary depending on which USB port you used  (on Linux)
 
-Now use this port with the commands above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
+Now use this port with the commands above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via SSH or VNC going forward.
 
 3. The default user is `root`, you can switch to `respeaker` user with `su respeaker` command.
 
@@ -65,19 +65,19 @@ Now use this port with the commands above to connect to your Respeaker over this
 
 #### 1. Wi-Fi Setting Up
 
-Configure network with **Network Manager** tool:
+Configure your ReSpeaker's network with the Network Manager tool, nmtui. nmtui will already be installed on the ReSpeaker image.  
 ```
 root@v2:/home/respeaker# nmtui              # respeaker user needs sudo
 ```
-Then you could see a config page like this, select `Activate a connection` and press `Enter`.
+Then you will see a config page like this, select `Activate a connection` and press `Enter`.
 
 ![](/img/nmtui1-1.png)
 
-Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password and `Enter` again. When you see `succeeded`, it means that the board has connected to Wi-Fi already. Tap `Esc` twice to leave the config page.
+Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password and `Enter` again. When you see `succeeded`, it means that your ReSpeaker has successfully connected to your Wi-Fi network. Tap `Esc` twice to leave the network manager config tool.
 
 ![](/img/nmtui1-2.png)
 
-Check network connection with `ip address` command, you can get IP address of your device, to establish SSH or VNC. From the following log, I can know that my ReSpeaker V2 IP address is `192.168.7.108`.
+Now find the IP address of your ReSpeaker by using the `ip address` command. In the example below, we can see that this ReSpeaker's IP address is `192.168.7.108`
 ```
 root@v2:/home/respeaker# ip address
 
@@ -91,7 +91,7 @@ root@v2:/home/respeaker# ip address
     link/sit 0.0.0.0 brd 0.0.0.0
 3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether e0:76:d0:37:38:6d brd ff:ff:ff:ff:ff:ff
-    inet 192.168.7.108/24 brd 192.168.7.255 scope global dynamic wlan0
+    inet **192.168.7.108**/24 brd 192.168.7.255 scope global dynamic wlan0
        valid_lft 604332sec preferred_lft 604332sec
     inet6 2601:647:4680:ebf0:ec0a:5965:e710:f329/64 scope global noprefixroute dynamic 
        valid_lft 345598sec preferred_lft 345598sec
@@ -100,7 +100,7 @@ root@v2:/home/respeaker# ip address
 
 ```
 
-Except UI configuration page, Network Manager also has a command line tool. You can use this for connecting a hidden Wi-Fi:
+In addition to the Networ Manager GUI interface, Network Manager also has a command line tool. If you are connecting to a hidden Wi-Fi network, you'll need to use this command line tool:
 ```
 nmcli c add type wifi con-name mywifi ifname wlan0 ssid your_wifi_ssid
 nmcli con modify mywifi wifi-sec.key-mgmt wpa-psk
@@ -108,8 +108,8 @@ nmcli con modify mywifi wifi-sec.psk your_wifi_password
 nmcli con up mywifi
 ```
 
-#### 2. Ethernet Setting Up
-Temporarily unavailable.
+#### 2. Ethernet Connectivity
+Sorry, Ethernet connectivity is currently not supported and will be added to a future release.
 
 ### SSH & VNC
 #### 1. SSH
@@ -125,18 +125,18 @@ ssh respeaker@192.168.***.***
 // password: respeaker
 ```
 
-*Note that if you find there is not very smooth when using SSH, please switch to a uncrowed LAN network.*
+*Note that if experience slow performance using SSH, please switch to a less crowded WiFi network.*
 
 #### 2. VNC
 ![](/img/vnc-2.png)
 
 VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
 
-To use VNC, you should connect your PC/Mac and ReSpeaker V2 to the same Local-Area-Network. Then open VNC Viewer, type `192.168.xxx.xxx:5901` at the address bar. `192.168.xxx.xxx` is IP address of the board and `5901` is the default port of VNC service. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
+To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, type `192.168.xxx.xxx:5901` at the address bar. `192.168.xxx.xxx` is IP address of the board and `5901` is the default port of VNC service. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
 
 ![](/img/vnc-1.png)
 
-If there is nothing showed in the VNC desktop, please right-click on the gray area, then select `terminal`, type `lxpanel` in the terminal.
+If nothing appears in the VNC desktop, please right-click on the gray area, then select `terminal`, type `lxpanel` in the terminal.
 
 *Note that if you find there is not very smooth when using VNC, please switch to a uncrowed LAN network.*
 
@@ -225,7 +225,7 @@ arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
 
 ### Flash eMMC
 
-There is another way to boot ReSpeaker Core V2, without SD card. You could  directly flash image files to eMMC with your PC or Mac:
+There is alternative way to setup and boot ReSpeaker Core V2 without the SD card. You can directly flash the ReSpeaker image files to the ReSpeaker's eMMC (flash memory) with a Windows or Linux PC.
 
 #### For Windows Users
 
@@ -243,7 +243,7 @@ git clone https://github.com/respeaker/rkbin.git
 
 5. Press the `UPDATE` button on ReSpeaker Core V2 and connect its `OTG` port to your PC.
 
-6. Click `执行` to flash emmc, it takes about 10min. When it finish, reboot ReSpeaker Core V2 and that is ok.
+6. Click `执行` to flash emmc, this will take about 10 minutes. When finished, power on and off to reboot ReSpeaker Core V2.
 ![](/img/emmc-2.png)
 
 
@@ -272,4 +272,4 @@ sudo ./tools/upgrade_tool rd
 
 
 #### For Mac User
-You need to use a Windows or Linux virtual machine to achieve this.
+Sorry, eMMC flashing is not supported on Mac. You'll need a Windows or Linux virtual machine.
