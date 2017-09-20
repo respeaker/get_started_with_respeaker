@@ -46,6 +46,18 @@ You can connect to the Serial Console with Uart port on board:
     - Windows: usb [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
+    
+If you do not have a USB to TTL Adapter, you may also use an Arduino. If using an Arduino, connect one end of a jumper wire to the 'RESET' pin on the Arduino and the other end to the 'GND' pin on the Arduino. This will bypass your Arduino's ATMEGA MCU and turn your Arduino into a USB to TTL adapter, see video tutorial here https://www.youtube.com/watch?v=qqSLwK1DP8Q. Now connect the GND pin on the Arduino to the GND pin on the Uart port of the Respeaker. Connect the Rx pin on the Arduino to the Rx pin on the Uart port of the Respeaker. Connect the Tx pin on the Arduino to the Tx pin on the Uart port of the Respeaker. And lastly, connect the Arduino to your PC/Mac via the Arduino's USB cable. Now check that your Mac or Linux PC finds your Arduino by typing this command:
+
+ls /dev/cu.usb* (Mac)
+ls /dev/ttyACM* (Linux)
+
+You should get back something like:
+
+/dev/cu.usbmodem14XX where XX will vary depending on which USB port you used (on Mac)
+/dev/ttyACMX where X will vary depending on which USB port you used  (on Linux)
+
+Now use this port with the commands above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
 
 3. The default user is `root`, you can switch to `respeaker` user with `su respeaker` command.
 
