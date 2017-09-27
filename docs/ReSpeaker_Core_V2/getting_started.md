@@ -16,20 +16,18 @@ This guide will show you how to get started with ReSpeaker Core V2.
 
 ### Image Installation
 
-Similar to Raspberry Pi, you must install the ReSpeaker Core V2 image from an SD card to get up and running. Steps for installing the image:
+Similar to a Raspberry Pi, you must install the ReSpeaker Core V2 image from an SD card to get up and running. Follow these steps to install the image:
 
 
 
 1. Download our latest image zip files: `respeaker-debian-9-lxqt-sd-********-4gb.img.xz` or `respeaker-debian-9-iot-sd-********-4gb.img.xz` from [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ). The `lxqt` version comes with Debian desktop and the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended.
 
-2. Burn the `*.img.xz` file directly to SD card with [Etcher](https://etcher.io/), or unzip the `*.img.xz` file to a `*.img` file, then burn it to SD card with other image writing tools.
+2. Burn the `*.img.xz` file directly to your SD card with [Etcher](https://etcher.io/), or unzip the `*.img.xz` file to a `*.img` file, then burn it to SD card with other image writing tools.
 ![](/img/v2-flash-sd.png)
 
-3. After burning SD card, put the SD card in ReSpeaker Core V2. Power the board at `PWR_IN` micro usb port，note that **Try not to hot-plugging SD card**.
+3. After writing the image to the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD card accesses. Now, you should go to the next part: [Serial Console](#serial-console).
 
-4. After writing the image to the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using `PWR_IN` micro usb port and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card(not eMMC), and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD card accesses. Now, you should go to the next part: [Serial Console](#serial-console).
-
-5. If you want to flash the image to eMMC, please see [here](#flash-emmc).
+4. If instead you want to flash the image to the ReSpeaker's eMMC (onboard flash memory), follow these instructions [here](#flash-emmc).
 
 ![](/img/hardware.jpg)
 
@@ -110,7 +108,7 @@ nmcli con up mywifi
 ```
 
 #### 2. Ethernet Connectivity
-Sorry, Ethernet connectivity is currently not supported and will be added to a future release.
+Sorry, Ethernet connectivity is currently not supported and will be added in a future release.
 
 ### SSH & VNC
 #### 1. SSH
@@ -131,7 +129,7 @@ ssh respeaker@192.168.***.***
 #### 2. VNC
 ![](/img/vnc-2.png)
 
-VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
+The VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
 
 To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, type `192.168.xxx.xxx:5901` at the address bar. `192.168.xxx.xxx` is IP address of the board and `5901` is the default port of VNC service. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
 
@@ -202,16 +200,16 @@ arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
 ```
 
 
-### Flash eMMC
+### Flash eMMC (Onboard Flash Memory)
 
-There is alternative way to boot ReSpeaker Core V2, without SD card. You can directly flash the ReSpeaker image files to the ReSpeaker's eMMC (flash memory) with your PC or Mac:
+You may also directly flash the ReSpeaker image files to the ReSpeaker's eMMC (onboard flash memory) using your PC or Mac. Then the ReSpeaker will boot from it's eMMC (onboard flash memory) and not from the SD card.
 
 1. Download our latest image zip file `respeaker-debian-9-iot-flasher-********-4gb.img.xz` or `respeaker-debian-9-lxqt-flasher-********-4gb.img.xz` at [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ). The `lxqt` version comes with Debian desktop and the `iot` version does not. And the `flasher` version is for flashing eMMC, and the `sd` version is for booting from SD card.
 
 2. Burn the `*.img.xz` file directly to SD card with [Etcher](https://etcher.io/), or unzip the `*.img.xz` file to a `*.img` file, then burn it to SD card with other image writing tools.
 
-3. After burning SD card, put the SD card in ReSpeaker Core V2. Power the board at `PWR_IN` micro usb port，note that **Try not to hot-plugging SD card**.
+3. After burning SD card, insert the SD card in the ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and **do not remove the SD card while it's flashing**.
 
-4. When powering, ReSpeaker Core V2 **starts to flash eMMC**. And you can see USER1 and USER2 LEDs **blink alternately**. It will take about 10mins. When the LEDs turn off, you can power off the board, pull out the SD card and power again. If the LEDs light up, that means the image is flashed to eMMC already.
+4. During the flashing process, you'll see the USER1 and USER2 LEDs **blink alternately**. It will take about 10 minutes to complete. When the LEDs turn off, you can power off the board, pull out the SD card and power again. If the LEDs light up, that means the image was flashed to the eMMC correctly.
 
-5. Also you can check image version with this command: `cat /etc/issue.net`.
+5. You can also check the image version with this command: `cat /etc/issue.net`.
