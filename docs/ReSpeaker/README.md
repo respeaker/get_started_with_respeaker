@@ -26,6 +26,7 @@ ReSpeaker is an open modular voice interface to hack things around you. Let you 
    - [ReSpeaker Microphone Array HID tool](https://github.com/Fuhua-Chen/ReSpeaker-Microphone-Array-HID-tool)
    - [ReSpeaker Microphone Array Driver](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Driver)
    - [ReSpeaker Microphone Array Firmware](https://github.com/Fuhua-Chen/ReSpeaker_Microphone_Array_Firmware)
+   - [ReSpeaker Drive Unit](QuickStart.md#ReSpeaker-Drive-Unit)
    - [Factory Reset](QuickStart.md#factory-reset)
    - [FAQ](faq.md)
 

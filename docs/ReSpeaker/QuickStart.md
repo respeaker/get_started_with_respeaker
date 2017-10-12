@@ -336,6 +336,14 @@ After extending storage with a SD card, there are enough storage to install soft
 	```
 
 
+## ReSpeaker Drive Unit 
+
+ReSpeaker Drive Unit's image is special, Please use upgrade following image.
+
+<a href="https://1drv.ms/u/s!AqG2uRmVUhlShU-EVj-4yeAQ_KoU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
+
+
+
 ## Factory Reset
 Open the serial console or a ssh session and run `firstboot`. [More detail](https://github.com/respeaker/get_started_with_respeaker/wiki/factory-reset).
 
