@@ -340,7 +340,7 @@ After extending storage with a SD card, there are enough storage to install soft
 
 ReSpeaker Drive Unit's image is special, Please use upgrade following image.
 
-<a href="https://1drv.ms/u/s!AqG2uRmVUhlShU-EVj-4yeAQ_KoU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
+<a href="https://1drv.ms/f/s!AqG2uRmVUhlShUyg92Q-oNAxNjPR"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
 
 
 
