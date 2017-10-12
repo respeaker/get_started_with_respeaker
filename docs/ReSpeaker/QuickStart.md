@@ -198,12 +198,12 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 </div>
 
 
-## Play with AirPlay&DLNA
+## Play with AirPlay
 
-- With Airplay&DLNA, you can stream music to ReSpeaker.
+- With Airplay, you can stream music to ReSpeaker.
 
 
-### Use Airplay
+### For iOS
 
 1. Connect to the same Wi-Fi network on your iOS device and ReSpeaker.
 2. On your iOS device, swipe up from the bottom of your screen to open Control Center.
@@ -217,10 +217,10 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 5. Connect your headphone/speaker to respeaker, then you can enjoy the music now.
 
 
-### Use DLNA
+### Use Android
 
 1. Connect your smart phone to **ReSpeaker's Wi-Fi**.
-2. On your smart phone, open a DLNA software, such as: *AllConnect*.
+2. On your smart phone, open a AirPlay client software, such as: *AllConnect*.
 3. Select ReSpeaker as the following picture:
 
 	<div class="text-center">
