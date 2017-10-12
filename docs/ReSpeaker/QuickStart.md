@@ -310,16 +310,16 @@ During the boot process, external storage space is mounted as the root file syst
 	```
 	root@mylinkit:/# mount /dev/mmcblk0p2 /overlay/
 	root@ReSpeaker:/# df -h
-Filesystem                Size      Used Available Use% Mounted on
-rootfs                    1.8M    832.0K    960.0K  46% /
-/dev/root                29.0M     29.0M         0 100% /rom
-tmpfs                    61.7M    276.0K     61.5M   0% /tmp
-/dev/mtdblock6            5.2G     11.8M      4.9G   0% /overlay
-overlayfs:/overlay        1.8M    832.0K    960.0K  46% /
-tmpfs                   512.0K         0    512.0K   0% /dev
-/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /tmp/run/mountd/mmcblk0p2
-/dev/mmcblk0p1            2.0G      4.0K      2.0G   0% /tmp/run/mountd/mmcblk0p1
-/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /overlay
+	Filesystem                Size      Used Available Use% Mounted on
+	rootfs                    1.8M    832.0K    960.0K  46% /
+	/dev/root                29.0M     29.0M         0 100% /rom
+	tmpfs                    61.7M    276.0K     61.5M   0% /tmp
+	/dev/mtdblock6            5.2G     11.8M      4.9G   0% /overlay
+	overlayfs:/overlay        1.8M    832.0K    960.0K  46% /
+	tmpfs                   512.0K         0    512.0K   0% /dev
+	/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /tmp/run/mountd/mmcblk0p2
+	/dev/mmcblk0p1            2.0G      4.0K      2.0G   0% /tmp/run/mountd/mmcblk0p1
+	/dev/mmcblk0p2            5.2G     11.8M      4.9G   0% /overlay
 	```
 
 6. Reboot ReSpeaker and check again. If SD card is mounted automatically, you are done. More informations about **extroot**, please click [here](https://wiki.openwrt.org/doc/howto/extroot).
