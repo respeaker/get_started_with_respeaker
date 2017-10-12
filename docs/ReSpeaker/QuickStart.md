@@ -217,7 +217,7 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 5. Connect your headphone/speaker to respeaker, then you can enjoy the music now.
 
 
-### Use Android
+### For Android
 
 1. Connect your smart phone to **ReSpeaker's Wi-Fi**.
 2. On your smart phone, open a AirPlay client software, such as: *AllConnect*.
