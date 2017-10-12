@@ -220,7 +220,7 @@ After "INFO:mic:Start Detecting" coming out, try to say "ReSpeaker" to wake up t
 ### For Android
 
 1. Connect your smart phone to **ReSpeaker's Wi-Fi**.
-2. On your smart phone, open a AirPlay client software, such as: *AllConnect*.
+2. On your smart phone, open an AirPlay client software, such as: *AllConnect*.
 3. Select ReSpeaker as the following picture:
 
 	<div class="text-center">
