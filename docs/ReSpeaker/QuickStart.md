@@ -342,7 +342,7 @@ To drive the ReSpeaker Drive Unit, the system image has been slightly modified. 
 
 <a href="https://1drv.ms/f/s!AqG2uRmVUhlShUyg92Q-oNAxNjPR"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
 
-To reduce the image size, some packages has been removed. Please see the change log file in the OneDrive link. There's also a tarball file named `package.tar.bz2` which contains the removed packages. We can download it and install the packages manually.
+To reduce the image size, some packages has been removed. Please see the change log file in the OneDrive link. There's also a tarball file named `package.tar.bz2` which contains the removed packages. We can download it and install the packages manually if we really need them.
 
 ## Factory Reset
 Open the serial console or a ssh session and run `firstboot`. [More detail](https://github.com/respeaker/get_started_with_respeaker/wiki/factory-reset).
