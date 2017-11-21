@@ -24,6 +24,7 @@ Now let's get started!
 - [Voice Engine Setting](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting)
 - [Voice Capture and Playback](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback)
 - [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
+- [MRAA & UPM](/docs/ReSpeaker_Core_V2/mraa_upm.md)
 - Hardware Introduction
 - Software Introduction
 
