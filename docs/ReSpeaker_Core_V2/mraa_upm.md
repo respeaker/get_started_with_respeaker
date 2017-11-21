@@ -1,7 +1,7 @@
 ###  MRAA and UPM
-This document will introduce how to use mraa and upm on respeaker v2 platform.
+This document will introduce how to use MRAA and UPM on respeaker v2 platform.
 
-1. Update  mraa and upm libraries to latest version.
+1. Update  MRAA and UPM libraries to latest version.
 ```sh
 sudo apt update
 sudo apt install  python-mraa python-upm libmraa1 libupm1 mraa-tools
@@ -30,7 +30,7 @@ respeaker@v2:~$ mraa-gpio list
 12      GPIO66: GPIO 
 ```
 
-3. use mraa library
+3. use MRAA library
 
 Intel have writen a lots examples, Please refer to https://software.intel.com/en-us/mraa-sdk/documentation
 There is a hello gpio examples.
@@ -50,11 +50,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
 
-4. use upm librarys
+4. use UPM librarys
 
-Upm have supported a lots sensors. https://iotdk.intel.com/docs/master/upm/modules.html. But we didnt confirm every sensors works
+UPM have supported a lots sensors. https://iotdk.intel.com/docs/master/upm/modules.html. But we didnt confirm every sensors works
 on repeaker v2 platform.
-There is a grove light sensor examples.
+There is a grove digital light sensor examples.
 ```
 respeaker@v2:~$ cat tsl2561.py 
 #!/usr/bin/env python
@@ -105,10 +105,12 @@ def main():
     while(1):
         print("Light value is " + str(myDigitalLightSensor.getLux()))
         time.sleep(1)
-
 if __name__ == '__main__':
     main()
-    
+```
+result: 
+
+```sh
 respeaker@v2:~$ python tsl2561.py       
 Light value is 0
 Light value is 38
