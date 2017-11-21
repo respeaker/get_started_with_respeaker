@@ -35,17 +35,41 @@ Similar to a Raspberry Pi, you must install the ReSpeaker Core V2 image from an 
 
 4. If instead you want to flash the image to the ReSpeaker's eMMC (onboard flash memory), follow these instructions [here](#flash-emmc).
 
-![](/img/hardware.jpg)
+<div align="center"><img src="/img/hardware.jpg" width="80%" ></div>
 
 
 ### Serial Console
 
-Now that your ReSpeaker can boot (it runs Debian Linux), you will next establish a connection from your computer to your ReSpeaker using your USB to TTL adapter which will be connected to the ReSpeaker's Uart port (Uart port located just to the left of the ReSpeaker speaker plug).
+Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get access to the Linux system by a console, to setup the ssh server, or setup WiFi, etc. You will have two choices to get the console, but please note that the first choice depends on your hardware version and your system version.
+
+- A. The OTG USB port, for hardware version not earlier than "8/5/2017" (see the silk-screen on the board) and system image version not earlier than "20171023".
+- B. The UART port
+
+#### A. The OTG USB port
+
+1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, which are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer.
+
+2. Check at your computer if the serial port has risen
+
+    - Windows: check the device manager, there should be new serial deviced named `COMx` which `x` is an increasing number.
+    - Linux: `ls /dev/ttyACM*`, you should get `/dev/ttyACMx` where `x` will vary depending on which USB port you used
+    - Mac: `ls /dev/cu.usb*`, you should get `/dev/cu.usbmodem14xx` where `xx` will vary depending on which USB port you used
+   
+3. Use your favorite serial debugging tool to connect the serial port, the serial has: 115200 baud rate, 8Bits, Parity None, Stop Bits 1, Flow Control None. For examples:
+
+    - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
+    - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
+    - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
+    
+
+#### B. The UART port
+
+In this section we will guide you how to establish a connection from your computer to your ReSpeaker using your USB to TTL adapter which will be connected to the ReSpeaker's Uart port (Uart port located just to the left of the ReSpeaker speaker plug).
 
 1. Connect Uart port and your PC/Mac with an [USB To TTL Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html). Note that the voltage of RX/TX are 3.3V. If you don't have an USB To TTL Adapter, please see **step 4**.
 
 2. Use the following Serial debugging tools with 115200 baud:
-    - Windows: usb [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
+    - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
 
@@ -62,7 +86,7 @@ You should get back something like:
 /dev/cu.usbmodem14XX where XX will vary depending on which USB port you used (on Mac)
 /dev/ttyACMX where X will vary depending on which USB port you used  (on Linux)
 ```
-Now use this port with the commands above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
+Now follow step 2 above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
 
 
 
