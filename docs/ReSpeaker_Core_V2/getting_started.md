@@ -60,7 +60,10 @@ Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get a
     - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
-    
+  
+4. The login user name is `respeaker`, and password is `respeaker` too.
+
+<div align="center"><img src="/img/v2_login.png"></div>
 
 #### B. The UART port
 
@@ -74,7 +77,6 @@ In this section we will guide you how to establish a connection from your comput
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
 
 3. The login user name is `respeaker`, and password is `respeaker` too.
-![v2_login.png](/img/v2_login.png)
 
 4. If you do not have a USB to TTL Adapter, you may also use an Arduino. If using an Arduino, connect one end of a jumper wire to the *RESET* pin on the Arduino and the other end to the *GND* pin on the Arduino. This will bypass your Arduino's ATMEGA MCU and turn your Arduino into a USB to TTL adapter, see video tutorial [here](https://www.youtube.com/watch?v=qqSLwK1DP8Q). Now connect the *GND* pin on the Arduino to the *GND* pin on the *Uart port* of the Respeaker. Connect the *Rx* pin on the Arduino to the *Rx* pin on the Uart port of the Respeaker. Connect the *Tx* pin on the Arduino to the *Tx* pin on the Uart port of the Respeaker. And lastly, connect the Arduino to your PC/Mac via the Arduino's USB cable. Now check that your Mac or Linux PC finds your Arduino by typing this command:
 ```
