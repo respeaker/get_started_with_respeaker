@@ -1,4 +1,6 @@
-## 起手式 [English](/docs/ReSpeaker_Core_V2/getting_started.md)
+## 起手式
+
+[English Version](/docs/ReSpeaker_Core_V2/getting_started.md)
 
 这里介绍如何使用ReSpeaker Core V2.
 <!-- todo: 这里会有一段话介绍getting started这个章节的内容／结构／目的 -->

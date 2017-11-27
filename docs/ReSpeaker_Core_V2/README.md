@@ -1,4 +1,6 @@
-# ReSpeaker Core V2 Wiki [中文](cn/ReSpeaker_Core_V2/README.md)
+# ReSpeaker Core V2 Wiki
+
+[中文版](cn/ReSpeaker_Core_V2/README.md)
 
 This is the Wiki of ReSpeaker Core V2.
 

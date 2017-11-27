@@ -1,4 +1,6 @@
-## Getting Started [中文](/cn/ReSpeaker_Core_V2/getting_started.md)
+## Getting Started
+
+[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)
 
 This guide will show you how to get started with ReSpeaker Core V2.
 <!-- todo: 这里会有一段话介绍getting started这个章节的内容／结构／目的 -->

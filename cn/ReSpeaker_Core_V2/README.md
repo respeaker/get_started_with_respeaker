@@ -1,4 +1,6 @@
-# ReSpeaker Core V2 Wiki [English](docs/ReSpeaker_Core_V2/README.md)
+# ReSpeaker Core V2 Wiki
+
+[English Version](/docs/ReSpeaker_Core_V2/README.md)
 
 ![](/img/ReSpeaker_Core_V2.png)
 <!-- todo: 这里会有一段话介绍ReSpeaker Core V2以及一些图片，以及wiki整体结构，以及文档的使用方法 -->
