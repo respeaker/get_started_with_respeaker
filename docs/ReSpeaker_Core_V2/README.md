@@ -29,7 +29,7 @@ Now let's get started!
 - [MRAA & UPM](/docs/ReSpeaker_Core_V2/mraa_upm.md)
 - [Graphics & display](/docs/ReSpeaker_Core_V2/graphics_and_display.md)
 - [Multimedia--Video Codec](/docs/ReSpeaker_Core_V2/multimedia_video_codec.md)
-- [Bluetooth-audio](/docs/bluetooth_audio.md)
+- [Bluetooth-audio](/docs/ReSpeaker_Core_V2/bluetooth_audio.md)
 - Hardware Introduction
 - Software Introduction
 
