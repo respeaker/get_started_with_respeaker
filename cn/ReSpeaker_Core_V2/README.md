@@ -6,7 +6,7 @@
 <!-- todo: 这里会有一段话介绍ReSpeaker Core V2以及一些图片，以及wiki整体结构，以及文档的使用方法 -->
 
 建议阅读顺序:
-- 先浏览[入手ReSpeaker V2](#入手ReSpeaker V2)
+- 先浏览[入手ReSpeaker V2](#入手respeaker-v2)
 - 然后阅读[编程指南](#编程指南)
 - 最后根据你兴趣可以查看一些可以能用的[软件库](#library)
 
