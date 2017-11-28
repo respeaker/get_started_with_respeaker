@@ -183,17 +183,6 @@ cd ~/respeaker_v2_eval
 sudo cp asound.conf /etc/
 ```
 
-### PulseAudio Setting
-
-<!-- #### 方式1 -->
-```
-su respeaker && cd     # skip this steps if you are already using respeaker user
-git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
-cd ~/respeaker_v2_eval
-sudo cp pulse/default.pa /etc/pulse/            # config pulseaudio
-cp pulse/client.conf ~/.config/pulse/
-pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
-```
 
 ### Virtual Environment
 
