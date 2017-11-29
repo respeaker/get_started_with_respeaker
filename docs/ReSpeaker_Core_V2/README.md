@@ -39,7 +39,7 @@ Now let's get started!
 
 
 ## Library
-- Google Assistant Library
-- AVS(Amazon Voice Serice) Library
-- Pixels Ring Library
-- Voice Algorithm Library
+- [Google Assistant Library](https://github.com/googlesamples/assistant-sdk-python)
+- [AVS(Amazon Voice Serice) Library](https://github.com/respeaker/avs)
+- [Pixels Ring Library](https://github.com/respeaker/pixel_ring)
+- [Voice Algorithm Library](https://github.com/voice-engine/voice-engine)
