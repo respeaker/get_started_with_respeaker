@@ -53,7 +53,7 @@ Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get a
 
 2. Check at your computer if the serial port has risen
 
-    - Windows: check the device manager, there should be new serial deviced named `COMx` which `x` is an increasing number. If you use windows XP/7/8, maybe you  need install [windows CDC drivers](files/ReSpeaker_Gadget_CDC_driver.7z).
+    - Windows: check the device manager, there should be new serial deviced named `COMx` which `x` is an increasing number. If you use windows XP/7/8, maybe you  need install [windows CDC drivers](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/ReSpeaker_Gadget_CDC_driver.7z).
     - Linux: `ls /dev/ttyACM*`, you should get `/dev/ttyACMx` where `x` will vary depending on which USB port you used
     - Mac: `ls /dev/cu.usb*`, you should get `/dev/cu.usbmodem14xx` where `xx` will vary depending on which USB port you used
    
