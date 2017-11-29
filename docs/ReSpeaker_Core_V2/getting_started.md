@@ -200,6 +200,7 @@ Install and configure ReSpeaker Voice Engine in virtual environment:
 source ~/env/bin/activate                                  # activate python venv
 cd ~/respeaker_v2_eval
 sudo apt update
+sudo apt-get install gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gir1.2-gstreamer-1.0 python-gi python-gst-1.0
 sudo apt install libatlas-base-dev                         
 pip install ./webrtc*.whl
 pip install ./snowboy*.whl
