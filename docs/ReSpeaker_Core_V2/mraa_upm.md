@@ -1,7 +1,7 @@
-###  MRAA and UPM
+#  MRAA and UPM
 This document will introduce how to use MRAA and UPM on respeaker v2 platform.
 
-1. Update  MRAA and UPM libraries to latest version.
+## Update  MRAA and UPM libraries to latest version
 
 First, we need to check the kernel version of the system we're running, if you're not sure that you flashed the system image of version `20171128` and later.
 
@@ -22,7 +22,8 @@ Then we install the latest MRAA and UPM packages.
 sudo apt install  python-mraa python-upm libmraa1 libupm1 mraa-tools
 ```
 
-2. Check your platform information
+## Check your platform information
+
 ```sh
 #only have bus 0 and id=03(/dev/i2c-3), 0 is the i2c number for mraa and upm
 respeaker@v2:~$ mraa-i2c list
@@ -45,10 +46,16 @@ respeaker@v2:~$ mraa-gpio list
 12      GPIO66: GPIO 
 ```
 
-3. use MRAA library
+And here we have the description of the PIN defines for the ReSpeaker Core V2 board. https://github.com/respeaker/mraa/blob/master/docs/axolotl.md
 
-Intel have writen a lots examples, Please refer to https://software.intel.com/en-us/mraa-sdk/documentation
-There is a hello gpio examples.
+## use MRAA library
+
+The MRAA library wraps the kernel implementations of GPIO/I2C interfaces and makes Linux boxes easy to interact with phsical sensors / peripharals. The basic use case of MRAA library is the GPIO. 
+
+### GPIO example
+
+This is a simple GPIO example. It toggles the `0` GPIO. `0` is the MRAA index in the [pin mapping table](https://github.com/respeaker/mraa/blob/master/docs/axolotl.md#pin-mapping).
+
 ```sh
 respeaker@v2:~$ python
 Python 2.7.13 (default, Jan 19 2017, 14:48:08) 
@@ -65,7 +72,45 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
 
-4. use UPM librarys
+### PIR sensor example
+
+In this example, we're gonna to listen on the trigger of the [Grove PIR sensor](https://www.seeedstudio.com/Grove-PIR-Motion-Sensor%EF%BC%88BISS0001%EF%BC%89--p-802.html), in Python code.
+
+```python
+import mraa
+import time
+import sys
+
+def on_trigger(gpio):
+    print("pin " + repr(gpio.getPin(True)) + " = " + repr(gpio.read()))
+
+pin = 0
+
+try:
+    x = mraa.Gpio(pin)
+    print("Starting ISR for pin " + repr(pin))
+    x.dir(mraa.DIR_IN)
+    # respeaker v2 only support EDGE_BOTH
+    x.isr(mraa.EDGE_BOTH, on_trigger, x)
+    var = raw_input("Press ENTER to stop")
+    x.isrExit()
+except ValueError as e:
+    print(e)
+```
+
+Save the above code snippet into a file, e.g. `mraa_pir.py`. Wire the Grove PIR sensor's `D1` pin with the ReSpeaker Core V2's `0` header pin. Don't forget to wire the VCC and GND at the same time. Then run the code with
+
+```shell
+$ sudo python mraa_pir.py
+```
+
+### More about MRAA
+
+MRAA's Python documentation main page: http://iotdk.intel.com/docs/master/mraa/python/
+
+Intel has written lots of examples, please refer to https://software.intel.com/en-us/mraa-sdk/documentation
+
+## use UPM librarys
 
 UPM have supported a lots sensors. https://iotdk.intel.com/docs/master/upm/modules.html. But we didnt confirm every sensors works
 on repeaker v2 platform.
@@ -135,3 +180,4 @@ Light value is 13
 Light value is 44
 Light value is 31    
 ```
+
