@@ -142,7 +142,7 @@ nmcli con up mywifi
 ```
 
 #### 2. Ethernet Connectivity
-Sorry, Ethernet connectivity is currently not supported and will be added in a future release.
+You can connect to a network using an Ethernet cable.
 
 ### SSH & VNC
 #### 1. SSH
