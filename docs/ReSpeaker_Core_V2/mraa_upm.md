@@ -78,8 +78,6 @@ In this example, we're gonna to listen on the trigger of the [Grove PIR sensor](
 
 ```python
 import mraa
-import time
-import sys
 
 def on_trigger(gpio):
     print("pin " + repr(gpio.getPin(True)) + " = " + repr(gpio.read()))
