@@ -2,8 +2,23 @@
 This document will introduce how to use MRAA and UPM on respeaker v2 platform.
 
 1. Update  MRAA and UPM libraries to latest version.
+
+First, we need to check the kernel version of the system we're running, if you're not sure that you flashed the system image of version `20171128` and later.
+
+```sh
+uname -a
+```
+
+If you're using system image prior to version `4.4.95-respeaker-r2`, please upadte the kernel first with
+
 ```sh
 sudo apt update
+sudo apt install linux-image-4.4.95-respeaker-r2
+```
+
+Then we install the latest MRAA and UPM packages.
+
+```sh
 sudo apt install  python-mraa python-upm libmraa1 libupm1 mraa-tools
 ```
 
