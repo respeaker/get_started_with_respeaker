@@ -104,17 +104,31 @@ Save the above code snippet into a file, e.g. `mraa_pir.py`. Wire the Grove PIR 
 $ sudo python mraa_pir.py
 ```
 
+The result will be like
+
+```shell
+$ sudo python mraa_pir.py
+Starting ISR for pin 0
+Press ENTER to stoppin 1091 = 0
+pin 1091 = 0
+pin 1091 = 1
+...
+```
+
 ### More about MRAA
 
 MRAA's Python documentation main page: http://iotdk.intel.com/docs/master/mraa/python/
 
 Intel has written lots of examples, please refer to https://software.intel.com/en-us/mraa-sdk/documentation
 
-## use UPM librarys
+## use UPM libraries
 
-UPM have supported a lots sensors. https://iotdk.intel.com/docs/master/upm/modules.html. But we didnt confirm every sensors works
-on repeaker v2 platform.
-There is a grove digital light sensor examples.
+The UPM project implements sensors' driver based on the MRAA library, so we no longer need to care about the GPIO programming or what the I2C address of a sensor, all the default informations and logics for a particular sensor has been wrapped into a UPM library. UPM has supported bunch of sensors. https://iotdk.intel.com/docs/master/upm/modules.html. But please note that we didnt confirm every sensor works on the ReSpeaker Core V2.
+
+### Example for Grove Digital Light Sensor
+
+This is an example for the Grove Digital Light Sensor, which is copied from the [UPM github repo](https://github.com/intel-iot-devkit/upm/blob/master/examples/python).
+
 ```
 respeaker@v2:~$ cat tsl2561.py 
 #!/usr/bin/env python
@@ -168,9 +182,9 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-result: 
+The result will be like: 
 
-```sh
+```shell
 respeaker@v2:~$ python tsl2561.py       
 Light value is 0
 Light value is 38
@@ -180,4 +194,37 @@ Light value is 13
 Light value is 44
 Light value is 31    
 ```
+
+### Example for Grove - Temperature&Humidity Sensor (High-Accuracy & Mini)
+
+```shell
+respeaker@v2:~$ cat upm_th02.py
+from time import sleep
+from upm import pyupm_th02 as th02
+
+def main():
+    t = th02.TH02()
+
+    while True:
+        temp = t.getTemperature()
+        humidity = t.getHumidity()
+
+        print("temperature: %d, humidity: %d" % (temp, humidity))
+
+        sleep(1)
+
+if __name__ == '__main__':
+    main()
+```
+
+And the result will be like:
+
+```shell
+respeaker@v2:~$ sudo python upm_th02.py
+temperature: 27, humidity: 64
+temperature: 27, humidity: 64
+temperature: 27, humidity: 64
+...
+```
+
 
