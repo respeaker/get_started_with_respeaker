@@ -183,6 +183,30 @@ cd ~/respeaker_v2_eval
 sudo cp asound.conf /etc/
 ```
 
+### PulseAudio Setting
+
+<!-- #### 方式1 -->
+```
+su respeaker && cd     # skip this steps if you are already using respeaker user
+git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
+cd ~/respeaker_v2_eval
+sudo cp pulse/default.pa /etc/pulse/            # config pulseaudio
+cp pulse/client.conf ~/.config/pulse/
+pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
+```
+
+### Voice Capture and Playback
+
+```
+// record & playback 2channels
+arecord -Dhw:0,0 -f S16_LE -r 16000 -c 2 hello.wav
+aplay -Dhw:0,2 -r 16000 -c 2 hello.wav
+arecord -v -f cd hello.wav
+aplay hello.wav
+// record 8channels
+// there are 6 microphones on board, and ac108 compose the 2 remaining channels.
+arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
+```
 
 ### Virtual Environment
 
@@ -200,7 +224,6 @@ Install and configure ReSpeaker Voice Engine in virtual environment:
 source ~/env/bin/activate                                  # activate python venv
 cd ~/respeaker_v2_eval
 sudo apt update
-sudo apt install gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gir1.2-gstreamer-1.0 python-gi python-gst-1.0
 sudo apt install libatlas-base-dev                         
 pip install ./webrtc*.whl
 pip install ./snowboy*.whl
@@ -209,19 +232,6 @@ pip install voice-engine
 ```
 
 After installation, free feel to build your own [AVS(Amazon Voice Service)](/docs/ReSpeaker_Core_V2/avs_guide.md) on ReSpeaker Core V2.
-
-### Voice Capture and Playback
-
-```
-// record & playback 2channels
-arecord -Dhw:0,0 -f S16_LE -r 16000 -c 2 hello.wav
-aplay -Dhw:0,2 -r 16000 -c 2 hello.wav
-arecord -v -f cd hello.wav
-aplay hello.wav
-// record 8channels
-// there are 6 microphones on board, and ac108 compose the 2 remaining channels.
-arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
-```
 
 
 ### Flash eMMC (Onboard Flash Memory)
