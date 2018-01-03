@@ -175,7 +175,8 @@ If nothing appears in the VNC desktop, please right-click on the gray area, then
 
 ### ALSA Setting
 
-Download Github repository with `respeaker` user:
+The following steps are no longer needed after system image version `xxxx`(TODO).
+
 ```
 su respeaker && cd     # skip this steps if you are already using respeaker user
 git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
@@ -185,7 +186,8 @@ sudo cp asound.conf /etc/
 
 ### PulseAudio Setting
 
-<!-- #### 方式1 -->
+The following steps are no longer needed after system image version `xxxx`(TODO).
+
 ```
 su respeaker && cd     # skip this steps if you are already using respeaker user
 git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
@@ -195,36 +197,38 @@ cp pulse/client.conf ~/.config/pulse/
 pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
 ```
 
-### Voice Capture and Playback
+### Voice Capture and Playback Testing
 
 ```
-// record & playback 2channels
+# record & playback 2 channels audio
 arecord -Dhw:0,0 -f S16_LE -r 16000 -c 2 hello.wav
 aplay -Dhw:0,2 -r 16000 -c 2 hello.wav
 arecord -v -f cd hello.wav
 aplay hello.wav
-// record 8channels
-// there are 6 microphones on board, and ac108 compose the 2 remaining channels.
+# record 8 channels audio
+# there are 6 microphones on board, and ac108 compose the 2 remaining channels.
 arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
 ```
 
-### Virtual Environment
+### Voice Engine Setting
+
+Setup Python virtual environment:
 
 ```
-pip install virtualenv                                     # install virtualenv
+sudo pip install virtualenv                                # install virtualenv
 python -m virtualenv --system-site-packages ~/env          # create python virtual environment
 source ~/env/bin/activate                                  # activate python venv
 deactivate                                                 # deactivate python venv
 ```
 
-### Voice Engine Setting
-
 Install and configure ReSpeaker Voice Engine in virtual environment:
+
 ```
 source ~/env/bin/activate                                  # activate python venv
 cd ~/respeaker_v2_eval
 sudo apt update
-sudo apt install libatlas-base-dev                         
+# These packages might be pre-installed in the system, but double check here
+sudo apt install libatlas-base-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gir1.2-gstreamer-1.0 python-gi python-gst-1.0
 pip install ./webrtc*.whl
 pip install ./snowboy*.whl
 pip install avs
