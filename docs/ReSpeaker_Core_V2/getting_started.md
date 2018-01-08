@@ -167,6 +167,9 @@ The VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.
 
 To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, input the IP address of your board, e.g. `192.168.1.100`, this will implicitly use the default port `5900` of the VNC protocol. If you're still using the system version prior to `20180107`, use port `5901`, i.e. input `192.168.x.x:5901` at the address bar of your VNC viewer. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
 
+![](https://user-images.githubusercontent.com/5130185/34665797-93b222d6-f49c-11e7-8112-704f91163038.png)
+
+For system version prior to `20180107`:
 ![](/img/vnc-1.png)
 
 If nothing appears in the VNC desktop, please right-click on the gray area, then select `terminal`, type `lxpanel` in the terminal.
