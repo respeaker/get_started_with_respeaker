@@ -165,7 +165,7 @@ ssh respeaker@192.168.***.***
 
 The VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
 
-To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, type `192.168.xxx.xxx:5901` at the address bar. `192.168.xxx.xxx` is IP address of the board and `5901` is the default port of VNC service. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
+To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, input the IP address of your board, e.g. `192.168.1.100`, this will implicitly use the default port `5900` of the VNC protocol. If you're still using the system version prior to `20180107`, use port `5901`, i.e. input `192.168.x.x:5901` at the address bar of your VNC viewer. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
 
 ![](/img/vnc-1.png)
 
