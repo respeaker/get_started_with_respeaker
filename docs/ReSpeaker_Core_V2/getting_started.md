@@ -178,7 +178,7 @@ If nothing appears in the VNC desktop, please right-click on the gray area, then
 
 ### ALSA Setting
 
-The following steps are no longer needed after system image version `xxxx`(TODO).
+The following steps are no longer needed after system image version `20180107`.
 
 ```
 su respeaker && cd     # skip this steps if you are already using respeaker user
@@ -189,7 +189,7 @@ sudo cp asound.conf /etc/
 
 ### PulseAudio Setting
 
-The following steps are no longer needed after system image version `xxxx`(TODO).
+The following steps are no longer needed after system image version `20180107`.
 
 ```
 su respeaker && cd     # skip this steps if you are already using respeaker user
