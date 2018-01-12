@@ -32,13 +32,13 @@ Please note that, we should type the full path for `/etc/docker/daemon.json`, as
 # enable docker to start at boot
 $ sudo systemctl enable docker
 # restart it to take the new configuration into account
-$ sudo systemctl start docker
+$ sudo systemctl restart docker
 
 # add the current user to docker group
 $ sudo groupadd docker
 $ sudo usermod -aG docker $USER
 
-# now logout and log in, to let the user group permission go into effect
+# now logout and login, to let the user group permission go into effect
 
 # test
 $ docker run arm32v7/hello-world
@@ -61,7 +61,7 @@ This message shows that your installation appears to be working correctly.
 To generate this message, Docker took the following steps:
  1. The Docker client contacted the Docker daemon.
  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (amd64)
+    (arm32v7)
  3. The Docker daemon created a new container from that image which runs the
     executable that produces the output you are currently reading.
  4. The Docker daemon streamed that output to the Docker client, which sent it
