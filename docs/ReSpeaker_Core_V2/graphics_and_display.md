@@ -11,14 +11,21 @@
 
 2, Software
 
- Graphics and Display's software is not ready. 
- - No GPU Software
- - HDMI does not support hot-plug, you need to plugin the HDMI, then power on 
+ Graphics's software is not fully functional. It can work in:
+ 
+ - Displaying the system GUI or the headless command line screen
+ 
+ But with limitations:
+ 
+ - The GPU is not fully driven, we'll get a low refresh rate with the HDMI display and there's no video decoding acceleration.
+ - HDMI does not support hot-plug, we need to plug the HDMI cable first, then power on the board
  - No HDMI audio
+ - No arbitrary screen resolution (See below `3, Screen resolution`)
 
 3, Screen resolution
 
- You cannt change the screen resolution. Default resolution get from monitor edid. But you can check current screen resolution.
+ We can not change the screen resolution. The default resolution is gotten from the EDID of the monitor. We can check the current screen resolution from the EDID detection with:
+ 
 ```sh
 respeaker@v2:~$ export DISPLAY=:0
 respeaker@v2:~$ xrandr 
