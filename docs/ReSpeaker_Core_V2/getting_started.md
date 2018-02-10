@@ -202,15 +202,62 @@ pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run 
 
 ### Voice Capture and Playback Testing
 
+#### a) Test via ALSA
+
+As this is a technical documentation of development phase, the index of the sound device may change along versions. So check out the correct device index first with the following commands:
+
+```
+respeaker@v2:~$ arecord -l
+**** List of CAPTURE Hardware Devices ****
+card 0: seeed8micvoicec [seeed-8mic-voicecard], device 0: 100b0000.i2s1-ac108-pcm0 ac108-pcm0-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: bluetoothvoice [bluetooth-voice], device 0: 100e0000.i2s2-bt-sco-pcm bt-sco-pcm-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+respeaker@v2:~$ aplay -l
+**** List of PLAYBACK Hardware Devices ****
+card 0: seeed8micvoicec [seeed-8mic-voicecard], device 1: 100b0000.i2s1-rk3228-hifi rk3228-hifi-1 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: bluetoothvoice [bluetooth-voice], device 0: 100e0000.i2s2-bt-sco-pcm bt-sco-pcm-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+```
+
+The capture device is `hw:0,0`, the playback device is `hw:0,1`. Then test recording and playing sound with the following commands:
+
 ```
 # record & playback 2 channels audio
 arecord -Dhw:0,0 -f S16_LE -r 16000 -c 2 hello.wav
-aplay -Dhw:0,2 -r 16000 -c 2 hello.wav
-arecord -v -f cd hello.wav
-aplay hello.wav
+aplay -Dhw:0,1 -r 16000 -c 2 hello.wav
+
 # record 8 channels audio
 # there are 6 microphones on board, and ac108 compose the 2 remaining channels.
-arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello.wav
+arecord -Dhw:0,0 -f S16_LE -r 16000 -c 8 hello_8ch.wav
+```
+
+#### b) Test via PulseAudio
+
+First check if the PulseAudio is running:
+
+```
+respeaker@v2:~$ ps aux|grep pulse|grep -v grep
+respeak+  1109  0.0  0.7 363272  7932 ?        S<l  01:01   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+```
+
+If it's not, please refer to PulseAudio's documentation to enable the auto-spawn of PulseAudio. Then test via:
+
+```
+parecord --channels=8 --rate=16000 --format=s16le hello2.wav
+paplay hello2.wav
+```
+
+Further more, the `default` ALSA device now hooks to PulseAudio, so using the following commands also plays/records sound via PulseAudio:
+
+```
+arecord -v -f cd hello3.wav
+aplay hello3.wav
 ```
 
 ### Voice Engine Setting
