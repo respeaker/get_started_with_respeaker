@@ -20,8 +20,6 @@ Now let's get started!
 - [Serial Console](/docs/ReSpeaker_Core_V2/getting_started.md#serial-console)
 - [Network Setting Up](/docs/ReSpeaker_Core_V2/getting_started.md#network-setting-up)
 - [SSH & VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc)
-- [ALSA Setting](/docs/ReSpeaker_Core_V2/getting_started.md#alsa-setting)
-- [PulseAudio Setting](/docs/ReSpeaker_Core_V2/getting_started.md#pulseaudio-setting)
 - [Voice Capture and Playback Testing](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback-testing)
 - [Voice Engine Setting](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting)
 - [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
