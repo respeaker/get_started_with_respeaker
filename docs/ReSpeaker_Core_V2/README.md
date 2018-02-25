@@ -1,8 +1,8 @@
 # ReSpeaker Core V2 Wiki
 
-[中文版](/cn/ReSpeaker_Core_V2/README.md)
+~~[中文版](/cn/ReSpeaker_Core_V2/README.md)~~
 
-This is the Wiki of ReSpeaker Core V2.
+This is the wiki of ReSpeaker Core V2 during the development phase. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
 
 ![](/img/ReSpeaker_Core_V2.png)
 <!-- todo: 这里会有一段话介绍ReSpeaker Core V2以及一些图片，以及wiki整体结构，以及文档的使用方法 -->
