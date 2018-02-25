@@ -1,8 +1,8 @@
 ## Getting Started
 
-[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)
+~~[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)~~
 
-This guide will show you how to get started with ReSpeaker Core V2.
+This guide will show you how to get started with ReSpeaker Core V2. Please note that this wiki is a developer preview wiki during the development phase of ReSpeaker Core V2. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
 <!-- todo: 这里会有一段话介绍getting started这个章节的内容／结构／目的 -->
 
 ### Prerequisites
