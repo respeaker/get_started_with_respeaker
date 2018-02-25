@@ -49,7 +49,7 @@ Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get a
 
 #### A. The OTG USB port
 
-1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, which are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer.
+1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, which are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`, **note that only `OTG` USB port should be connected**), then another end of this cable into your computer.
 
 2. Check at your computer if the serial port has risen
 
@@ -60,8 +60,8 @@ Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get a
 3. Use your favorite serial debugging tool to connect the serial port, the serial has: 115200 baud rate, 8Bits, Parity None, Stop Bits 1, Flow Control None. For examples:
 
     - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
-    - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
-    - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
+    - Linux: Depend on the USB port you used, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
+    - Mac: Depend on the USB port you used, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
   
 4. The login user name is `respeaker`, and password is `respeaker` too.
 
@@ -102,7 +102,7 @@ Configure your ReSpeaker's network with the Network Manager tool, nmtui. nmtui w
 ```
 respeaker@v2:~$ sudo nmtui              # respeaker user needs sudo
 ```
-Then you will see a config page like this, select `Activate a connection` and press `Enter`.
+Enter the password of `respeaker` user at the first time. Then you will see a config page like this, select `Activate a connection` and press `Enter`.
 
 ![](/img/nmtui1-1.png)
 
@@ -176,7 +176,7 @@ If nothing appears in the VNC desktop, please right-click on the gray area, then
 
 *Note that if you find there is not very smooth when using VNC, please switch to a uncrowed LAN network.*
 
-### ALSA Setting
+<!-- ### ALSA Setting
 
 The following steps are no longer needed after system image version `20180107`.
 
@@ -198,7 +198,7 @@ cd ~/respeaker_v2_eval
 sudo cp pulse/default.pa /etc/pulse/            # config pulseaudio
 cp pulse/client.conf ~/.config/pulse/
 pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
-```
+``` -->
 
 ### Voice Capture and Playback Testing
 
@@ -275,6 +275,8 @@ Install and configure ReSpeaker Voice Engine in virtual environment:
 
 ```
 source ~/env/bin/activate                                  # activate python venv
+cd ~/
+git clone https://github.com/respeaker/respeaker_v2_eval.git
 cd ~/respeaker_v2_eval
 sudo apt update
 # These packages might be pre-installed in the system, but double check here
