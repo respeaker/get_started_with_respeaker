@@ -40,11 +40,11 @@ Similar to a Raspberry Pi, you must burn the system image of ReSpeaker Core V2  
 
 3. After burning the image, insert the SD card into your ReSpeaker Core V2. Power the board using any of the micro USB ports (you may need to read [A.1](#a-the-otg-usb-port) and chose the `OTG` port to get console) and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is configured to blink during SD card read/write operation.
 
-If instead you want to flash the image to the onboard eMMC, follow [these instructions](#flash-emmc).
+If instead you want to flash the image to the onboard eMMC, follow [these instructions](#flash-emmc-onboard-flash-memory).
 
 ### Serial Console
 
-Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux system via a console, to setup the WiFi, etc. You will have two choices to get the console:
+Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux system via a console, to setup the WiFi, etc. You have two choices to get the console:
 
 - A. The OTG USB port - This requires a running Linux system on the board
 - B. The UART port - This is the hard way to access the console, it can be used for debugging low level issues
@@ -239,14 +239,22 @@ So far we learned the basic operations of the ReSpeaker Core V2 board, let's mov
 
 ### Flash eMMC (Onboard Flash Memory)
 
-You may also directly flash the ReSpeaker image files to the ReSpeaker's eMMC (onboard flash memory) using your PC or Mac. Then the ReSpeaker will boot from it's eMMC (onboard flash memory) and not from the SD card.
+You can directly flash the system to the onboard eMMC, and then get rid of the SD card.
 
-1. Download our latest image zip file `respeaker-debian-9-iot-flasher-********-4gb.img.xz` or `respeaker-debian-9-lxqt-flasher-********-4gb.img.xz` at [OneDrive](https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU). The `lxqt` version comes with Debian desktop and the `iot` version does not. And the `flasher` version is for flashing eMMC, and the `sd` version is for booting from SD card.
+1. Download our latest system image from <a href="https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>.
 
-2. Burn the `*.img.xz` file directly to SD card with [Etcher](https://etcher.io/), or unzip the `*.img.xz` file to a `*.img` file, then burn it to SD card with other image writing tools.
+    The name of the files follows such convention:
+    `respeaker-debian-9-[iot|lxqt]-[flasher|sd]-[date]-4gb.img.xz`
 
-3. After burning SD card, insert the SD card in the ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and **do not remove the SD card while it's flashing**.
+    | section      | description                              |
+    | ------------ | ---------------------------------------- |
+    | `iot` / `lxqt`   | The `lxqt` version comes with a desktop GUI while the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended. |
+    | `flasher` / `sd` | The `flasher` version is used to flash the onboard eMMC, after flashing you can remove the SD card. The `sd` version will require the SD card to stay inserted all the time. |
 
-4. During the flashing process, you'll see the USER1 and USER2 LEDs **blink alternately**. It will take about 10 minutes to complete. When the LEDs turn off, you can power off the board, pull out the SD card and power again. If the LEDs light up, that means the image was flashed to the eMMC correctly.
+    So please download the `flasher` version, and we recommend the `lxqt` version for development.
 
-5. You can also check the image version with this command: `cat /etc/issue.net`.
+2. Burn the `.img.xz` file directly into SD card with [Etcher](https://etcher.io/) (you don't need to unzip when using Etcher).
+
+3. After burning, insert the SD card into the ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and **do not remove the SD card while it's flashing**.
+
+4. During the flashing process, you'll see the USER1 and USER2 LEDs **blink alternately**. It will take about 10 minutes to complete. When the LEDs stop blinking (both off or both on), you can power off the board, pull out the SD card and power again. If the LEDs light up, that means the image was flashed to the eMMC correctly.
