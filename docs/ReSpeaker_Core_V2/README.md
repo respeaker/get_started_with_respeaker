@@ -1,6 +1,6 @@
 # ReSpeaker Core V2 Wiki
 
-~~[中文版](/cn/ReSpeaker_Core_V2/README.md)~~
+~~[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)~~ (outdated)
 
 This is the wiki of ReSpeaker Core V2 during the development phase. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
 
@@ -31,7 +31,7 @@ Now let's get started!
 
 
 ## Programming Guide
-- [AVS(Amazon Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
+- [AVS(Alexa Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
 
 
 ## Library
