@@ -1,6 +1,6 @@
 # ReSpeaker Core V2 Wiki
 
-~~[中文版](/cn/ReSpeaker_Core_V2/README.md)~~
+~~[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)~~ (outdated)
 
 This is the wiki of ReSpeaker Core V2 during the development phase. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
 
@@ -20,10 +20,7 @@ Now let's get started!
 - [Serial Console](/docs/ReSpeaker_Core_V2/getting_started.md#serial-console)
 - [Network Setting Up](/docs/ReSpeaker_Core_V2/getting_started.md#network-setting-up)
 - [SSH & VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc)
-- [ALSA Setting](/docs/ReSpeaker_Core_V2/getting_started.md#alsa-setting)
-- [PulseAudio Setting](/docs/ReSpeaker_Core_V2/getting_started.md#pulseaudio-setting)
 - [Voice Capture and Playback Testing](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback-testing)
-- [Voice Engine Setting](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting)
 - [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
 - [MRAA & UPM](/docs/ReSpeaker_Core_V2/mraa_upm.md)
 - [Graphics & display](/docs/ReSpeaker_Core_V2/graphics_and_display.md)
@@ -34,7 +31,7 @@ Now let's get started!
 
 
 ## Programming Guide
-- [AVS(Amazon Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
+- [AVS(Alexa Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
 
 
 ## Library

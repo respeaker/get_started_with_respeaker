@@ -48,7 +48,7 @@ Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux s
 
 #### A. The OTG USB port
 
-1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, they are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer.
+1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, they are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer. **Please note that only `OTG` USB port should be connected**
 
 2. Check at your computer if the serial port has been detected
 
@@ -59,9 +59,9 @@ Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux s
 3. Use your favorite serial debugging tool to connect the serial port, the serial has: 115200 baud rate, 8Bits, Parity None, Stop Bits 1, Flow Control None. For examples:
 
     - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
-    - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
-    - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
-
+    - Linux: Depend on the USB port you used, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
+    - Mac: Depend on the USB port you used, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
+  
 4. The login user name is `respeaker`, and password is `respeaker` too.
 
 <div align="center"><img src="/img/v2_login.png"></div>
@@ -98,9 +98,9 @@ In this section we will guide you how to establish a connection from your comput
 
 Configure your ReSpeaker's network with the Network Manager tool, nmtui. nmtui will already be installed on the ReSpeaker image.  
 ```
-respeaker@v2:~$ sudo nmtui              # respeaker user needs sudo
+respeaker@v2:~$ sudo nmtui
 ```
-Then you will see an UI like this, select `Activate a connection` and press `Enter`.
+Enter the password of `respeaker` user at the first time. Then you will see an UI like this, select `Activate a connection` and press `Enter`.
 
 ![](/img/nmtui1-1.png)
 
