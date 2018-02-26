@@ -1,6 +1,6 @@
-## Getting Started
+## Basics
 
-This guide will show you how to get started with ReSpeaker Core V2. Please note that this wiki is a developer preview wiki during the development phase of ReSpeaker Core V2. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
+This guide will show you the basic operations of ReSpeaker Core V2. Please note that this wiki is a developer preview wiki during the development phase of ReSpeaker Core V2. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
 
 (@xyu6  From now on, this wiki will drop all the verbosities of operations on old system versions, and will always assume that the latest system image is used.)
 
@@ -8,36 +8,39 @@ This guide will show you how to get started with ReSpeaker Core V2. Please note 
 
 - ReSpeaker Core V2
 - Wi-Fi Network
-- 4GB (or more) SD card and SD card reader
+- 4GB (or bigger) SD card and SD card reader
 - PC or Mac
-- [USB To Uart Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html)
-- 5V 1A Micro USB adapter for power
+- [USB To Uart Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html) (optional)
+- 5V 1A Micro USB adapter for power (optional)
+
+### Hardware Ports
+
+<div align="center"><img src="/img/hardware.jpg" width="80%" ></div>
 
 ### Image Installation
 
 Similar to a Raspberry Pi, you must burn the system image of ReSpeaker Core V2  to an SD card to get it up and running. You may noticed that there's also an eMMC (Embedded Multi Media Card) onboard. We'll burn the latest system into the onboard eMMC when every unit of ReSpeaker Core V2 is shipped. But feel free to upgrade/re-flash the system image inside eMMC according to the guide [here](#flash-emmc). Now please follow these steps to burn the system image:
 
-1. Download our latest system image from OneDrive.
-    <a href="https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
+1. Download our latest system image from <a href="https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>.
+
     The name of the files follows such convention:
     `respeaker-debian-9-[iot|lxqt]-[flasher|sd]-[date]-4gb.img.xz`
 
     | section      | description                              |
     | ------------ | ---------------------------------------- |
-    | `iot|lxqt`   | The `lxqt` version comes with a desktop GUI while the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended. |
-    | `flasher|sd` | The `flasher` version is used to flash the onboard eMMC, after flashing you can remove the SD card. The `sd` version will require the SD card to stay inserted all the time. |
+    | `iot` / `lxqt`   | The `lxqt` version comes with a desktop GUI while the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended. |
+    | `flasher` / `sd` | The `flasher` version is used to flash the onboard eMMC, after flashing you can remove the SD card. The `sd` version will require the SD card to stay inserted all the time. |
+
+    For development, we recommend the `lxqt` + `sd` version. So please download the `respeaker-debian-9-lxqt-sd-[date]-4gb.img.xz` file.
 
 
 2. Burn the `.img.xz` file directly into SD card with [Etcher](https://etcher.io/) (you don't need to unzip when using Etcher).
 
     ![](/img/v2-flash-sd.png)
 
-3. After burning the image into the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is configured to blink during SD card read/write operation. Now, you should go to the next part: [Serial Console](#serial-console).
+3. After burning the image, insert the SD card into your ReSpeaker Core V2. Power the board using any of the micro USB ports (you may need to read [A.1](#a-the-otg-usb-port) and chose the `OTG` port to get console) and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is configured to blink during SD card read/write operation.
 
-4. If instead you want to flash the image to the onboard eMMC, follow these instructions [here](#flash-emmc).
-
-<div align="center"><img src="/img/hardware.jpg" width="80%" ></div>
-
+If instead you want to flash the image to the onboard eMMC, follow [these instructions](#flash-emmc).
 
 ### Serial Console
 
@@ -48,7 +51,7 @@ Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux s
 
 #### A. The OTG USB port
 
-1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, they are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer. **Please note that only `OTG` USB port should be connected**
+1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, they are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`, both can be used to power the board, but the `OTG` port has extra functionality). **Please note that only the `OTG` USB port should be connected, leave the `PWR_IN` port empty.**
 
 2. Check at your computer if the serial port has been detected
 
@@ -104,7 +107,7 @@ Enter the password of `respeaker` user at the first time. Then you will see an U
 
 ![](/img/nmtui1-1.png)
 
-Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password and `Enter` again. When you see a `*` mark, it means that your ReSpeaker has successfully connected to your Wi-Fi network. Tap `Esc` twice to leave the network manager config tool.
+Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password and `Enter` again. When you see a `*` mark, it means that your ReSpeaker has successfully connected to your Wi-Fi network. Tap `Esc` twice to leave the network manager configure tool.
 
 ![](/img/nmtui1-2.png)
 
@@ -196,7 +199,7 @@ card 1: bluetoothvoice [bluetooth-voice], device 0: 100e0000.i2s2-bt-sco-pcm bt-
   Subdevice #0: subdevice #0
 ```
 
-Find the sound card whose name has `seeed` prefix. For the above example, the capture device is `hw:0,0`, the playback device is `hw:0,1`. Then test recording and playing sound with the following commands:
+Find the sound card whose name has `seeed` prefix. For the example above, the capture device is `hw:0,0`, the playback device is `hw:0,1`. Then test recording and playing sound with the following commands:
 
 ```
 # record & playback 2 channels audio

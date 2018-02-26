@@ -47,7 +47,7 @@ Succeed:
 ```
 respeaker@v2:~$ ~/.local/bin/alexa-tap
 ```
-Wait util you see `on_ready` in the log printing. Press `enter` and talk to Alexa.
+Wait until you see `on_ready` in the log printing. Press `enter` and talk to Alexa.
 
 ### Alexa Hands-Free via snowboy
 

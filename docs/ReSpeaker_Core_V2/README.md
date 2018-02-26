@@ -14,27 +14,25 @@ The best way to use the Wiki is:
 
 Now let's get started!
 
-## Getting started with ReSpeaker Core V2
-- [Getting Started](/docs/ReSpeaker_Core_V2/getting_started.md)
-- [Image Installation](/docs/ReSpeaker_Core_V2/getting_started.md#image-installation)
-- [Serial Console](/docs/ReSpeaker_Core_V2/getting_started.md#serial-console)
-- [Network Setting Up](/docs/ReSpeaker_Core_V2/getting_started.md#network-setting-up)
-- [SSH & VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc)
-- [Voice Capture and Playback Testing](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback-testing)
-- [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
+## Getting Started with ReSpeaker Core V2
+- [Basics](/docs/ReSpeaker_Core_V2/getting_started.md)
+    - [Hardware Ports](/docs/ReSpeaker_Core_V2/getting_started.md#hardware-ports)
+    - [Image Installation](/docs/ReSpeaker_Core_V2/getting_started.md#image-installation)
+    - [Serial Console](/docs/ReSpeaker_Core_V2/getting_started.md#serial-console)
+    - [Network Setting Up](/docs/ReSpeaker_Core_V2/getting_started.md#network-setting-up)
+    - [SSH & VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc)
+    - [Voice Capture and Playback Testing](/docs/ReSpeaker_Core_V2/getting_started.md#voice-capture-and-playback-testing)
+    - [Flash eMMC](/docs/ReSpeaker_Core_V2/getting_started.md#flash-emmc)
 - [MRAA & UPM](/docs/ReSpeaker_Core_V2/mraa_upm.md)
 - [Graphics & display](/docs/ReSpeaker_Core_V2/graphics_and_display.md)
 - [Multimedia--Video Codec](/docs/ReSpeaker_Core_V2/multimedia_video_codec.md)
 - [Bluetooth-audio](/docs/ReSpeaker_Core_V2/bluetooth_audio.md)
-- Hardware Introduction
-- Software Introduction
-
 
 ## Programming Guide
 - [AVS(Alexa Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
 
 
-## Library
+## Libraries
 - [Google Assistant Library](https://github.com/googlesamples/assistant-sdk-python) or [this offline version](https://github.com/respeaker/ok_google/tree/master/offline)
 - [AVS(Amazon Voice Serice) Library](https://github.com/respeaker/avs)
 - [Pixels Ring Library](https://github.com/respeaker/pixel_ring)
