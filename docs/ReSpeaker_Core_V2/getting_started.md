@@ -1,9 +1,8 @@
 ## Getting Started
 
-~~[中文版](/cn/ReSpeaker_Core_V2/getting_started.md)~~
-
 This guide will show you how to get started with ReSpeaker Core V2. Please note that this wiki is a developer preview wiki during the development phase of ReSpeaker Core V2. The documentations will be finalized into [the official wiki pages of ReSpeaker product line](http://wiki.seeed.cc/ReSpeaker) after release.
-<!-- todo: 这里会有一段话介绍getting started这个章节的内容／结构／目的 -->
+
+(@xyu6  From now on, this wiki will drop all the verbosities of operations on old system versions, and will always assume that the latest system image is used.)
 
 ### Prerequisites
 
@@ -14,55 +13,55 @@ This guide will show you how to get started with ReSpeaker Core V2. Please note 
 - [USB To Uart Adapter](https://www.seeedstudio.com/USB-To-Uart-5V%26amp%3B3V3-p-1832.html)
 - 5V 1A Micro USB adapter for power
 
-<!-- ### Open Box -->
-
 ### Image Installation
 
-Similar to a Raspberry Pi, you must install the ReSpeaker Core V2 image from an SD card to get up and running. Follow these steps to install the image:
+Similar to a Raspberry Pi, you must burn the system image of ReSpeaker Core V2  to an SD card to get it up and running. You may noticed that there's also an eMMC (Embedded Multi Media Card) onboard. We'll burn the latest system into the onboard eMMC when every unit of ReSpeaker Core V2 is shipped. But feel free to upgrade/re-flash the system image inside eMMC according to the guide [here](#flash-emmc). Now please follow these steps to burn the system image:
 
-
-
-1. Download our latest image zip files: `respeaker-debian-9-lxqt-sd-********-4gb.img.xz` or `respeaker-debian-9-iot-sd-********-4gb.img.xz` : 
-
+1. Download our latest system image from OneDrive.
     <a href="https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>
+    The name of the files follows such convention:
+    `respeaker-debian-9-[iot|lxqt]-[flasher|sd]-[date]-4gb.img.xz`
 
-    (old image at [百度云盘](https://pan.baidu.com/s/1c2piKW4) or [Google Drive](https://drive.google.com/open?id=0B7R2TH-ioqAKQjBfZGp0M3VaVjQ))
+    | section      | description                              |
+    | ------------ | ---------------------------------------- |
+    | `iot|lxqt`   | The `lxqt` version comes with a desktop GUI while the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended. |
+    | `flasher|sd` | The `flasher` version is used to flash the onboard eMMC, after flashing you can remove the SD card. The `sd` version will require the SD card to stay inserted all the time. |
 
-    The `lxqt` version comes with Debian desktop and the `iot` version does not. If you are new to ReSpeaker Core V2, `lxqt` version is recommended.
 
-2. Burn the `*.img.xz` file directly to your SD card with [Etcher](https://etcher.io/), or unzip the `*.img.xz` file to a `*.img` file, then burn it to SD card with other image writing tools.
-![](/img/v2-flash-sd.png)
+2. Burn the `.img.xz` file directly into SD card with [Etcher](https://etcher.io/) (you don't need to unzip when using Etcher).
 
-3. After writing the image to the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is typically configured at boot to light during SD card accesses. Now, you should go to the next part: [Serial Console](#serial-console).
+    ![](/img/v2-flash-sd.png)
 
-4. If instead you want to flash the image to the ReSpeaker's eMMC (onboard flash memory), follow these instructions [here](#flash-emmc).
+3. After burning the image into the SD card, insert the SD card in your ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and DO NOT remove the SD card after powering on. ReSpeaker Core V2 will boot from the SD card, and you can see USER1 and USER2 LEDs light up. USER1 is typically configured at boot to blink in a heartbeat pattern and USER2 is configured to blink during SD card read/write operation. Now, you should go to the next part: [Serial Console](#serial-console).
+
+4. If instead you want to flash the image to the onboard eMMC, follow these instructions [here](#flash-emmc).
 
 <div align="center"><img src="/img/hardware.jpg" width="80%" ></div>
 
 
 ### Serial Console
 
-Now that your ReSpeaker can boot (it runs Debian Linux), you might want to get access to the Linux system by a console, to setup the ssh server, or setup WiFi, etc. You will have two choices to get the console, but please note that the first choice depends on your hardware version and your system version.
+Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux system via a console, to setup the WiFi, etc. You will have two choices to get the console:
 
-- A. The OTG USB port, for hardware version not earlier than "8/5/2017" (see the silk-screen on the board) and system image version not earlier than "20171023".
-- B. The UART port
+- A. The OTG USB port - This requires a running Linux system on the board
+- B. The UART port - This is the hard way to access the console, it can be used for debugging low level issues
 
 #### A. The OTG USB port
 
-1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, which are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer.
+1. Find a micro USB cable, and please make sure it's a data cable (not just a power cable), plug the micro USB end to the ReSpeaker's `OTG` micro USB port (There're two micro USB ports on the ReSpeaker board, they are labeled with different silk-screen, one is `PWR_IN` and another is `OTG`), then another end of this cable into your computer.
 
-2. Check at your computer if the serial port has risen
+2. Check at your computer if the serial port has been detected
 
     - Windows: check the device manager, there should be new serial deviced named `COMx` which `x` is an increasing number. If you use windows XP/7/8, maybe you  need install [windows CDC drivers](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/ReSpeaker_Gadget_CDC_driver.7z).
     - Linux: `ls /dev/ttyACM*`, you should get `/dev/ttyACMx` where `x` will vary depending on which USB port you used
     - Mac: `ls /dev/cu.usb*`, you should get `/dev/cu.usbmodem14xx` where `xx` will vary depending on which USB port you used
-   
+
 3. Use your favorite serial debugging tool to connect the serial port, the serial has: 115200 baud rate, 8Bits, Parity None, Stop Bits 1, Flow Control None. For examples:
 
     - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on your USB To TTL Adapter, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on your USB To TTL Adapter, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
-  
+
 4. The login user name is `respeaker`, and password is `respeaker` too.
 
 <div align="center"><img src="/img/v2_login.png"></div>
@@ -81,17 +80,16 @@ In this section we will guide you how to establish a connection from your comput
 3. The login user name is `respeaker`, and password is `respeaker` too, or login user name `root`,and password `root`.
 
 4. If you do not have a USB to TTL Adapter, you may also use an Arduino. If using an Arduino, connect one end of a jumper wire to the *RESET* pin on the Arduino and the other end to the *GND* pin on the Arduino. This will bypass your Arduino's ATMEGA MCU and turn your Arduino into a USB to TTL adapter, see video tutorial [here](https://www.youtube.com/watch?v=qqSLwK1DP8Q). Now connect the *GND* pin on the Arduino to the *GND* pin on the *Uart port* of the Respeaker. Connect the *Rx* pin on the Arduino to the *Rx* pin on the Uart port of the Respeaker. Connect the *Tx* pin on the Arduino to the *Tx* pin on the Uart port of the Respeaker. And lastly, connect the Arduino to your PC/Mac via the Arduino's USB cable. Now check that your Mac or Linux PC finds your Arduino by typing this command:
-```
-ls /dev/cu.usb* (Mac)
-ls /dev/ttyACM* (Linux)
-```
-You should get back something like:
-```
-/dev/cu.usbmodem14XX where XX will vary depending on which USB port you used (on Mac)
-/dev/ttyACMX where X will vary depending on which USB port you used  (on Linux)
-```
-Now follow step 2 above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
-
+    ```
+    ls /dev/cu.usb* (Mac)
+    ls /dev/ttyACM* (Linux)
+    ```
+    You should get back something like:
+    ```
+    /dev/cu.usbmodem14XX where XX will vary depending on which USB port you used (on Mac)
+    /dev/ttyACMX where X will vary depending on which USB port you used  (on Linux)
+    ```
+    Now follow step 2 above to connect to your Respeaker over this serial connection. And note this is a one time procedure as you'll next setup your Respeaker for Wi-Fi connectivity and then connect via ssh or VNC going forward.
 
 
 ### Network Setting Up
@@ -102,7 +100,7 @@ Configure your ReSpeaker's network with the Network Manager tool, nmtui. nmtui w
 ```
 respeaker@v2:~$ sudo nmtui              # respeaker user needs sudo
 ```
-Then you will see a config page like this, select `Activate a connection` and press `Enter`.
+Then you will see an UI like this, select `Activate a connection` and press `Enter`.
 
 ![](/img/nmtui1-1.png)
 
@@ -110,9 +108,9 @@ Select your Wi-Fi for ReSpeaker V2, press `Enter` and type your Wi-Fi password a
 
 ![](/img/nmtui1-2.png)
 
-Now find the IP address of your ReSpeaker by using the `ip address` command. In the example below, we can see that this ReSpeaker's IP address is `192.168.7.108`
+Now find the IP address of your ReSpeaker by using the `ip address` command. In this example, the IP address is `192.168.7.108`
 ```
-root@v2:/home/respeaker# ip address
+respeaker@v2:~$ ip address
 
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -142,63 +140,36 @@ nmcli con up mywifi
 ```
 
 #### 2. Ethernet Connectivity
-You can connect to a network using an Ethernet cable.
+
+Please find the common instructions for network configurations of Debian Linux. Those instructions should be applicable for ReSpeaker Core V2.
 
 ### SSH & VNC
 #### 1. SSH
 
-SSH server starts automatically in ReSpeaker V2. For Windows Users, third-party SSH clients are available. For Linux/Mac Users, SSH client is built in.
+The SSH server should be running by default.
 
 - Windows: Use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `SSH` protocol, fill in correct IP address and click `open`. Login as `respeaker` user and password is `respeaker` too.
 
 
 - Linux/Mac:
-```
-ssh respeaker@192.168.***.***
-// password: respeaker
-```
-
-*Note that if experience slow performance using SSH, please switch to a less crowded WiFi network.*
+    ```
+    ssh respeaker@192.168.***.***
+    // password: respeaker
+    ```
 
 #### 2. VNC
+
+The system has VNC server built-in. The VNC server will launch the [`lxqt`](https://lxqt.org/) desktop GUI which is a lightweight Qt desktop environment.
+
 ![](/img/vnc-2.png)
 
 The VNC service also starts automatically. Use [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) or [VNC Viewer for Google Chrome](https://chrome.google.com/webstore/detail/vnc%C2%AE-viewer-for-google-ch/iabmpiboiopbgfabjmgeedhcmjenhbla?hl=en)] to connect to the desktop of ReSpeaker Core V2.
 
-To use VNC, connect your PC/Mac and ReSpeaker V2 to the same Wi-Fi network. Then open VNC Viewer, input the IP address of your board, e.g. `192.168.1.100`, this will implicitly use the default port `5900` of the VNC protocol. If you're still using the system version prior to `20180107`, use port `5901`, i.e. input `192.168.x.x:5901` at the address bar of your VNC viewer. If you meet `Unencrypted connection`, click `Continue` to go on. The password is `respeaker`.
-
 ![](https://user-images.githubusercontent.com/5130185/34665797-93b222d6-f49c-11e7-8112-704f91163038.png)
 
-For system version prior to `20180107`:
-![](/img/vnc-1.png)
+If you meet `Unencrypted connection`, click `Continue` to go on. The password for VNC is `respeaker`.
 
-If nothing appears in the VNC desktop, please right-click on the gray area, then select `terminal`, type `lxpanel` in the terminal.
-
-*Note that if you find there is not very smooth when using VNC, please switch to a uncrowed LAN network.*
-
-### ALSA Setting
-
-The following steps are no longer needed after system image version `20180107`.
-
-```
-su respeaker && cd     # skip this steps if you are already using respeaker user
-git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
-cd ~/respeaker_v2_eval
-sudo cp asound.conf /etc/
-```
-
-### PulseAudio Setting
-
-The following steps are no longer needed after system image version `20180107`.
-
-```
-su respeaker && cd     # skip this steps if you are already using respeaker user
-git clone https://github.com/respeaker/respeaker_v2_eval.git       # skip this step if you have already downloaded
-cd ~/respeaker_v2_eval
-sudo cp pulse/default.pa /etc/pulse/            # config pulseaudio
-cp pulse/client.conf ~/.config/pulse/
-pulseaudio -k && pulseaudio -D                  # restart pulseaudio, don't run it as root user
-```
+*Please note that the VNC connection relies on good quality of the network, please have a mental preparation that you will probably get very low refresh rate of the VNC display.*
 
 ### Voice Capture and Playback Testing
 
@@ -225,7 +196,7 @@ card 1: bluetoothvoice [bluetooth-voice], device 0: 100e0000.i2s2-bt-sco-pcm bt-
   Subdevice #0: subdevice #0
 ```
 
-The capture device is `hw:0,0`, the playback device is `hw:0,1`. Then test recording and playing sound with the following commands:
+Find the sound card whose name has `seeed` prefix. For the above example, the capture device is `hw:0,0`, the playback device is `hw:0,1`. Then test recording and playing sound with the following commands:
 
 ```
 # record & playback 2 channels audio
@@ -260,32 +231,7 @@ arecord -v -f cd hello3.wav
 aplay hello3.wav
 ```
 
-### Voice Engine Setting
-
-Setup Python virtual environment:
-
-```
-sudo pip install virtualenv                                # install virtualenv
-python -m virtualenv --system-site-packages ~/env          # create python virtual environment
-source ~/env/bin/activate                                  # activate python venv
-deactivate                                                 # deactivate python venv
-```
-
-Install and configure ReSpeaker Voice Engine in virtual environment:
-
-```
-source ~/env/bin/activate                                  # activate python venv
-cd ~/respeaker_v2_eval
-sudo apt update
-# These packages might be pre-installed in the system, but double check here
-sudo apt install libatlas-base-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gir1.2-gstreamer-1.0 python-gi python-gst-1.0
-pip install ./webrtc*.whl
-pip install ./snowboy*.whl
-pip install avs
-pip install voice-engine
-```
-
-After installation, free feel to build your own [AVS(Amazon Voice Service)](/docs/ReSpeaker_Core_V2/avs_guide.md) on ReSpeaker Core V2.
+So far we learned the basic operations of the ReSpeaker Core V2 board, let's move forward, to [build our own AVS(Alexa Voice Service) device](/docs/ReSpeaker_Core_V2/avs_guide.md) using ReSpeaker Core V2.
 
 
 ### Flash eMMC (Onboard Flash Memory)

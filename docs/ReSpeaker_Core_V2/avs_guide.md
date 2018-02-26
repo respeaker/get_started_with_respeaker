@@ -1,17 +1,40 @@
-## AVS(Amazon Voice Service) Guide
+## AVS(Alexa Voice Service) Guide
 
-This guide will shows you how to build AVS on ReSpeaker Core V2.
-<!-- todo:缺张图片 -->
+This guide will shows you how to build an AVS device based on the ReSpeaker Core V2.
 
+![AVS](https://user-images.githubusercontent.com/5130185/36649780-a0b1acc2-1ada-11e8-8145-9ad0de4e7f7f.png)
+
+### Prerequisites
+
+- Latest system, otherwise you'll be given some errors of missing software packages
+- Network has been configured
+- Serial console / SSH
+
+### Install AVS library (Python)
+
+```
+respeaker@v2:~$ pip install avs
+```
+
+This will also install the following executables into `~/.local/bin`: alexa-audio-check, alexa-auth, dueros-auth, alexa-tap and alexa.
+
+Check the audio configuration via:
+
+```
+respeaker@v2:~$ ~/.local/bin/alexa-audio-check
+```
+
+This script calculates the RMS of the sound recorded by the microphones.
 
 ### Get Alexa Authorization
 
-After[ Voice Engine Setting ](/docs/ReSpeaker_Core_V2/getting_started.md#voice-engine-setting), run authorization command in terminal with `respeaker` user:
+Connect to the board via [VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc). In the VNC desktop, open terminal and execute:
+
 ```
-source ~/env/bin/activate
-alexa-auth
+respeaker@v2:~$ ~/.local/bin/alexa-auth
 ```
-Then visit `127.0.0.1:3000` at[ VNC ](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc) web browser. Sign in to ReSpeaker AVS with your Amazon account:
+
+This script will open the web browser automatically, the web browser will display a login page. Sign in with your Amazon account:
 
 ![](/img/aus-1.png)
 
@@ -19,31 +42,36 @@ Succeed:
 
 ![](/img/aus-2.png)
 
-### Kill pulseaudio
-Have to kill pulseaudio to use AVS:
-```
-echo "autospawn = no" > ~/.config/pulse/client.conf
-reboot -f
-```
-
 ### Alexa Tap to Play
-```
-source ~/env/bin/activate
-alexa-tap
-```
-Press `enter` and talk to ReSpeaker V2, it will answer you.
 
-### Alexa && snowboy
 ```
-cd ~/respeaker_v2_eval/alexa
-pip install numpy
-python ns_kws_doa_alexa.py
+respeaker@v2:~$ ~/.local/bin/alexa-tap
 ```
-Alexa works with pixel light:
+Wait util you see `on_ready` in the log printing. Press `enter` and talk to Alexa.
+
+### Alexa Hands-Free via snowboy
+
 ```
-pip install spidev
-sudo su
-cp /home/respeaker/.avs.json /root/.avs.json    # copy respeaker user alexa authorization to root user
-source /home/respeaker/env/bin/activate         # activate python venv
-python ns_kws_doa_alexa_with_light.py
+sudo apt install libatlas-dev                # required by snowboy
+git clone https://github.com/respeaker/respeaker_v2_eval.git
+cd respeaker_v2_eval
+pip install --no-deps snowboy*.whl           # install pre-build snowboy
+pip install webrtc_audio_processing*.whl
+pip install voice-engine
+python ns_kws_alexa.py
 ```
+
+Say `snowboy` to trigger the conversation with Alexa.
+
+Demo with light effect:
+
+```
+pip install pixel-ring
+python ns_kws_alexa_with_light.py
+```
+
+### Related Libraries
+
+- [avs](https://github.com/respeaker/avs)
+- [pixel-ring](https://github.com/respeaker/pixel_ring)
+- [voice-engine](https://github.com/voice-engine/voice-engine)
