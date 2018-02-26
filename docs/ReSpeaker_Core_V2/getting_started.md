@@ -174,6 +174,12 @@ If you meet `Unencrypted connection`, click `Continue` to go on. The password fo
 
 *Please note that the VNC connection relies on good quality of the network, please have a mental preparation that you will probably get very low refresh rate of the VNC display.*
 
+### Connect Speaker or Headset
+
+The board uses the built-in codec of the SOC to render playback. Both the JST speaker port and the headset port are driven by their own amplifier, and both amplifiers are connected to the same codec of the SOC. The sound card driver that SEEED implemented drives both the capture device and the playback device. So there's no discrete capture or playback sound card in ALSA device list. They're all named `seeed-8mic-voicecard`.
+
+The simplest way to heard sound from the board is to plugin a headset. If you prefer loud speaker, the board can output up to 8W of drive capability.
+
 ### Voice Capture and Playback Testing
 
 #### a) Test via ALSA
@@ -255,6 +261,6 @@ You can directly flash the system to the onboard eMMC, and then get rid of the S
 
 2. Burn the `.img.xz` file directly into SD card with [Etcher](https://etcher.io/) (you don't need to unzip when using Etcher).
 
-3. After burning, insert the SD card into the ReSpeaker Core V2. Power the board using the `PWR_IN` micro usb port and **do not remove the SD card while it's flashing**.
+3. After burning, insert the SD card into the ReSpeaker Core V2. Power the board using the `PWR_IN` micro USB port and **do not remove the SD card while it's flashing**. The flashing will start automatically if a valid `flasher` system image is detected in the SD card.
 
-4. During the flashing process, you'll see the USER1 and USER2 LEDs **blink alternately**. It will take about 10 minutes to complete. When the LEDs stop blinking (both off or both on), you can power off the board, pull out the SD card and power again. If the LEDs light up, that means the image was flashed to the eMMC correctly.
+4. During the flashing process, you'll see the USER1 and USER2 LEDs **blink alternately**. It will take about 10 minutes to complete. When the LEDs stop blinking (both off or both on), you can power off the board, pull out the SD card and power the board again. If the LEDs light up, it means the image was flashed to the eMMC correctly.

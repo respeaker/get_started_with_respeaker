@@ -26,7 +26,7 @@ respeaker@v2:~$ ~/.local/bin/alexa-audio-check
 
 This script calculates the RMS of the sound recorded by the microphones.
 
-### Get Alexa Authorization
+### Authorize Alexa
 
 Connect to the board via [VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc). In the VNC desktop, open terminal and execute:
 
@@ -42,11 +42,14 @@ Succeed:
 
 ![](/img/aus-2.png)
 
+Now you can close the VNC client. The following commands can be executed in the SSH (If you prefer the VNC desktop, the terminal in VNC desktop also works).
+
 ### Alexa Tap to Play
 
 ```
 respeaker@v2:~$ ~/.local/bin/alexa-tap
 ```
+
 Wait until you see `on_ready` in the log printing. Press `enter` and talk to Alexa.
 
 ### Alexa Hands-Free via snowboy
@@ -63,7 +66,7 @@ python ns_kws_alexa.py
 
 Say `snowboy` to trigger the conversation with Alexa.
 
-Demo with light effect:
+With light effect:
 
 ```
 pip install pixel-ring
