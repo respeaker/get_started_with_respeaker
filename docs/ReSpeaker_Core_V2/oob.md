@@ -4,8 +4,8 @@ This OOB demo shows how to build an AVS (Alexa Voice Service) device in least co
 
 ### Step 1
 
-Before we start, we need you to know the basic operations of this board:
-- System image burning
+Before we start, we need you to know the [basic operations](/docs/ReSpeaker_Core_V2/getting_started.md) of this board:
+- System image burning - this demo needs the lxqt version system image
 - Get serial console via OTG USB port
 - Setup Wi-Fi / ethernet
 - SSH
