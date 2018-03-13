@@ -1,16 +1,25 @@
 ## AVS(Alexa Voice Service) Guide
 
-This guide will shows you how to build an AVS device based on the ReSpeaker Core V2.
+This guide will show you how to build an AVS device based on the ReSpeaker Core V2.
 
 ![AVS](https://user-images.githubusercontent.com/5130185/36649780-a0b1acc2-1ada-11e8-8145-9ad0de4e7f7f.png)
 
-### Prerequisites
+Now we have two options to build such AVS device:
+
+- With open-sourced solution
+- With close-sourced solution
+
+The open-sourced solution utilizes the algorithms from webrtc, speex projects. It aims for the users/hackers who want to go deep into the algorithms, e.g. algorithms research. The close-sourced solution may give less control to users, but it already has powerful algorithms builtin, such as: noise suppression, beamforming, echo cancellation, auto gain control.
+
+### 1. Prerequisites
 
 - Latest system, otherwise you'll be given some errors of missing software packages
 - Network has been configured
 - Serial console / SSH
+- Familiar with VNC operation
 
-### Install AVS library (Python)
+### 2. Open-sourced Solution
+#### 2.1 Install AVS Library (Python)
 
 ```
 respeaker@v2:~$ pip install avs
@@ -26,7 +35,7 @@ respeaker@v2:~$ ~/.local/bin/alexa-audio-check
 
 This script calculates the RMS of the sound recorded by the microphones.
 
-### Authorize Alexa
+#### 2.2 Authorize Alexa
 
 Connect to the board via [VNC](/docs/ReSpeaker_Core_V2/getting_started.md#ssh--vnc). In the VNC desktop, open terminal and execute:
 
@@ -44,7 +53,7 @@ Succeed:
 
 Now you can close the VNC client. The following commands can be executed in the SSH (If you prefer the VNC desktop, the terminal in VNC desktop also works).
 
-### Alexa Tap to Play
+#### 2.3 Alexa Tap to Play
 
 ```
 respeaker@v2:~$ ~/.local/bin/alexa-tap
@@ -52,7 +61,7 @@ respeaker@v2:~$ ~/.local/bin/alexa-tap
 
 Wait until you see `on_ready` in the log printing. Press `enter` and talk to Alexa.
 
-### Alexa Hands-Free via snowboy
+#### 2.4 Alexa Hands-Free via Snowboy
 
 ```
 sudo apt install libatlas-dev                # required by snowboy
@@ -73,8 +82,24 @@ pip install pixel-ring
 python ns_kws_alexa_with_light.py
 ```
 
-### Related Libraries
+#### 2.5 Related Libraries
 
 - [avs](https://github.com/respeaker/avs)
 - [pixel-ring](https://github.com/respeaker/pixel_ring)
 - [voice-engine](https://github.com/voice-engine/voice-engine)
+
+### 3. Close-sourced Solution
+
+The quickest way to experience the close-sourced solution is to run the [out-of-box demo](/docs/ReSpeaker_Core_V2/oob.md).
+
+This solution consists of the following components:
+- librespeaker - [documentation](http://respeaker.io/librespeaker_doc), [license](http://respeaker.io/librespeaker_doc/md__home_gitlab-runner_builds_dc7d1974_0_seeedstudio_librespeaker_doc_LICENSE.html), close-source
+- respeakerd - [github](https://github.com/respeaker/respeakerd), open-source
+- AVS client - open-source
+  - [Python version](https://github.com/respeaker/avs)
+  - C++ version, coming soon
+
+The [OOB demo](/docs/ReSpeaker_Core_V2/oob.md) combines `librespeaker`, `respeakerd` and the Python version AVS client. We're working on the offical AVS C++ SDK to support `respeakerd`, in order to apply the front-end algorithms to the AVS C++ SDK.
+
+
+
