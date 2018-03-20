@@ -97,9 +97,11 @@ This solution consists of the following components:
 - respeakerd - [github](https://github.com/respeaker/respeakerd), open-source
 - AVS client - open-source
   - [Python version](https://github.com/respeaker/avs)
-  - C++ version, coming soon
+  - C++ version, [guide](/docs/ReSpeaker_Core_V2/avs_cpp_sdk.md), [github](https://github.com/respeaker/avs-device-sdk)
 
-The [OOB demo](/docs/ReSpeaker_Core_V2/oob.md) combines `librespeaker`, `respeakerd` and the Python version AVS client. We're working on the offical AVS C++ SDK to support `respeakerd`, in order to apply the front-end algorithms to the AVS C++ SDK.
+The [OOB demo](/docs/ReSpeaker_Core_V2/oob.md) combines `librespeaker`, `respeakerd` and the Python version AVS client. 
+
+Another AVS client implementation is the C++ version from the Amazon official, which is more robust and more compatible with the AVS API. We have done some mod to let it work with respeakerd. The main idea is, pass the events through D-Bus, the events include: wakeword detected, all states that a LED ring UI requires. The `wake word detected` event is emitted by the respeakerd, and will be received by AVS C++ SDK and the LED ring server application. The `states` events are emitted by the AVS C++ SDK, and will be listened by the LED ring server application. Here's [the guide](/docs/ReSpeaker_Core_V2/avs_cpp_sdk.md) of how to compile and run the AVS C++ SDK, and how to configure respeakerd to work with each other.
 
 
 
