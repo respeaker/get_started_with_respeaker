@@ -13,9 +13,9 @@ If you just received the board and had done nothing on it, please learn the [bas
 - SSH
 - VNC
 
-Then install the basic dependences:
+Then install the basic software packages:
 ```shell
-## Install deps
+## install deps
 sudo apt update
 sudo apt install -y librespeaker git cmake
 sudo apt install -y python-mraa python-upm libmraa1 libupm1 mraa-tools
@@ -104,7 +104,7 @@ $ /usr/local/bin/respeakerd --snowboy_res_path="/usr/local/etc/respeakerd/resour
 
 Please refer to [Raspberry Pi Quick Start Guide](https://github.com/alexa/avs-device-sdk/wiki/Raspberry-Pi-Quick-Start-Guide) from Amazon for detail.
 
-Here we only list the commends, you will notice that, the differences aginst the official guide are:
+Here we only list the commands, you will notice that, the differences aginst the official guide are:
 - replace home directory to `/home/respeaker`
 - skip chapter 1.3 since we don't need a wake word engine, wake word engine is included in respeakerd
 - new build option `-DRESPEAKERD_KEY_WORD_DETECTOR=ON`
@@ -134,7 +134,7 @@ Now you are able to make conversations with Alexa, but all user experiences are 
 ### 4. LED Ring Light Effect
 
 ```shell
-$ sudo cp /home/respeaker/respeakerd/scripts/pixel_ring_server /usr/local/bin/
+$ sudo cp -f /home/respeaker/respeakerd/scripts/pixel_ring_server /usr/local/bin/
 $ sudo chmod a+x /usr/local/bin/pixel_ring_server
 $ pixel_ring_server
 ```
@@ -142,7 +142,7 @@ $ pixel_ring_server
 ### 5. Startup
 
 ```shell
-$ sudo cp -f avs_cpp_sdk_safe /usr/local/bin
+$ sudo cp -f /home/respeaker/respeakerd/scripts/avs_cpp_sdk_safe /usr/local/bin
 $ sudo chmod a+x /usr/local/bin/avs_cpp_sdk_safe
 $ sudo cp -f /home/respeaker/respeakerd/scripts/pixel_ring_server.service /etc/systemd/system/
 $ sudo cp -f /home/respeaker/respeakerd/scripts/avs_cpp_sdk.service /etc/systemd/system/
