@@ -19,7 +19,7 @@ Then install the basic software packages:
 sudo apt update
 sudo apt install -y librespeaker git cmake
 sudo apt install -y python-mraa python-upm libmraa1 libupm1 mraa-tools
-sudo pip install pixel_ring pydubs
+sudo pip install pixel_ring pydbus
 
 cd /home/respeaker
 git clone https://github.com/respeaker/respeakerd.git
