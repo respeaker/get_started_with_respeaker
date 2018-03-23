@@ -63,7 +63,7 @@ When `respeakerd` works in PulseAudio mode, it outputs the processed audio strea
 
 ```shell
 $ sudo systemctl stop respeakerd
-$ vim /usr/local/bin/respeakerd_safe
+$ sudo vim /usr/local/bin/respeakerd_safe
 ```
 
 Modify the content of this file to the following:
@@ -105,8 +105,9 @@ $ /usr/local/bin/respeakerd --snowboy_res_path="/usr/local/etc/respeakerd/resour
 Please refer to [Raspberry Pi Quick Start Guide](https://github.com/alexa/avs-device-sdk/wiki/Raspberry-Pi-Quick-Start-Guide) from Amazon for detail.
 
 Here we only list the commands, you will notice that, the differences aginst the official guide are:
-- replace home directory to `/home/respeaker`
+- replace home directory with `/home/respeaker`
 - skip chapter 1.3 since we don't need a wake word engine, wake word engine is included in respeakerd
+- replace `git://github.com/alexa/avs-device-sdk.git` with `git://github.com/respeaker/avs-device-sdk.git`
 - new build option `-DRESPEAKERD_KEY_WORD_DETECTOR=ON`
 - skip chapter 3.4 since  the default configuration file of ALSA works well for us
 
@@ -117,7 +118,8 @@ $ cd /home/respeaker/ && mkdir sdk-folder && cd sdk-folder && mkdir sdk-build sd
 $ sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev doxygen
 $ cd /home/respeaker/sdk-folder/third-party && wget -c http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz && tar zxf pa_stable_v190600_20161030.tgz && cd portaudio && ./configure --without-jack && make
 $ sudo pip install commentjson
-$ cd /home/respeaker/sdk-folder/sdk-source && git clone git://github.com/alexa/avs-device-sdk.git
+$ sudo pip install flask
+$ cd /home/respeaker/sdk-folder/sdk-source && git clone git://github.com/respeaker/avs-device-sdk.git
 $ cd /home/respeaker/sdk-folder/sdk-build && cmake /home/respeaker/sdk-folder/sdk-source/avs-device-sdk -DCMAKE_BUILD_TYPE=DEBUG -DRESPEAKERD_KEY_WORD_DETECTOR=ON -DGSTREAMER_MEDIA_PLAYER=ON -DPORTAUDIO=ON -DPORTAUDIO_LIB_PATH=/home/respeaker/sdk-folder/third-party/portaudio/lib/.libs/libportaudio.a -DPORTAUDIO_INCLUDE_DIR=/home/respeaker/sdk-folder/third-party/portaudio/include
 $ make SampleApp -j2
 
