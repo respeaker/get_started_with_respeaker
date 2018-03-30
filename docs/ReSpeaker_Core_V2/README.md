@@ -30,6 +30,7 @@ Now let's get started!
 
 ## Programming Guide
 - [AVS(Alexa Voice Service) Guide](/docs/ReSpeaker_Core_V2/avs_guide.md)
+- [Google Assistant Guide](https://github.com/respeaker/googleassistant_respeakerd)
 
 
 ## Libraries
