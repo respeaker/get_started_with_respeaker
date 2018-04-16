@@ -178,6 +178,7 @@ def main():
     logging.basicConfig(level=logging.DEBUG)                                                           
     quit_event = Event()        
     thread = Thread(target=task, args=(quit_event,))
+    thread.daemon = True
     thread.start()                          
     while True:                             
         try:                                
@@ -185,8 +186,9 @@ def main():
         except KeyboardInterrupt:                   
             print('Quit')                           
             quit_event.set()
-            break        
-    thread.join()                
+            break 
+    time.sleep(1)
+    # thread.join()                
 
 if __name__ == '__main__':       
     main()                  
