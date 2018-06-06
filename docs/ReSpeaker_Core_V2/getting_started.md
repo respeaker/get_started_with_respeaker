@@ -21,7 +21,7 @@ This guide will show you the basic operations of ReSpeaker Core V2. Please note 
 
 Similar to a Raspberry Pi, you must burn the system image of ReSpeaker Core V2  to an SD card to get it up and running. You may noticed that there's also an eMMC (Embedded Multi Media Card) onboard. We'll burn the latest system into the onboard eMMC when every unit of ReSpeaker Core V2 is shipped. But feel free to upgrade/re-flash the system image inside eMMC according to the guide [here](#flash-emmc). Now please follow these steps to burn the system image:
 
-1. Download our latest system image from <a href="https://bfaceafsieduau-my.sharepoint.com/personal/miaojg22_off365_cn/_layouts/15/guestaccess.aspx?folderid=0bb3c4f3f122d4c2bb0f65eee2b5938f8&authkey=AfLSkcE8QeeUHTQ8GGfrrsU"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>.
+1. Download our latest system image from <a href="https://ibschoolnz-my.sharepoint.com/:f:/g/personal/baozhu_zuo_vace_co/Eny3PWvb3xdArLutUBAITwIB2t4kMZaAnkp94jAY0_3Pog"><img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/onedrive.png?raw=true" height="25"></img></a>.
 
     The name of the files follows such convention:
     `respeaker-debian-9-[iot|lxqt]-[flasher|sd]-[date]-4gb.img.xz`
