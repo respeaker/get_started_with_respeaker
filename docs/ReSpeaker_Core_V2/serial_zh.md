@@ -26,7 +26,7 @@ cmdline=coherent_pool=1M quiet init=/lib/systemd/systemd
 
 ```
 
-3， 重新板子
+3， 重新启动板子
 
 4， 测试
 ```
