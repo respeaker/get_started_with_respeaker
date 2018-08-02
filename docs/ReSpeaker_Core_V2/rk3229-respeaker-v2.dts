@@ -1,0 +1,273 @@
+/* Author: Baozhu Zuo <zuobaozhu@gmail.com>
+ * Copyright (c) 2018 Seeed Corporation.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
+
+
+/dts-v1/;
+
+#include "rk3229-axolcore.dtsi"
+
+/ {
+
+  model = "RK3229 ReSpeaker Board V1.0";
+	compatible = "rockchip,rk3229";
+
+	sdio_pwrseq: sdio-pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		clocks = <&rk805 1>;
+		clock-names = "ext_clock";
+		pinctrl-names = "default";
+		pinctrl-0 = <&wifi_enable_h>;
+
+		/*
+		 * On the module itself this is one of these (depending
+		 * on the actual card populated):
+		 * - SDIO_RESET_L_WL_REG_ON
+		 * - PDN (power down when low)
+		 */
+		reset-gpios = <&gpio2 26 GPIO_ACTIVE_LOW>; /* GPIO2_D2 */
+	};
+
+	wireless-bluetooth {
+		compatible = "bluetooth-platdata";
+		clocks = <&rk805 1>;
+		clock-names = "ext_clock";
+		uart_rts_gpios = <&gpio3 6 GPIO_ACTIVE_LOW>;
+		pinctrl-names = "default", "rts_gpio";
+		pinctrl-0 = <&uart11_rts>;
+		pinctrl-1 = <&uart11_rts_gpio>;
+		BT,reset_gpio    = <&gpio2 29 GPIO_ACTIVE_HIGH>;
+		BT,wake_gpio     = <&gpio3 27 GPIO_ACTIVE_HIGH>;
+		BT,wake_host_irq = <&gpio3 26 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
+
+	wireless-wlan {
+		compatible = "wlan-platdata";
+		rockchip,grf = <&grf>;
+		wifi_chip_type = "ap6212";
+		sdio_vref = <1800>;
+		WIFI,host_wake_irq = <&gpio0 28 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
+	codec_pcm: codec_pcm {
+		compatible = "linux,snd-soc-dummy";
+		#sound-dai-cells = <0>;
+	};
+	sound0: sound@0 {
+		compatible = "simple-audio-card";
+		simple-audio-card,name = "seeed-8mic-voicecard";
+		simple-audio-card,mclk-fs = <256>;
+		status = "okay";
+
+		simple-audio-card,dai-link@0 {
+			format = "i2s";
+			cpu {
+				sound-dai = <&i2s1>;
+			};
+
+			codec {
+				sound-dai = <&ac108_0>;
+			};
+		};
+		simple-audio-card,dai-link@1 {
+			format = "i2s";
+			cpu {
+				sound-dai = <&i2s1>;
+			};
+
+			codec {
+				sound-dai = <&codec>;
+			};
+		};
+	};
+
+	sound1: sound@1{
+		compatible = "simple-audio-card";
+		simple-audio-card,name = "bluetooth-a2dp";
+		simple-audio-card,mclk-fs = <256>;
+		status = "disabled";
+		simple-audio-card,dai-link@0 {
+			format = "i2s";
+			cpu {
+				sound-dai = <&i2s2>;
+				system-clock-frequency = <24000000>;
+			};
+
+			codec {
+				system-clock-frequency = <24000000>;
+				sound-dai = <&codec_pcm>;
+			};
+		};
+
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		autorepeat;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&user_key>;
+
+		key_1: key-1 {
+			label = "GPIO User Key";
+			gpios = <&gpio3 25 GPIO_ACTIVE_LOW>;
+			linux,code = <194>;
+			debounce-interval = <100>;
+			wakeup-source;
+		};
+	};
+   gpio-leds {
+     compatible = "gpio-leds";
+     pinctrl-names = "default";
+     pinctrl-0 = <&gpio_leds>;
+
+     heartbeat {
+       gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+       label = "respeaker2:blue:state1";
+       linux,default-trigger = "heartbeat";
+       default-state = "off";
+    };
+
+     mmc { 
+       gpios = <&gpio3 21 GPIO_ACTIVE_LOW>;
+       label = "respeaker2:blue:state2";
+       linux,default-trigger = "mmc0";
+       default-state = "off";
+    };
+  };
+};
+&i2c1 {
+	status = "okay";
+
+	ac108_0: ac108@3b {
+		#sound-dai-cells = <0>;
+		compatible = "MicArray_0";
+		reg = <0x3b>;
+	  rockchip,bclk-en=<&gpio0 11 GPIO_ACTIVE_HIGH>;
+	};
+	ac108_1: ac108@35 {
+		#sound-dai-cells = <0>;
+		compatible = "MicArray_1";
+	  rockchip,bclk-en=<&gpio0 11 GPIO_ACTIVE_HIGH>;
+		reg = <0x35>;
+	};
+};
+
+&i2c2 {
+	status = "okay";
+};
+
+&i2s1 {
+	status = "okay";
+	rockchip,i2s-broken-burst-len;
+	rockchip,playback-channels = <2>;
+	rockchip,capture-channels = <8>;
+	rockchip,bclk-fs = <64>;
+	#sound-dai-cells = <0>;
+};
+
+&i2s2 {
+	#sound-dai-cells = <0>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pcm_io>;
+	status = "okay";
+};
+&codec {
+	#sound-dai-cells = <0>;
+	status = "okay";
+};
+
+
+
+&pinctrl {
+	pinctrl-names = "default";
+
+	sdio-pwrseq {
+		wifi_enable_h: wifi-enable-h {
+			rockchip,pins = <2 26 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+
+ 	keys {
+		user_key: user-key {
+			rockchip,pins = <3 25 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
+   
+	gpio {
+		gpio_leds: gpio-leds {
+			rockchip,pins = <1 7 RK_FUNC_GPIO &pcfg_pull_none>,
+					<3 21 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+  i2s1 {
+			i2s1_bus: i2s1-bus {
+				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_none>,
+						<0 9 RK_FUNC_1 &pcfg_pull_none>,
+						<0 12 RK_FUNC_1 &pcfg_pull_none>,
+						<0 13 RK_FUNC_1 &pcfg_pull_none>,
+						<0 14 RK_FUNC_1 &pcfg_pull_none>,
+						<1 2 RK_FUNC_2 &pcfg_pull_none>,
+						<1 4 RK_FUNC_2 &pcfg_pull_none>,
+						<1 5 RK_FUNC_2 &pcfg_pull_none>;
+			}; 
+  };
+	pcm {
+		pcm_io: pcm-io {
+			rockchip,pins =  <0 26 RK_FUNC_2 &pcfg_pull_none>,
+					 <0 27 RK_FUNC_2 &pcfg_pull_none>,
+					 <3 11 RK_FUNC_1 &pcfg_pull_none>,
+					 <3 12 RK_FUNC_1 &pcfg_pull_none>;
+		};
+	};
+
+};
+ 
+&sdio {
+	bus-width = <4>;
+	cap-mmc-highspeed;
+	cap-sd-highspeed;
+	cap-sdio-irq;
+	non-removable;
+	ignore-pm-notify;
+	keep-power-in-suspend;
+	max-frequency = <150000000>;
+	supports-sdio;
+  mmc-pwrseq = <&sdio_pwrseq>;
+	num-slots = <1>;
+	sd-uhs-sdr104;
+	status = "okay";
+
+};
+
+&sdmmc {
+	bus-width = <4>;
+	cap-sd-highspeed;
+	card-detect-delay = <200>;
+	disable-wp;
+	max-frequency = <50000000>;
+	num-slots = <1>;
+	supports-sd;
+	status = "okay";
+};
+
+&emmc {
+	max-frequency = <50000000>;
+	broken-cd;
+	bus-width = <8>;
+	cap-mmc-highspeed;
+  sd-uhs-sdr50;
+	supports-emmc;
+	disable-wp;
+	non-removable;
+	num-slots = <1>;
+  status = "okay";
+};
+
