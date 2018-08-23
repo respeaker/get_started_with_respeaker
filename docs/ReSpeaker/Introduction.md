@@ -174,7 +174,7 @@ When Voice Interaction, onbroad pixel leds and touch sensors, kinds of [Grove se
 <img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/arduinoide.png?raw=true" 
 width="50%" height="50%">
 
-The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Software(IDE) 1.6.8+](https://www.arduino.cc/en/Main/Software) and our [ReSpeaker Arduino Library](https://github.com/respeaker/get_started_with_respeaker/blob/master/ReSpeakerArduinoLibrary.md#respeaker-arduino-library). 
+The ATMega32U4 Coprocessor on ReSpeaker is programmed using the [Arduino Software(IDE) 1.6.8+](https://www.arduino.cc/en/Main/Software) and our [ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library). 
 
 
 Arduino is an open-source electronics platform based on easy-to-use hardware and software. With Arduino on ReSpeaker, developers are able to make creative applications in their familiar area.
