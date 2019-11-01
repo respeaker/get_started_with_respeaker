@@ -17,7 +17,7 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce
 
 # configure the docker to use overlay2 file system driver
-$ sudo vim /etc/docker/daemon.json
+$ sudo nano /etc/docker/daemon.json
 ```
 
 Please note that, we should type the full path for `/etc/docker/daemon.json`, as the browsing permission of directory `/etc/docker` is disabled by default, so the `tab` prediction will not work. Now paste the following contents into the file and save it.
