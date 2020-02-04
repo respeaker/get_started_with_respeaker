@@ -36,7 +36,7 @@ Also, here are some ways to setup Wi-Fi with command line. [Click here!](https:/
 Visit `192.168.100.1` again, the Dashboard of ReSpeaker will appear. You are able to have a overview of ReSpeaker, set up network, wifi and system on Dashboard.
 
 
-##System Update
+## System Update
 
 To update the firmware of you ReSpeaker, enter `http://192.168.100.1/home.html` in a web browser and click `System Update`.
 
