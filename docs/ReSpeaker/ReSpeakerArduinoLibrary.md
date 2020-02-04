@@ -1,7 +1,7 @@
 # ReSpeaker Arduino Library
 
 
-[ReSpeaker Arudino Library](https://github.com/respeaker/respeaker_arduino_library) provides the following features: 
+[ReSpeaker Arduino Library](https://github.com/respeaker/respeaker_arduino_library) provides the following features: 
 
 - Supported capacitive touch sensing
 - Implemented WS2812 RGB LED driver
