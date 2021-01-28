@@ -58,12 +58,14 @@ Now your ReSpeaker Core V2 can boot, you might want to get access to the Linux s
     - Windows: check the device manager, there should be new serial deviced named `COMx` which `x` is an increasing number. If you use windows XP/7/8, maybe you  need install [windows CDC drivers](https://github.com/respeaker/get_started_with_respeaker/blob/master/files/ReSpeaker_Gadget_CDC_driver.7z).
     - Linux: `ls /dev/ttyACM*`, you should get `/dev/ttyACMx` where `x` will vary depending on which USB port you used
     - Mac: `ls /dev/cu.usb*`, you should get `/dev/cu.usbmodem14xx` where `xx` will vary depending on which USB port you used
+    - FreeBSD: check that cdc is loaded, maybe you will need to add it manually (https://www.freebsd.org/cgi/man.cgi?query=cdce&sektion=4). `ls /dev/cuaU*`, you should get `/dev/cuaUx` where `x` will vary depending on the USB port you used
 
 3. Use your favorite serial debugging tool to connect the serial port, the serial has: 115200 baud rate, 8Bits, Parity None, Stop Bits 1, Flow Control None. For examples:
 
     - Windows: use [PUTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), select `Serial` protocol, fill in the correct COM port of ReSpeaker Core V2, 115200 baud, 8Bits, Parity None, Stop Bits 1, Flow Control None
     - Linux: Depend on the USB port you used, it could be `screen /dev/ttyACM0(,1, and so on) 115200` or `screen /dev/ttyUSB0(,1, and so on) 115200`
     - Mac: Depend on the USB port you used, it could be `screen /dev/cu.usbserial1412(,1422, and so on) 115200` or `screen /dev/cu.usbmodem1412(,1422, and so on) 115200`
+    - FreeBSD: Depend on the USB port you used, it could be `screen /dev/cuaU0(,1, and so on) 115200`
   
 4. The login user name is `respeaker`, and password is `respeaker` too.
 
